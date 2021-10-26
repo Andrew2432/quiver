@@ -5,10 +5,8 @@ import SEO from '../layout/seo/SEO';
 function HomePage() {
   return (
     <Layout>
-      <>
-        <SEO title="Home Page" description="Home page" />
-        <Home />
-      </>
+      <SEO title="Home Page" description="Home page" />
+      <Home />
     </Layout>
   );
 }
