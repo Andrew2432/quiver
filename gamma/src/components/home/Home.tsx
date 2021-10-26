@@ -39,6 +39,7 @@ function Home() {
             href="https://github.com/Andrew2432/quiver"
             target="_blank"
             className={link}
+            rel="noopener noreferrer"
           >
             here.
           </a>
