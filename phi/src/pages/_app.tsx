@@ -1,41 +1,24 @@
-import * as React from 'react';
-import type { AppProps } from 'next/app';
-import { SWRConfig } from 'swr';
-
-import ThemeContext, { ThemeProps } from '../utils/ThemeContext';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/prism-dracula.css';
-import '../styles/globals.css';
+import { ApolloProvider } from "@apollo/client";
+import "bootstrap/dist/css/bootstrap.min.css";
+import type { AppProps } from "next/app";
+import * as React from "react";
+import "../styles/globals.css";
+import "../styles/prism-dracula.css";
+import apolloClient from "../utils/apollo/apolloClient";
+import ThemeContext, { ThemeProps } from "../utils/ThemeContext";
 
 const { useState } = React;
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [theme, setTheme] = useState<ThemeProps['theme']>('dark');
+  const [theme, setTheme] = useState<ThemeProps["theme"]>("dark");
   const value = { theme, setTheme };
 
-  /*
-  useEffect(() => {
-    const handleRouteChange = (url: string) => {
-      pageview(url);
-    };
-    router.events.on('routeChangeComplete', handleRouteChange);
-
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
-  }, [router.events]);
-   */
-
   return (
-    <SWRConfig
-      value={{
-        refreshInterval: 60000,
-      }}
-    >
+    <ApolloProvider client={apolloClient}>
       <ThemeContext.Provider value={value}>
         <Component {...pageProps} />
       </ThemeContext.Provider>
-    </SWRConfig>
+    </ApolloProvider>
   );
 }
 
