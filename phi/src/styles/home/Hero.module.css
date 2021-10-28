@@ -1,0 +1,18 @@
+.hero {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    url('/images/bg/pattern-1.jpg');
+  background-position: center center;
+  background-repeat: repeat;
+  height: 98vh;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 12rem;
+  height: 12rem;
+  border: 0.15rem solid #fff !important;
+  margin: 0 auto;
+}

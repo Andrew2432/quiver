@@ -1,0 +1,76 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Hack';
+  src: url('/fonts/hack/Hack-Regular.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Hack';
+  src: url('/fonts/hack/Hack-Bold.ttf');
+  font-weight: 700;
+  font-style: bold;
+}
+
+@font-face {
+  font-family: 'Hack';
+  src: url('/fonts/hack/Hack-Italic.ttf');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Hack';
+  src: url('/fonts/hack/Hack-BoldItalic.ttf');
+  font-weight: 600;
+  font-style: bolder;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('/fonts/source_sans_pro/SourceSansPro-Regular.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+html,
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Hack', sans-serif;
+  font-weight: 400;
+  font-display: swap;
+}
+
+body {
+  padding-top: 64px;
+}
+
+body,
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.35);
+}
