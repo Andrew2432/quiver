@@ -1,0 +1,15 @@
+query SinglePost($slug: String!) {
+  articles(where: { slug: $slug }) {
+    title
+    description
+    author {
+      name
+    }
+    created_at
+    updated_at
+    content
+    image {
+      url
+    }
+  }
+}

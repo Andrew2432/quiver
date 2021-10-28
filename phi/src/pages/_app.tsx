@@ -2,6 +2,7 @@ import { ApolloProvider } from "@apollo/client";
 import "bootstrap/dist/css/bootstrap.min.css";
 import type { AppProps } from "next/app";
 import * as React from "react";
+import ClientOnly from "../components/ClientOnly/ClientOnly";
 import "../styles/globals.css";
 import "../styles/prism-dracula.css";
 import apolloClient from "../utils/apollo/apolloClient";
@@ -16,7 +17,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={apolloClient}>
       <ThemeContext.Provider value={value}>
-        <Component {...pageProps} />
+        <ClientOnly>
+          <Component {...pageProps} />
+        </ClientOnly>
       </ThemeContext.Provider>
     </ApolloProvider>
   );

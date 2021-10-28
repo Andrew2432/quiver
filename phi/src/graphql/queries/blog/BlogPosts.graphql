@@ -1,0 +1,7 @@
+query BlogPosts {
+  articles {
+    id
+    title
+    content
+  }
+}
