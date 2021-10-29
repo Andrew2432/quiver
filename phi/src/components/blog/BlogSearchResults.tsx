@@ -1,12 +1,11 @@
-import * as React from 'react';
-import Jumbotron from 'react-bootstrap/Jumbotron';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-
-import BlogSidebar from './BlogSidebar';
-import ThemeContext from '../../utils/ThemeContext';
-import BlogSearchResultsPosts from './BlogSearchResultsPosts';
+import * as React from "react";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Jumbotron from "react-bootstrap/Jumbotron";
+import Row from "react-bootstrap/Row";
+import ThemeContext from "../../utils/ThemeContext";
+import BlogSidebar from "../blogSidebar/BlogSidebar";
+import BlogSearchResultsPosts from "./BlogSearchResultsPosts";
 
 const { useContext } = React;
 

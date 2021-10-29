@@ -135,10 +135,10 @@ function SinglePost({ post }: Props): JSX.Element {
       </Head>
       <Container fluid={breakpoint === "xs" ? true : false}>
         <Post post={post} theme={theme} />
+        {/* <Divider />
+        <PostComment id={postId} />
         <Divider />
-        {/* <PostComment id={postId} /> */}
-        <Divider />
-        {/* <DisplayComments id={postId} /> */}
+        <DisplayComments id={postId} /> */}
       </Container>
     </>
   );

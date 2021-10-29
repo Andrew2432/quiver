@@ -1513,6 +1513,14 @@ export type UpdateWriterPayload = {
   writer?: Maybe<Writer>;
 };
 
+export type BlogLatestPostsQueryVariables = Exact<{
+  sortString: Scalars['String'];
+  limit: Scalars['Int'];
+}>;
+
+
+export type BlogLatestPostsQuery = { __typename?: 'Query', articles?: Array<{ __typename?: 'Article', id: string, title: string, slug: string } | null | undefined> | null | undefined };
+
 export type BlogPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1525,7 +1533,50 @@ export type SinglePostQueryVariables = Exact<{
 
 export type SinglePostQuery = { __typename?: 'Query', articles?: Array<{ __typename?: 'Article', title: string, description: string, created_at: any, updated_at: any, content: string, author?: { __typename?: 'Writer', name?: string | null | undefined } | null | undefined, image?: { __typename?: 'UploadFile', url: string } | null | undefined } | null | undefined> | null | undefined };
 
+export type CategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
+
+export type CategoriesQuery = { __typename?: 'Query', categories?: Array<{ __typename?: 'Category', id: string, name: string, slug: string } | null | undefined> | null | undefined };
+
+
+export const BlogLatestPostsDocument = gql`
+    query BlogLatestPosts($sortString: String!, $limit: Int!) {
+  articles(sort: $sortString, limit: $limit) {
+    id
+    title
+    slug
+  }
+}
+    `;
+
+/**
+ * __useBlogLatestPostsQuery__
+ *
+ * To run a query within a React component, call `useBlogLatestPostsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useBlogLatestPostsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useBlogLatestPostsQuery({
+ *   variables: {
+ *      sortString: // value for 'sortString'
+ *      limit: // value for 'limit'
+ *   },
+ * });
+ */
+export function useBlogLatestPostsQuery(baseOptions: Apollo.QueryHookOptions<BlogLatestPostsQuery, BlogLatestPostsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<BlogLatestPostsQuery, BlogLatestPostsQueryVariables>(BlogLatestPostsDocument, options);
+      }
+export function useBlogLatestPostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlogLatestPostsQuery, BlogLatestPostsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<BlogLatestPostsQuery, BlogLatestPostsQueryVariables>(BlogLatestPostsDocument, options);
+        }
+export type BlogLatestPostsQueryHookResult = ReturnType<typeof useBlogLatestPostsQuery>;
+export type BlogLatestPostsLazyQueryHookResult = ReturnType<typeof useBlogLatestPostsLazyQuery>;
+export type BlogLatestPostsQueryResult = Apollo.QueryResult<BlogLatestPostsQuery, BlogLatestPostsQueryVariables>;
 export const BlogPostsDocument = gql`
     query BlogPosts {
   articles {
@@ -1607,3 +1658,39 @@ export function useSinglePostLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type SinglePostQueryHookResult = ReturnType<typeof useSinglePostQuery>;
 export type SinglePostLazyQueryHookResult = ReturnType<typeof useSinglePostLazyQuery>;
 export type SinglePostQueryResult = Apollo.QueryResult<SinglePostQuery, SinglePostQueryVariables>;
+export const CategoriesDocument = gql`
+    query Categories {
+  categories {
+    id
+    name
+    slug
+  }
+}
+    `;
+
+/**
+ * __useCategoriesQuery__
+ *
+ * To run a query within a React component, call `useCategoriesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCategoriesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCategoriesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useCategoriesQuery(baseOptions?: Apollo.QueryHookOptions<CategoriesQuery, CategoriesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<CategoriesQuery, CategoriesQueryVariables>(CategoriesDocument, options);
+      }
+export function useCategoriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CategoriesQuery, CategoriesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<CategoriesQuery, CategoriesQueryVariables>(CategoriesDocument, options);
+        }
+export type CategoriesQueryHookResult = ReturnType<typeof useCategoriesQuery>;
+export type CategoriesLazyQueryHookResult = ReturnType<typeof useCategoriesLazyQuery>;
+export type CategoriesQueryResult = Apollo.QueryResult<CategoriesQuery, CategoriesQueryVariables>;

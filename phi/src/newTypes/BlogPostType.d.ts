@@ -9,6 +9,7 @@ interface GenericBlogPost<T> {
   created_at: string;
   updated_at: string;
   content: string;
+  slug: string;
 }
 
 export interface BlogPostType extends Readonly<GenericBlogPost<Article>> {}
