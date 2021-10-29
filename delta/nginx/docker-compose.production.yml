@@ -1,0 +1,39 @@
+version: "3.7"
+
+services:
+  nginx:
+    image: nginxproxy/nginx-proxy
+    container_name: nginx
+    hostname: nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DHPARAMS_GENERATION: ${DHPARAMS_GENERATION}
+    volumes:
+      - "./custom_nginx.conf:/etc/nginx/conf.d/custom_nginx.conf"
+      - "./certs/:/etc/nginx/certs"
+      - "./vhost.d/:/etc/nginx/vhost.d"
+      - "./html/:/usr/share/nginx/html"
+      - "/var/run/docker.sock:/tmp/docker.sock"
+    networks:
+      - portfolio_network
+
+  nginx_acme:
+    image: nginxproxy/acme-companion
+    container_name: nginx_acme
+    hostname: nginx_acme
+    volumes_from:
+      - nginx
+    environment:
+      - "DEFAULT_EMAIL=${DEFAULT_EMAIL}"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./.acme/:/etc/acme.sh"
+    networks:
+      - portfolio_network
+
+networks:
+  portfolio_network:
+    external: true

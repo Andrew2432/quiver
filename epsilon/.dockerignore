@@ -3,3 +3,5 @@ public/uploads
 .env
 node_modules/
 build/
+strapi/
+data/

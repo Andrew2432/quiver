@@ -3,13 +3,15 @@
 const fs = require("fs");
 const path = require("path");
 const mime = require("mime-types");
-const {
-  categories,
-  homepage,
-  writers,
-  articles,
-  global,
-} = require("../../data/data.json");
+// const {
+//   categories,
+//   homepage,
+//   writers,
+//   articles,
+//   global,
+// } = require("../../data/data.json");
+
+const CAN_RUN_BOOTSTRAP = false;
 
 async function isFirstRun() {
   const pluginStore = strapi.store({
@@ -196,7 +198,7 @@ async function importSeedData() {
   await importGlobal();
 }
 
-module.exports = async () => {
+async function runSeeder() {
   const shouldImportSeedData = await isFirstRun();
 
   if (shouldImportSeedData) {
@@ -208,5 +210,11 @@ module.exports = async () => {
       console.log("Could not import seed data");
       console.error(error);
     }
+  }
+}
+
+module.exports = async () => {
+  if (CAN_RUN_BOOTSTRAP) {
+    await runSeeder();
   }
 };
