@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+  strapi:
+    build: .
+    hostname: strapi
+    container_name: strapi
+    restart: always
+    ports:
+      - "1338:1338"
+    environment:
+      HOST: ${HOST}
+      PORT: ${PORT}
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_SSL: ${DATABASE_SSL}
+    networks:
+      - postgres_network
+
+networks:
+  postgres_network:
+    external: true
