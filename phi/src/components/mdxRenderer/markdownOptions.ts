@@ -1,5 +1,5 @@
 import { MarkdownToJSX } from "markdown-to-jsx";
-import Code from "../Code/Code";
+import Code from "../code/Code";
 
 const markdownOptions: MarkdownToJSX.Options = {
   overrides: {

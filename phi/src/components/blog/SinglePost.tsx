@@ -9,7 +9,7 @@ import { BlogPostType } from "../../newTypes/BlogPostType";
 import useBreakpoint from "../../utils/hooks/useBreakpoint";
 import usePrismHighlight from "../../utils/hooks/usePrismHighlight";
 import ThemeContext, { ThemeProps } from "../../utils/ThemeContext";
-import MDXRenderer from "../MDXRenderer/MDXRenderer";
+import MDXRenderer from "../mdxRenderer/MDXRenderer";
 import Divider from "../shared/divider/Divider";
 
 interface Props {
