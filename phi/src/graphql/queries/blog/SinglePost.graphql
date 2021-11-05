@@ -1,15 +1,15 @@
 query SinglePost($slug: String!) {
   articles(where: { slug: $slug }) {
-    title
-    description
+    ...articleParts
+    ...imageParts
     author {
-      name
+      ...authorParts
     }
-    created_at
-    updated_at
-    content
-    image {
-      url
+    previous {
+      ...articlePreviousOrNextParts
+    }
+    next {
+      ...articlePreviousOrNextParts
     }
   }
 }

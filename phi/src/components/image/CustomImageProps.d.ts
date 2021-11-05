@@ -1,4 +1,3 @@
-export interface CustomImageProps {
-  path: string;
-  title: string;
-}
+import { ImageType } from "../../newTypes/ImageType";
+
+export interface CustomImageProps extends ImageType {}

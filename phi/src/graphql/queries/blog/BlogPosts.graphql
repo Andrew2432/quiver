@@ -1,7 +1,12 @@
 query BlogPosts {
   articles {
-    id
-    title
-    content
+    ...articleMetaParts
+    ...imageParts
+    author {
+      ...authorParts
+    }
+    category {
+      ...categoryParts
+    }
   }
 }

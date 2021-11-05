@@ -42,12 +42,16 @@ export type Article = {
   created_at: Scalars['DateTime'];
   description: Scalars['String'];
   excerpt: Scalars['String'];
+  hits?: Maybe<Scalars['Long']>;
   id: Scalars['ID'];
   image?: Maybe<UploadFile>;
+  next?: Maybe<Article>;
+  previous?: Maybe<Article>;
   published_at?: Maybe<Scalars['DateTime']>;
   slug: Scalars['String'];
   title: Scalars['String'];
   updated_at: Scalars['DateTime'];
+  views?: Maybe<Scalars['Long']>;
 };
 
 export type ArticleAggregator = {
@@ -99,6 +103,12 @@ export type ArticleConnectionExcerpt = {
   key?: Maybe<Scalars['String']>;
 };
 
+export type ArticleConnectionHits = {
+  __typename?: 'ArticleConnectionHits';
+  connection?: Maybe<ArticleConnection>;
+  key?: Maybe<Scalars['ID']>;
+};
+
 export type ArticleConnectionId = {
   __typename?: 'ArticleConnectionId';
   connection?: Maybe<ArticleConnection>;
@@ -107,6 +117,18 @@ export type ArticleConnectionId = {
 
 export type ArticleConnectionImage = {
   __typename?: 'ArticleConnectionImage';
+  connection?: Maybe<ArticleConnection>;
+  key?: Maybe<Scalars['ID']>;
+};
+
+export type ArticleConnectionNext = {
+  __typename?: 'ArticleConnectionNext';
+  connection?: Maybe<ArticleConnection>;
+  key?: Maybe<Scalars['ID']>;
+};
+
+export type ArticleConnectionPrevious = {
+  __typename?: 'ArticleConnectionPrevious';
   connection?: Maybe<ArticleConnection>;
   key?: Maybe<Scalars['ID']>;
 };
@@ -135,6 +157,12 @@ export type ArticleConnectionUpdated_At = {
   key?: Maybe<Scalars['DateTime']>;
 };
 
+export type ArticleConnectionViews = {
+  __typename?: 'ArticleConnectionViews';
+  connection?: Maybe<ArticleConnection>;
+  key?: Maybe<Scalars['ID']>;
+};
+
 export type ArticleGroupBy = {
   __typename?: 'ArticleGroupBy';
   author?: Maybe<Array<Maybe<ArticleConnectionAuthor>>>;
@@ -143,12 +171,16 @@ export type ArticleGroupBy = {
   created_at?: Maybe<Array<Maybe<ArticleConnectionCreated_At>>>;
   description?: Maybe<Array<Maybe<ArticleConnectionDescription>>>;
   excerpt?: Maybe<Array<Maybe<ArticleConnectionExcerpt>>>;
+  hits?: Maybe<Array<Maybe<ArticleConnectionHits>>>;
   id?: Maybe<Array<Maybe<ArticleConnectionId>>>;
   image?: Maybe<Array<Maybe<ArticleConnectionImage>>>;
+  next?: Maybe<Array<Maybe<ArticleConnectionNext>>>;
+  previous?: Maybe<Array<Maybe<ArticleConnectionPrevious>>>;
   published_at?: Maybe<Array<Maybe<ArticleConnectionPublished_At>>>;
   slug?: Maybe<Array<Maybe<ArticleConnectionSlug>>>;
   title?: Maybe<Array<Maybe<ArticleConnectionTitle>>>;
   updated_at?: Maybe<Array<Maybe<ArticleConnectionUpdated_At>>>;
+  views?: Maybe<Array<Maybe<ArticleConnectionViews>>>;
 };
 
 export type ArticleInput = {
@@ -158,11 +190,15 @@ export type ArticleInput = {
   created_by?: Maybe<Scalars['ID']>;
   description: Scalars['String'];
   excerpt?: Maybe<Scalars['String']>;
+  hits?: Maybe<Scalars['Long']>;
   image?: Maybe<Scalars['ID']>;
+  next?: Maybe<Scalars['ID']>;
+  previous?: Maybe<Scalars['ID']>;
   published_at?: Maybe<Scalars['DateTime']>;
   slug: Scalars['String'];
   title: Scalars['String'];
   updated_by?: Maybe<Scalars['ID']>;
+  views?: Maybe<Scalars['Long']>;
 };
 
 export type Category = {
@@ -347,7 +383,7 @@ export type LocaleInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
-export type Morph = Article | ArticleAggregator | ArticleConnection | ArticleConnectionAuthor | ArticleConnectionCategory | ArticleConnectionContent | ArticleConnectionCreated_At | ArticleConnectionDescription | ArticleConnectionExcerpt | ArticleConnectionId | ArticleConnectionImage | ArticleConnectionPublished_At | ArticleConnectionSlug | ArticleConnectionTitle | ArticleConnectionUpdated_At | ArticleGroupBy | Category | CategoryAggregator | CategoryConnection | CategoryConnectionCreated_At | CategoryConnectionId | CategoryConnectionName | CategoryConnectionSlug | CategoryConnectionUpdated_At | CategoryGroupBy | ComponentSectionsHero | ComponentSharedSeo | Global | Homepage | I18NLocale | UploadFile | UploadFileAggregator | UploadFileAggregatorAvg | UploadFileAggregatorMax | UploadFileAggregatorMin | UploadFileAggregatorSum | UploadFileConnection | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionCreated_At | UploadFileConnectionExt | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionHeight | UploadFileConnectionId | UploadFileConnectionMime | UploadFileConnectionName | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_Metadata | UploadFileConnectionSize | UploadFileConnectionUpdated_At | UploadFileConnectionUrl | UploadFileConnectionWidth | UploadFileGroupBy | UserPermissionsPasswordPayload | UsersPermissionsLoginPayload | UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleAggregator | UsersPermissionsRoleConnection | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionType | UsersPermissionsRoleGroupBy | UsersPermissionsUser | UsersPermissionsUserAggregator | UsersPermissionsUserConnection | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionCreated_At | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionUpdated_At | UsersPermissionsUserConnectionUsername | UsersPermissionsUserGroupBy | Writer | WriterAggregator | WriterConnection | WriterConnectionCreated_At | WriterConnectionEmail | WriterConnectionId | WriterConnectionName | WriterConnectionPicture | WriterConnectionUpdated_At | WriterGroupBy | CreateArticlePayload | CreateCategoryPayload | CreateRolePayload | CreateUserPayload | CreateWriterPayload | DeleteArticlePayload | DeleteCategoryPayload | DeleteFilePayload | DeleteGlobalPayload | DeleteHomepagePayload | DeleteRolePayload | DeleteUserPayload | DeleteWriterPayload | UpdateArticlePayload | UpdateCategoryPayload | UpdateGlobalPayload | UpdateHomepagePayload | UpdateRolePayload | UpdateUserPayload | UpdateWriterPayload;
+export type Morph = Article | ArticleAggregator | ArticleConnection | ArticleConnectionAuthor | ArticleConnectionCategory | ArticleConnectionContent | ArticleConnectionCreated_At | ArticleConnectionDescription | ArticleConnectionExcerpt | ArticleConnectionHits | ArticleConnectionId | ArticleConnectionImage | ArticleConnectionNext | ArticleConnectionPrevious | ArticleConnectionPublished_At | ArticleConnectionSlug | ArticleConnectionTitle | ArticleConnectionUpdated_At | ArticleConnectionViews | ArticleGroupBy | Category | CategoryAggregator | CategoryConnection | CategoryConnectionCreated_At | CategoryConnectionId | CategoryConnectionName | CategoryConnectionSlug | CategoryConnectionUpdated_At | CategoryGroupBy | ComponentSectionsHero | ComponentSharedSeo | Global | Homepage | I18NLocale | UploadFile | UploadFileAggregator | UploadFileAggregatorAvg | UploadFileAggregatorMax | UploadFileAggregatorMin | UploadFileAggregatorSum | UploadFileConnection | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionCreated_At | UploadFileConnectionExt | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionHeight | UploadFileConnectionId | UploadFileConnectionMime | UploadFileConnectionName | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_Metadata | UploadFileConnectionSize | UploadFileConnectionUpdated_At | UploadFileConnectionUrl | UploadFileConnectionWidth | UploadFileGroupBy | UserPermissionsPasswordPayload | UsersPermissionsLoginPayload | UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleAggregator | UsersPermissionsRoleConnection | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionType | UsersPermissionsRoleGroupBy | UsersPermissionsUser | UsersPermissionsUserAggregator | UsersPermissionsUserConnection | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionCreated_At | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionUpdated_At | UsersPermissionsUserConnectionUsername | UsersPermissionsUserGroupBy | Writer | WriterAggregator | WriterConnection | WriterConnectionCreated_At | WriterConnectionEmail | WriterConnectionId | WriterConnectionName | WriterConnectionPicture | WriterConnectionUpdated_At | WriterGroupBy | CreateArticlePayload | CreateCategoryPayload | CreateRolePayload | CreateUserPayload | CreateWriterPayload | DeleteArticlePayload | DeleteCategoryPayload | DeleteFilePayload | DeleteGlobalPayload | DeleteHomepagePayload | DeleteRolePayload | DeleteUserPayload | DeleteWriterPayload | UpdateArticlePayload | UpdateCategoryPayload | UpdateGlobalPayload | UpdateHomepagePayload | UpdateRolePayload | UpdateUserPayload | UpdateWriterPayload;
 
 export type Mutation = {
   __typename?: 'Mutation';
@@ -1343,11 +1379,15 @@ export type EditArticleInput = {
   created_by?: Maybe<Scalars['ID']>;
   description?: Maybe<Scalars['String']>;
   excerpt?: Maybe<Scalars['String']>;
+  hits?: Maybe<Scalars['Long']>;
   image?: Maybe<Scalars['ID']>;
+  next?: Maybe<Scalars['ID']>;
+  previous?: Maybe<Scalars['ID']>;
   published_at?: Maybe<Scalars['DateTime']>;
   slug?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   updated_by?: Maybe<Scalars['ID']>;
+  views?: Maybe<Scalars['Long']>;
 };
 
 export type EditCategoryInput = {
@@ -1513,79 +1553,158 @@ export type UpdateWriterPayload = {
   writer?: Maybe<Writer>;
 };
 
-export type BlogLatestPostsQueryVariables = Exact<{
+export type ArticleMetaPartsFragment = { __typename?: 'Article', id: string, slug: string, title: string, description: string, excerpt: string, created_at: any, updated_at: any, views?: any | null | undefined, hits?: any | null | undefined };
+
+export type ArticlePartsFragment = { __typename?: 'Article', id: string, slug: string, title: string, description: string, content: string, excerpt: string, created_at: any, updated_at: any, views?: any | null | undefined, hits?: any | null | undefined };
+
+export type ArticlePreviousOrNextPartsFragment = { __typename?: 'Article', id: string, title: string, slug: string };
+
+export type AuthorPartsFragment = { __typename?: 'Writer', name?: string | null | undefined };
+
+export type CategoryPartsFragment = { __typename?: 'Category', name: string, slug: string };
+
+export type ImagePartsFragment = { __typename?: 'Article', image?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null | undefined, caption?: string | null | undefined } | null | undefined };
+
+export type BlogCustomSortedPostsQueryVariables = Exact<{
   sortString: Scalars['String'];
   limit: Scalars['Int'];
 }>;
 
 
-export type BlogLatestPostsQuery = { __typename?: 'Query', articles?: Array<{ __typename?: 'Article', id: string, title: string, slug: string } | null | undefined> | null | undefined };
+export type BlogCustomSortedPostsQuery = { __typename?: 'Query', articles?: Array<{ __typename?: 'Article', id: string, slug: string, title: string, description: string, content: string, excerpt: string, created_at: any, updated_at: any, views?: any | null | undefined, hits?: any | null | undefined, author?: { __typename?: 'Writer', name?: string | null | undefined } | null | undefined, category?: { __typename?: 'Category', name: string, slug: string } | null | undefined } | null | undefined> | null | undefined };
 
 export type BlogPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type BlogPostsQuery = { __typename?: 'Query', articles?: Array<{ __typename?: 'Article', id: string, title: string, content: string } | null | undefined> | null | undefined };
+export type BlogPostsQuery = { __typename?: 'Query', articles?: Array<{ __typename?: 'Article', id: string, slug: string, title: string, description: string, excerpt: string, created_at: any, updated_at: any, views?: any | null | undefined, hits?: any | null | undefined, author?: { __typename?: 'Writer', name?: string | null | undefined } | null | undefined, category?: { __typename?: 'Category', name: string, slug: string } | null | undefined, image?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null | undefined, caption?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined };
 
 export type SinglePostQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-export type SinglePostQuery = { __typename?: 'Query', articles?: Array<{ __typename?: 'Article', title: string, description: string, created_at: any, updated_at: any, content: string, author?: { __typename?: 'Writer', name?: string | null | undefined } | null | undefined, image?: { __typename?: 'UploadFile', url: string } | null | undefined } | null | undefined> | null | undefined };
+export type SinglePostQuery = { __typename?: 'Query', articles?: Array<{ __typename?: 'Article', id: string, slug: string, title: string, description: string, content: string, excerpt: string, created_at: any, updated_at: any, views?: any | null | undefined, hits?: any | null | undefined, author?: { __typename?: 'Writer', name?: string | null | undefined } | null | undefined, previous?: { __typename?: 'Article', id: string, title: string, slug: string } | null | undefined, next?: { __typename?: 'Article', id: string, title: string, slug: string } | null | undefined, image?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null | undefined, caption?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined };
 
 export type CategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type CategoriesQuery = { __typename?: 'Query', categories?: Array<{ __typename?: 'Category', id: string, name: string, slug: string } | null | undefined> | null | undefined };
 
-
-export const BlogLatestPostsDocument = gql`
-    query BlogLatestPosts($sortString: String!, $limit: Int!) {
-  articles(sort: $sortString, limit: $limit) {
-    id
-    title
-    slug
+export const ArticleMetaPartsFragmentDoc = gql`
+    fragment articleMetaParts on Article {
+  id
+  slug
+  title
+  description
+  excerpt
+  created_at
+  updated_at
+  views
+  hits
+}
+    `;
+export const ArticlePartsFragmentDoc = gql`
+    fragment articleParts on Article {
+  id
+  slug
+  title
+  description
+  content
+  excerpt
+  created_at
+  updated_at
+  views
+  hits
+}
+    `;
+export const ArticlePreviousOrNextPartsFragmentDoc = gql`
+    fragment articlePreviousOrNextParts on Article {
+  id
+  title
+  slug
+}
+    `;
+export const AuthorPartsFragmentDoc = gql`
+    fragment authorParts on Writer {
+  name
+}
+    `;
+export const CategoryPartsFragmentDoc = gql`
+    fragment categoryParts on Category {
+  name
+  slug
+}
+    `;
+export const ImagePartsFragmentDoc = gql`
+    fragment imageParts on Article {
+  image {
+    url
+    alternativeText
+    caption
   }
 }
     `;
+export const BlogCustomSortedPostsDocument = gql`
+    query BlogCustomSortedPosts($sortString: String!, $limit: Int!) {
+  articles(sort: $sortString, limit: $limit) {
+    ...articleParts
+    author {
+      ...authorParts
+    }
+    category {
+      ...categoryParts
+    }
+  }
+}
+    ${ArticlePartsFragmentDoc}
+${AuthorPartsFragmentDoc}
+${CategoryPartsFragmentDoc}`;
 
 /**
- * __useBlogLatestPostsQuery__
+ * __useBlogCustomSortedPostsQuery__
  *
- * To run a query within a React component, call `useBlogLatestPostsQuery` and pass it any options that fit your needs.
- * When your component renders, `useBlogLatestPostsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useBlogCustomSortedPostsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useBlogCustomSortedPostsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useBlogLatestPostsQuery({
+ * const { data, loading, error } = useBlogCustomSortedPostsQuery({
  *   variables: {
  *      sortString: // value for 'sortString'
  *      limit: // value for 'limit'
  *   },
  * });
  */
-export function useBlogLatestPostsQuery(baseOptions: Apollo.QueryHookOptions<BlogLatestPostsQuery, BlogLatestPostsQueryVariables>) {
+export function useBlogCustomSortedPostsQuery(baseOptions: Apollo.QueryHookOptions<BlogCustomSortedPostsQuery, BlogCustomSortedPostsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<BlogLatestPostsQuery, BlogLatestPostsQueryVariables>(BlogLatestPostsDocument, options);
+        return Apollo.useQuery<BlogCustomSortedPostsQuery, BlogCustomSortedPostsQueryVariables>(BlogCustomSortedPostsDocument, options);
       }
-export function useBlogLatestPostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlogLatestPostsQuery, BlogLatestPostsQueryVariables>) {
+export function useBlogCustomSortedPostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlogCustomSortedPostsQuery, BlogCustomSortedPostsQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<BlogLatestPostsQuery, BlogLatestPostsQueryVariables>(BlogLatestPostsDocument, options);
+          return Apollo.useLazyQuery<BlogCustomSortedPostsQuery, BlogCustomSortedPostsQueryVariables>(BlogCustomSortedPostsDocument, options);
         }
-export type BlogLatestPostsQueryHookResult = ReturnType<typeof useBlogLatestPostsQuery>;
-export type BlogLatestPostsLazyQueryHookResult = ReturnType<typeof useBlogLatestPostsLazyQuery>;
-export type BlogLatestPostsQueryResult = Apollo.QueryResult<BlogLatestPostsQuery, BlogLatestPostsQueryVariables>;
+export type BlogCustomSortedPostsQueryHookResult = ReturnType<typeof useBlogCustomSortedPostsQuery>;
+export type BlogCustomSortedPostsLazyQueryHookResult = ReturnType<typeof useBlogCustomSortedPostsLazyQuery>;
+export type BlogCustomSortedPostsQueryResult = Apollo.QueryResult<BlogCustomSortedPostsQuery, BlogCustomSortedPostsQueryVariables>;
 export const BlogPostsDocument = gql`
     query BlogPosts {
   articles {
-    id
-    title
-    content
+    ...articleMetaParts
+    ...imageParts
+    author {
+      ...authorParts
+    }
+    category {
+      ...categoryParts
+    }
   }
 }
-    `;
+    ${ArticleMetaPartsFragmentDoc}
+${ImagePartsFragmentDoc}
+${AuthorPartsFragmentDoc}
+${CategoryPartsFragmentDoc}`;
 
 /**
  * __useBlogPostsQuery__
@@ -1616,20 +1735,23 @@ export type BlogPostsQueryResult = Apollo.QueryResult<BlogPostsQuery, BlogPostsQ
 export const SinglePostDocument = gql`
     query SinglePost($slug: String!) {
   articles(where: {slug: $slug}) {
-    title
-    description
+    ...articleParts
+    ...imageParts
     author {
-      name
+      ...authorParts
     }
-    created_at
-    updated_at
-    content
-    image {
-      url
+    previous {
+      ...articlePreviousOrNextParts
+    }
+    next {
+      ...articlePreviousOrNextParts
     }
   }
 }
-    `;
+    ${ArticlePartsFragmentDoc}
+${ImagePartsFragmentDoc}
+${AuthorPartsFragmentDoc}
+${ArticlePreviousOrNextPartsFragmentDoc}`;
 
 /**
  * __useSinglePostQuery__

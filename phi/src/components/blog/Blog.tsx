@@ -4,8 +4,8 @@ import Container from "react-bootstrap/Container";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Row from "react-bootstrap/Row";
 import ThemeContext from "../../utils/ThemeContext";
+import BlogPosts from "../blogPosts/BlogPosts";
 import BlogSidebar from "../blogSidebar/BlogSidebar";
-import BlogPosts from "./BlogPosts";
 
 const { useContext } = React;
 

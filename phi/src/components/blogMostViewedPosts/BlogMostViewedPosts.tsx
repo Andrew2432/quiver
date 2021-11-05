@@ -3,13 +3,13 @@ import { Children } from "react";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import { useBlogLatestPostsQuery } from "../../generated/graphql";
+import { useBlogCustomSortedPostsQuery } from "../../generated/graphql";
 import { BlogPostType } from "../../newTypes/BlogPostType";
-import { BlogLatestPostsProps } from "./BlogLatestPostsProps";
+import { BlogMostViewedPostsProps } from "./BlogMostViewedPostsProps";
 
-function createLatestPosts(post: BlogPostType) {
+function createMostViewedPosts(post: BlogPostType) {
   return (
-    <Link href={`/blog/post/${post.slug}`} passHref>
+    <Link href={`/blog/posts/${post.slug}`} passHref>
       <li className={`my-2`} style={{ cursor: "pointer" }}>
         <h5>
           <u>{post.title}</u>
@@ -19,10 +19,10 @@ function createLatestPosts(post: BlogPostType) {
   );
 }
 
-function BlogLatestPosts({ theme }: BlogLatestPostsProps): JSX.Element {
-  const { data, loading, error } = useBlogLatestPostsQuery({
+function BlogMostViewedPosts({ theme }: BlogMostViewedPostsProps): JSX.Element {
+  const { data, loading, error } = useBlogCustomSortedPostsQuery({
     variables: {
-      sortString: `created_at:desc`,
+      sortString: `views:desc`,
       limit: 3,
     },
   });
@@ -39,13 +39,13 @@ function BlogLatestPosts({ theme }: BlogLatestPostsProps): JSX.Element {
             <Card.Title>
               <h2>
                 <strong>
-                  <u>Latest Posts</u>
+                  <u>Most Viewed Posts</u>
                 </strong>
               </h2>
             </Card.Title>
           </Card.Header>
           <Card.Body className={`mx-3`}>
-            <ul>{Children.toArray(posts.map(createLatestPosts))}</ul>
+            <ul>{Children.toArray(posts.map(createMostViewedPosts))}</ul>
           </Card.Body>
         </Card>
       </Col>
@@ -53,4 +53,4 @@ function BlogLatestPosts({ theme }: BlogLatestPostsProps): JSX.Element {
   );
 }
 
-export default BlogLatestPosts;
+export default BlogMostViewedPosts;

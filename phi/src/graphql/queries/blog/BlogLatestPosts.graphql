@@ -1,7 +1,0 @@
-query BlogLatestPosts($sortString: String!, $limit: Int!) {
-  articles(sort: $sortString, limit: $limit) {
-    id
-    title
-    slug
-  }
-}

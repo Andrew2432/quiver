@@ -1,7 +1,7 @@
 import * as React from "react";
 import ThemeContext from "../../utils/ThemeContext";
 import BlogCategoriesList from "../blogCategoriesList/BlogCategoriesList";
-import BlogLatestPosts from "../blogLatestPosts/BlogLatestPosts";
+import BlogMostViewedPosts from "../blogMostViewedPosts/BlogMostViewedPosts";
 import BlogSearch from "../blogSearch/BlogSearch";
 
 const { useContext } = React;
@@ -12,7 +12,7 @@ function BlogSidebar() {
   return (
     <>
       <BlogSearch theme={theme} />
-      <BlogLatestPosts theme={theme} />
+      <BlogMostViewedPosts theme={theme} />
       <BlogCategoriesList theme={theme} />
     </>
   );

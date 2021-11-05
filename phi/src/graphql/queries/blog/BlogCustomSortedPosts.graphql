@@ -1,0 +1,11 @@
+query BlogCustomSortedPosts($sortString: String!, $limit: Int!) {
+  articles(sort: $sortString, limit: $limit) {
+    ...articleParts
+    author {
+      ...authorParts
+    }
+    category {
+      ...categoryParts
+    }
+  }
+}

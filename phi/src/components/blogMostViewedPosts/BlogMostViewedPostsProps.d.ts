@@ -1,5 +1,5 @@
 import { ThemeProps } from "../../utils/ThemeContext";
 
-export interface BlogLatestPostsProps {
+export interface BlogMostViewedPostsProps {
   theme: ThemeProps["theme"];
 }
