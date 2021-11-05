@@ -53,6 +53,20 @@
       "type": "richtext",
       "default": "  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit commodi inventore in rem aliquam, sit eos sed exercitationem animi mollitia veritatis, placeat culpa. Dolor cum error ex doloremque ullam ipsam illo, incidunt laborum consequatur nostrum tempora ducimus ut aliquam harum eveniet non labore omnis voluptatem impedit nobis sint eaque nesciunt numquam? Obcaecati, inventore incidunt dolorum cum ipsum eaque asperiores modi voluptates quasi assumenda ipsam dolore sint fuga ducimus, illo, officiis porro? At laboriosam quas, dolor est iure quos ipsa vero? Omnis maiores provident porro quibusdam, veritatis quod ex a reiciendis dolor quia distinctio quaerat, cumque laboriosam consectetur quam aliquam nesciunt?",
       "required": true
+    },
+    "previous": {
+      "model": "article"
+    },
+    "next": {
+      "model": "article"
+    },
+    "views": {
+      "type": "biginteger",
+      "default": "1"
+    },
+    "hits": {
+      "type": "biginteger",
+      "default": "1"
     }
   }
 }

@@ -47,6 +47,22 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "PUT",
+      "path": "/articles/:id/addViews",
+      "handler": "article.addViews",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/articles/:id/addHits",
+      "handler": "article.addHits",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
