@@ -5,6 +5,9 @@ query SinglePost($slug: String!) {
     author {
       ...authorParts
     }
+    category {
+      ...categoryParts
+    }
     previous {
       ...articlePreviousOrNextParts
     }

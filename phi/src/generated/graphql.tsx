@@ -1583,7 +1583,7 @@ export type SinglePostQueryVariables = Exact<{
 }>;
 
 
-export type SinglePostQuery = { __typename?: 'Query', articles?: Array<{ __typename?: 'Article', id: string, slug: string, title: string, description: string, content: string, excerpt: string, created_at: any, updated_at: any, views?: any | null | undefined, hits?: any | null | undefined, author?: { __typename?: 'Writer', name?: string | null | undefined } | null | undefined, previous?: { __typename?: 'Article', id: string, title: string, slug: string } | null | undefined, next?: { __typename?: 'Article', id: string, title: string, slug: string } | null | undefined, image?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null | undefined, caption?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined };
+export type SinglePostQuery = { __typename?: 'Query', articles?: Array<{ __typename?: 'Article', id: string, slug: string, title: string, description: string, content: string, excerpt: string, created_at: any, updated_at: any, views?: any | null | undefined, hits?: any | null | undefined, author?: { __typename?: 'Writer', name?: string | null | undefined } | null | undefined, category?: { __typename?: 'Category', name: string, slug: string } | null | undefined, previous?: { __typename?: 'Article', id: string, title: string, slug: string } | null | undefined, next?: { __typename?: 'Article', id: string, title: string, slug: string } | null | undefined, image?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null | undefined, caption?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined };
 
 export type CategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1740,6 +1740,9 @@ export const SinglePostDocument = gql`
     author {
       ...authorParts
     }
+    category {
+      ...categoryParts
+    }
     previous {
       ...articlePreviousOrNextParts
     }
@@ -1751,6 +1754,7 @@ export const SinglePostDocument = gql`
     ${ArticlePartsFragmentDoc}
 ${ImagePartsFragmentDoc}
 ${AuthorPartsFragmentDoc}
+${CategoryPartsFragmentDoc}
 ${ArticlePreviousOrNextPartsFragmentDoc}`;
 
 /**
