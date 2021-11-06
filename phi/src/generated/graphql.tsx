@@ -1597,6 +1597,13 @@ export type BlogPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type BlogPostsQuery = { __typename?: 'Query', articles?: Array<{ __typename?: 'Article', id: string, slug: string, title: string, description: string, excerpt: string, created_at: any, updated_at: any, views?: any | null | undefined, hits?: any | null | undefined, author?: { __typename?: 'Writer', name?: string | null | undefined } | null | undefined, category?: { __typename?: 'Category', name: string, slug: string } | null | undefined, image?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null | undefined, caption?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined };
 
+export type BlogSearchPostsQueryVariables = Exact<{
+  query: Scalars['String'];
+}>;
+
+
+export type BlogSearchPostsQuery = { __typename?: 'Query', articles?: Array<{ __typename?: 'Article', id: string, slug: string, title: string, description: string, excerpt: string, created_at: any, updated_at: any, views?: any | null | undefined, hits?: any | null | undefined, author?: { __typename?: 'Writer', name?: string | null | undefined } | null | undefined, category?: { __typename?: 'Category', name: string, slug: string } | null | undefined, image?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null | undefined, caption?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined };
+
 export type SinglePostQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
@@ -1806,6 +1813,51 @@ export function useBlogPostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<
 export type BlogPostsQueryHookResult = ReturnType<typeof useBlogPostsQuery>;
 export type BlogPostsLazyQueryHookResult = ReturnType<typeof useBlogPostsLazyQuery>;
 export type BlogPostsQueryResult = Apollo.QueryResult<BlogPostsQuery, BlogPostsQueryVariables>;
+export const BlogSearchPostsDocument = gql`
+    query BlogSearchPosts($query: String!) {
+  articles(where: {_q: $query}) {
+    ...articleMetaParts
+    ...imageParts
+    author {
+      ...authorParts
+    }
+    category {
+      ...categoryParts
+    }
+  }
+}
+    ${ArticleMetaPartsFragmentDoc}
+${ImagePartsFragmentDoc}
+${AuthorPartsFragmentDoc}
+${CategoryPartsFragmentDoc}`;
+
+/**
+ * __useBlogSearchPostsQuery__
+ *
+ * To run a query within a React component, call `useBlogSearchPostsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useBlogSearchPostsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useBlogSearchPostsQuery({
+ *   variables: {
+ *      query: // value for 'query'
+ *   },
+ * });
+ */
+export function useBlogSearchPostsQuery(baseOptions: Apollo.QueryHookOptions<BlogSearchPostsQuery, BlogSearchPostsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<BlogSearchPostsQuery, BlogSearchPostsQueryVariables>(BlogSearchPostsDocument, options);
+      }
+export function useBlogSearchPostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlogSearchPostsQuery, BlogSearchPostsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<BlogSearchPostsQuery, BlogSearchPostsQueryVariables>(BlogSearchPostsDocument, options);
+        }
+export type BlogSearchPostsQueryHookResult = ReturnType<typeof useBlogSearchPostsQuery>;
+export type BlogSearchPostsLazyQueryHookResult = ReturnType<typeof useBlogSearchPostsLazyQuery>;
+export type BlogSearchPostsQueryResult = Apollo.QueryResult<BlogSearchPostsQuery, BlogSearchPostsQueryVariables>;
 export const SinglePostDocument = gql`
     query SinglePost($slug: String!) {
   articles(where: {slug: $slug}) {

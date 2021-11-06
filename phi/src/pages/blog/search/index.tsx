@@ -1,22 +1,36 @@
-import * as React from 'react';
-import { useRouter } from 'next/router';
-import Prism from 'prismjs';
+import { GetServerSidePropsContext } from "next";
+import * as React from "react";
+import BlogSearchResults from "../../../components/blogSearchResults/BlogSearchResults";
+import { useBlogSearchPostsQuery } from "../../../generated/graphql";
+import Layout from "../../../layouts/Layout";
+import SEO from "../../../layouts/SEO";
+import { BlogPostType } from "../../../newTypes/BlogPostType";
+import PageLoading from "../../../utils/PageLoading";
 
-import Layout from '../../../layouts/Layout';
-import SEO from '../../../layouts/SEO';
-import BlogSearchResults from '../../../components/blog/BlogSearchResults';
+interface Props {
+  query: string;
+}
 
-const { useEffect } = React;
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const { query } = context.query;
 
-function PostsSearchPage() {
-  const router = useRouter();
-  const { query } = router.query;
+  return {
+    props: {
+      query,
+    },
+  };
+}
 
-  useEffect(function () {
-    if (typeof window !== 'undefined') {
-      Prism.highlightAll();
-    }
-  }, []);
+function PostsSearchPage({ query }: Props) {
+  const { data, loading, error } = useBlogSearchPostsQuery({
+    variables: {
+      query,
+    },
+  });
+
+  if (loading) return <PageLoading />;
+
+  const posts = data?.articles as BlogPostType[];
 
   return (
     <Layout>
@@ -24,7 +38,7 @@ function PostsSearchPage() {
         title={`Search Results`}
         description={`Search results for query ${query}`}
       />
-      <BlogSearchResults query={query as string} />
+      <BlogSearchResults query={query} posts={posts} />
     </Layout>
   );
 }

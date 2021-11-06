@@ -1,0 +1,12 @@
+query BlogSearchPosts($query: String!) {
+  articles(where: { _q: $query }) {
+    ...articleMetaParts
+    ...imageParts
+    author {
+      ...authorParts
+    }
+    category {
+      ...categoryParts
+    }
+  }
+}
