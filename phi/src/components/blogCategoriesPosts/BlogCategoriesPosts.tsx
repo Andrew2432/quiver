@@ -6,11 +6,14 @@ import Row from "react-bootstrap/Row";
 import ThemeContext from "../../utils/ThemeContext";
 import BlogPosts from "../blogPosts/BlogPosts";
 import BlogSidebar from "../blogSidebar/BlogSidebar";
-import { BlogProps } from "./BlogProps";
+import { BlogCategoriesPostsProps } from "./BlogCategoriesPostsProps";
 
 const { useContext } = React;
 
-function Blog({ posts }: BlogProps) {
+function BlogCategoriesPosts({
+  posts,
+  category,
+}: BlogCategoriesPostsProps): JSX.Element {
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -18,9 +21,9 @@ function Blog({ posts }: BlogProps) {
       <Jumbotron fluid className={`bg-${theme}`}>
         <Container className={`text-center`}>
           <h1>
-            <strong>My Blog</strong>
+            <strong>Category: {category.name}</strong>
           </h1>
-          <p>Read my latest posts.</p>
+          <p>{category.description}</p>
         </Container>
       </Jumbotron>
       <Container className={`my-3`}>
@@ -37,4 +40,4 @@ function Blog({ posts }: BlogProps) {
   );
 }
 
-export default Blog;
+export default BlogCategoriesPosts;

@@ -9,10 +9,8 @@ import * as React from "react";
 import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { useBlogPostsQuery } from "../../generated/graphql";
-import { BlogPostType } from "../../newTypes/BlogPostType";
 import ThemeContext from "../../utils/ThemeContext";
-import { BlogPostCardProps } from "./BlogPostsProps";
+import { BlogPostCardProps, BlogPostsProps } from "./BlogPostsProps";
 
 const { useRef, useContext } = React;
 
@@ -85,19 +83,7 @@ function BlogPostCard({ post }: BlogPostCardProps) {
   );
 }
 
-function BlogPosts() {
-  const { data, loading, error } = useBlogPostsQuery();
-
-  if (loading) return null;
-
-  if (error) console.error(error);
-
-  if (typeof data?.articles === "undefined") {
-    return null;
-  }
-
-  const posts = data.articles as BlogPostType[];
-
+function BlogPosts({ posts }: BlogPostsProps) {
   return (
     <>
       {React.Children.toArray(

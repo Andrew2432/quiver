@@ -1,61 +1,42 @@
-import * as React from 'react';
-import { GetServerSidePropsContext } from 'next';
-import getConfig from 'next/config';
-import { useRouter } from 'next/router';
-import useSWR from 'swr';
-import fetcher from '../../../utils/fetcher';
-import Prism from 'prismjs';
-
-import Layout from '../../../layouts/Layout';
-import SEO from '../../../layouts/SEO';
-import { Category } from '../../../types/CategoryProps';
-import BlogCategories from '../../../components/blog/BlogCategories';
-import PageLoading from '../../../utils/PageLoading';
-
-const {
-  publicRuntimeConfig: { wp_api_url },
-} = getConfig();
+import { GetServerSidePropsContext } from "next";
+import * as React from "react";
+import BlogCategoriesPosts from "../../../components/blogCategoriesPosts/BlogCategoriesPosts";
+import { useBlogCategoriesPostsQuery } from "../../../generated/graphql";
+import Layout from "../../../layouts/Layout";
+import SEO from "../../../layouts/SEO";
+import { BlogPostType } from "../../../newTypes/BlogPostType";
+import { CategoryType } from "../../../newTypes/CategoryType";
+import PageLoading from "../../../utils/PageLoading";
 
 interface Props {
-  category: Category;
+  slug: string;
 }
-
-const { useEffect } = React;
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const {
     query: { all },
   } = context;
-  const slug = all?.[0];
-  const response = await fetcher(
-    `${wp_api_url}/categories/?slug=${slug as string}`,
-  );
+
+  const slug = all?.[0] as string;
 
   return {
     props: {
-      category: response.data[0] as Category,
+      slug,
     },
   };
 }
 
-function SinglePostPage({ category }: Props) {
-  const router = useRouter();
-  const { all } = router.query;
-  const slug = all?.[0];
+function BlogCategoriesPostsPage({ slug }: Props) {
+  const { data, loading, error } = useBlogCategoriesPostsQuery({
+    variables: {
+      slug,
+    },
+  });
 
-  const { data } = useSWR(
-    `${wp_api_url}/categories/?slug=${slug as string}`,
-    fetcher,
-    { initialData: category },
-  );
+  if (loading) return <PageLoading />;
 
-  useEffect(function () {
-    if (typeof window !== 'undefined') {
-      Prism.highlightAll();
-    }
-  }, []);
-
-  if (!data) return <PageLoading />;
+  const category = data?.categories?.[0] as CategoryType;
+  const posts = data?.categories?.[0]?.articles as BlogPostType[];
 
   return (
     <Layout>
@@ -63,9 +44,9 @@ function SinglePostPage({ category }: Props) {
         title={`Category: ${category.name}`}
         description={category.description}
       />
-      <BlogCategories category={category} slug={slug as string} />
+      <BlogCategoriesPosts posts={posts} category={category} />
     </Layout>
   );
 }
 
-export default SinglePostPage;
+export default BlogCategoriesPostsPage;
