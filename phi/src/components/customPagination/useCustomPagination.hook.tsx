@@ -9,6 +9,7 @@ function useCustomPagination<T>({
   useHook,
   initialOffset,
   initialLimit,
+  variables,
 }: UseCustomPaginationHookProps<T>): UseCustomPaginationReturnProps<T> {
   const cursorRef = useRef<PaginationCursor>({
     offset: initialOffset ?? 0,
@@ -20,6 +21,7 @@ function useCustomPagination<T>({
     variables: {
       offset: cursorRef.current.offset,
       limit: cursorRef.current.limit,
+      ...variables,
     },
   });
 

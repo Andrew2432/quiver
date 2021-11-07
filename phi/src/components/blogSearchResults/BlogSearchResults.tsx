@@ -6,24 +6,25 @@ import Container from "react-bootstrap/Container";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Row from "react-bootstrap/Row";
 import ThemeContext from "../../utils/ThemeContext";
-import BlogPosts from "../blogPosts/BlogPosts";
 import BlogSidebar from "../blogSidebar/BlogSidebar";
-import { BlogSearchResultsProps } from "./BlogSearchResultsProps";
+import GenericBlogPosts from "../genericBlogPosts/GenericBlogPosts";
+import {
+  BlogSearchResultsProps,
+  SearchResultsProps,
+} from "./BlogSearchResultsProps";
 
 const { useContext } = React;
 
-function SearchResults({ posts }: BlogSearchResultsProps) {
+function SearchResults({ posts }: SearchResultsProps) {
   return (
-    <Container className={`my-3`}>
-      <Row>
-        <Col lg={8} sm={12}>
-          <BlogPosts posts={posts} />
-        </Col>
-        <Col lg={4} sm={12}>
-          <BlogSidebar />
-        </Col>
-      </Row>
-    </Container>
+    <Row>
+      <Col lg={8} sm={12}>
+        <GenericBlogPosts posts={posts} />
+      </Col>
+      <Col lg={4} sm={12}>
+        <BlogSidebar />
+      </Col>
+    </Row>
   );
 }
 
@@ -38,13 +39,14 @@ function BackToBlogButton() {
 function BlogSearchResults({
   posts,
   query,
+  totalItems,
+  children,
 }: BlogSearchResultsProps): JSX.Element {
   const { theme } = useContext(ThemeContext);
 
-  const count = posts.length;
   const resultsMessage =
-    count > 0
-      ? `Showing ${count} results for query: ${query}`
+    totalItems > 0
+      ? `Showing ${totalItems} results for query: ${query}`
       : `No results found for query: ${query}`;
 
   return (
@@ -55,10 +57,15 @@ function BlogSearchResults({
             <strong>Search Results</strong>
           </h1>
           <p>{resultsMessage}</p>
-          {count == 0 && <BackToBlogButton />}
+          {totalItems == 0 && <BackToBlogButton />}
         </Container>
       </Jumbotron>
-      {count > 0 && <SearchResults posts={posts} />}
+      {totalItems > 0 && (
+        <Container className={`my-3`}>
+          <SearchResults posts={posts} />
+          {children}
+        </Container>
+      )}
     </>
   );
 }

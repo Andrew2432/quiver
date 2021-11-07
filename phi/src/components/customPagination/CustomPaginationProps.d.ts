@@ -2,10 +2,12 @@ import { ApolloError } from "@apollo/client";
 import React from "react";
 import { PaginationCursor } from "../../newTypes/PaginationCursor";
 
-export interface UseHookProps {
+export interface UseHookProps
+  extends Apollo.QueryHookOptions<T, `${T}Variables`> {
   variables: {
     limit: number;
     offset: number;
+    query?: string;
     [x: string]: any;
   };
 }
@@ -17,9 +19,12 @@ export interface PaginateItemsProps {
 }
 
 export interface UseCustomPaginationHookProps<T> {
-  useHook: ({ variables }: UseHookProps) => QueryResult<T, Exact<UseHookProps>>;
+  useHook: ({
+    variables,
+  }: UseHookProps<T>) => QueryResult<T, Exact<UseHookProps>>;
   initialOffset?: number;
   initialLimit?: number;
+  variables?: Record<string, unknown>;
 }
 
 export interface CustomPaginationProps {
