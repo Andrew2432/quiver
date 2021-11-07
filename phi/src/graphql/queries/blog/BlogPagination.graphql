@@ -1,0 +1,13 @@
+query BlogPagination($offset: Int!, $limit: Int!, $query: JSON) {
+  articles(start: $offset, limit: $limit) {
+    ...articleMetaParts
+    ...imageParts
+    author {
+      ...authorParts
+    }
+    category {
+      ...categoryParts
+    }
+  }
+  articlesCount(where: $query)
+}

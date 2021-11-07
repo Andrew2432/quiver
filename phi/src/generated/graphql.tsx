@@ -585,6 +585,7 @@ export type Query = {
   article?: Maybe<Article>;
   articles?: Maybe<Array<Maybe<Article>>>;
   articlesConnection?: Maybe<ArticleConnection>;
+  articlesCount: Scalars['Int'];
   categories?: Maybe<Array<Maybe<Category>>>;
   categoriesConnection?: Maybe<CategoryConnection>;
   category?: Maybe<Category>;
@@ -625,6 +626,11 @@ export type QueryArticlesConnectionArgs = {
   limit?: Maybe<Scalars['Int']>;
   sort?: Maybe<Scalars['String']>;
   start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+
+export type QueryArticlesCountArgs = {
   where?: Maybe<Scalars['JSON']>;
 };
 
@@ -1592,6 +1598,15 @@ export type BlogCustomSortedPostsQueryVariables = Exact<{
 
 export type BlogCustomSortedPostsQuery = { __typename?: 'Query', articles?: Array<{ __typename?: 'Article', id: string, slug: string, title: string, description: string, content: string, excerpt: string, created_at: any, updated_at: any, views?: any | null | undefined, hits?: any | null | undefined, author?: { __typename?: 'Writer', name?: string | null | undefined } | null | undefined, category?: { __typename?: 'Category', name: string, slug: string } | null | undefined } | null | undefined> | null | undefined };
 
+export type BlogPaginationQueryVariables = Exact<{
+  offset: Scalars['Int'];
+  limit: Scalars['Int'];
+  query?: Maybe<Scalars['JSON']>;
+}>;
+
+
+export type BlogPaginationQuery = { __typename?: 'Query', articlesCount: number, articles?: Array<{ __typename?: 'Article', id: string, slug: string, title: string, description: string, excerpt: string, created_at: any, updated_at: any, views?: any | null | undefined, hits?: any | null | undefined, author?: { __typename?: 'Writer', name?: string | null | undefined } | null | undefined, category?: { __typename?: 'Category', name: string, slug: string } | null | undefined, image?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null | undefined, caption?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined };
+
 export type BlogPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1769,6 +1784,54 @@ export function useBlogCustomSortedPostsLazyQuery(baseOptions?: Apollo.LazyQuery
 export type BlogCustomSortedPostsQueryHookResult = ReturnType<typeof useBlogCustomSortedPostsQuery>;
 export type BlogCustomSortedPostsLazyQueryHookResult = ReturnType<typeof useBlogCustomSortedPostsLazyQuery>;
 export type BlogCustomSortedPostsQueryResult = Apollo.QueryResult<BlogCustomSortedPostsQuery, BlogCustomSortedPostsQueryVariables>;
+export const BlogPaginationDocument = gql`
+    query BlogPagination($offset: Int!, $limit: Int!, $query: JSON) {
+  articles(start: $offset, limit: $limit) {
+    ...articleMetaParts
+    ...imageParts
+    author {
+      ...authorParts
+    }
+    category {
+      ...categoryParts
+    }
+  }
+  articlesCount(where: $query)
+}
+    ${ArticleMetaPartsFragmentDoc}
+${ImagePartsFragmentDoc}
+${AuthorPartsFragmentDoc}
+${CategoryPartsFragmentDoc}`;
+
+/**
+ * __useBlogPaginationQuery__
+ *
+ * To run a query within a React component, call `useBlogPaginationQuery` and pass it any options that fit your needs.
+ * When your component renders, `useBlogPaginationQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useBlogPaginationQuery({
+ *   variables: {
+ *      offset: // value for 'offset'
+ *      limit: // value for 'limit'
+ *      query: // value for 'query'
+ *   },
+ * });
+ */
+export function useBlogPaginationQuery(baseOptions: Apollo.QueryHookOptions<BlogPaginationQuery, BlogPaginationQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<BlogPaginationQuery, BlogPaginationQueryVariables>(BlogPaginationDocument, options);
+      }
+export function useBlogPaginationLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlogPaginationQuery, BlogPaginationQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<BlogPaginationQuery, BlogPaginationQueryVariables>(BlogPaginationDocument, options);
+        }
+export type BlogPaginationQueryHookResult = ReturnType<typeof useBlogPaginationQuery>;
+export type BlogPaginationLazyQueryHookResult = ReturnType<typeof useBlogPaginationLazyQuery>;
+export type BlogPaginationQueryResult = Apollo.QueryResult<BlogPaginationQuery, BlogPaginationQueryVariables>;
 export const BlogPostsDocument = gql`
     query BlogPosts {
   articles {
