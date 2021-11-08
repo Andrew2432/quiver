@@ -1,4 +1,4 @@
-query BlogPagination($offset: Int!, $limit: Int!, $query: JSON) {
+query BlogPaginatedPosts($offset: Int!, $limit: Int!) {
   articles(start: $offset, limit: $limit) {
     ...articleMetaParts
     ...imageParts
@@ -9,5 +9,10 @@ query BlogPagination($offset: Int!, $limit: Int!, $query: JSON) {
       ...categoryParts
     }
   }
-  articlesCount(where: $query)
+
+  articlesConnection {
+    aggregate {
+      count
+    }
+  }
 }

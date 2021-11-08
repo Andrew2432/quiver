@@ -1607,6 +1607,14 @@ export type BlogPaginatedCategoriesPostsQueryVariables = Exact<{
 
 export type BlogPaginatedCategoriesPostsQuery = { __typename?: 'Query', categories?: Array<{ __typename?: 'Category', name: string, description?: string | null | undefined, articles?: Array<{ __typename?: 'Article', id: string, slug: string, title: string, description: string, excerpt: string, created_at: any, updated_at: any, views?: any | null | undefined, hits?: any | null | undefined, author?: { __typename?: 'Writer', name?: string | null | undefined } | null | undefined, category?: { __typename?: 'Category', name: string, slug: string } | null | undefined, image?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null | undefined, caption?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined } | null | undefined> | null | undefined, articlesConnection?: { __typename?: 'ArticleConnection', aggregate?: { __typename?: 'ArticleAggregator', count?: number | null | undefined } | null | undefined } | null | undefined };
 
+export type BlogPaginatedPostsQueryVariables = Exact<{
+  offset: Scalars['Int'];
+  limit: Scalars['Int'];
+}>;
+
+
+export type BlogPaginatedPostsQuery = { __typename?: 'Query', articles?: Array<{ __typename?: 'Article', id: string, slug: string, title: string, description: string, excerpt: string, created_at: any, updated_at: any, views?: any | null | undefined, hits?: any | null | undefined, author?: { __typename?: 'Writer', name?: string | null | undefined } | null | undefined, category?: { __typename?: 'Category', name: string, slug: string } | null | undefined, image?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null | undefined, caption?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined, articlesConnection?: { __typename?: 'ArticleConnection', aggregate?: { __typename?: 'ArticleAggregator', count?: number | null | undefined } | null | undefined } | null | undefined };
+
 export type BlogPaginatedSearchQueryVariables = Exact<{
   limit: Scalars['Int'];
   offset: Scalars['Int'];
@@ -1615,15 +1623,6 @@ export type BlogPaginatedSearchQueryVariables = Exact<{
 
 
 export type BlogPaginatedSearchQuery = { __typename?: 'Query', articles?: Array<{ __typename?: 'Article', id: string, slug: string, title: string, description: string, excerpt: string, created_at: any, updated_at: any, views?: any | null | undefined, hits?: any | null | undefined, author?: { __typename?: 'Writer', name?: string | null | undefined } | null | undefined, category?: { __typename?: 'Category', name: string, slug: string } | null | undefined, image?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null | undefined, caption?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined, articlesConnection?: { __typename?: 'ArticleConnection', aggregate?: { __typename?: 'ArticleAggregator', count?: number | null | undefined } | null | undefined } | null | undefined };
-
-export type BlogPaginationQueryVariables = Exact<{
-  offset: Scalars['Int'];
-  limit: Scalars['Int'];
-  query?: Maybe<Scalars['JSON']>;
-}>;
-
-
-export type BlogPaginationQuery = { __typename?: 'Query', articlesCount: number, articles?: Array<{ __typename?: 'Article', id: string, slug: string, title: string, description: string, excerpt: string, created_at: any, updated_at: any, views?: any | null | undefined, hits?: any | null | undefined, author?: { __typename?: 'Writer', name?: string | null | undefined } | null | undefined, category?: { __typename?: 'Category', name: string, slug: string } | null | undefined, image?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null | undefined, caption?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined };
 
 export type BlogPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1858,6 +1857,57 @@ export function useBlogPaginatedCategoriesPostsLazyQuery(baseOptions?: Apollo.La
 export type BlogPaginatedCategoriesPostsQueryHookResult = ReturnType<typeof useBlogPaginatedCategoriesPostsQuery>;
 export type BlogPaginatedCategoriesPostsLazyQueryHookResult = ReturnType<typeof useBlogPaginatedCategoriesPostsLazyQuery>;
 export type BlogPaginatedCategoriesPostsQueryResult = Apollo.QueryResult<BlogPaginatedCategoriesPostsQuery, BlogPaginatedCategoriesPostsQueryVariables>;
+export const BlogPaginatedPostsDocument = gql`
+    query BlogPaginatedPosts($offset: Int!, $limit: Int!) {
+  articles(start: $offset, limit: $limit) {
+    ...articleMetaParts
+    ...imageParts
+    author {
+      ...authorParts
+    }
+    category {
+      ...categoryParts
+    }
+  }
+  articlesConnection {
+    aggregate {
+      count
+    }
+  }
+}
+    ${ArticleMetaPartsFragmentDoc}
+${ImagePartsFragmentDoc}
+${AuthorPartsFragmentDoc}
+${CategoryPartsFragmentDoc}`;
+
+/**
+ * __useBlogPaginatedPostsQuery__
+ *
+ * To run a query within a React component, call `useBlogPaginatedPostsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useBlogPaginatedPostsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useBlogPaginatedPostsQuery({
+ *   variables: {
+ *      offset: // value for 'offset'
+ *      limit: // value for 'limit'
+ *   },
+ * });
+ */
+export function useBlogPaginatedPostsQuery(baseOptions: Apollo.QueryHookOptions<BlogPaginatedPostsQuery, BlogPaginatedPostsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<BlogPaginatedPostsQuery, BlogPaginatedPostsQueryVariables>(BlogPaginatedPostsDocument, options);
+      }
+export function useBlogPaginatedPostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlogPaginatedPostsQuery, BlogPaginatedPostsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<BlogPaginatedPostsQuery, BlogPaginatedPostsQueryVariables>(BlogPaginatedPostsDocument, options);
+        }
+export type BlogPaginatedPostsQueryHookResult = ReturnType<typeof useBlogPaginatedPostsQuery>;
+export type BlogPaginatedPostsLazyQueryHookResult = ReturnType<typeof useBlogPaginatedPostsLazyQuery>;
+export type BlogPaginatedPostsQueryResult = Apollo.QueryResult<BlogPaginatedPostsQuery, BlogPaginatedPostsQueryVariables>;
 export const BlogPaginatedSearchDocument = gql`
     query BlogPaginatedSearch($limit: Int!, $offset: Int!, $query: String!) {
   articles(start: $offset, limit: $limit, where: {_q: $query}) {
@@ -1910,54 +1960,6 @@ export function useBlogPaginatedSearchLazyQuery(baseOptions?: Apollo.LazyQueryHo
 export type BlogPaginatedSearchQueryHookResult = ReturnType<typeof useBlogPaginatedSearchQuery>;
 export type BlogPaginatedSearchLazyQueryHookResult = ReturnType<typeof useBlogPaginatedSearchLazyQuery>;
 export type BlogPaginatedSearchQueryResult = Apollo.QueryResult<BlogPaginatedSearchQuery, BlogPaginatedSearchQueryVariables>;
-export const BlogPaginationDocument = gql`
-    query BlogPagination($offset: Int!, $limit: Int!, $query: JSON) {
-  articles(start: $offset, limit: $limit) {
-    ...articleMetaParts
-    ...imageParts
-    author {
-      ...authorParts
-    }
-    category {
-      ...categoryParts
-    }
-  }
-  articlesCount(where: $query)
-}
-    ${ArticleMetaPartsFragmentDoc}
-${ImagePartsFragmentDoc}
-${AuthorPartsFragmentDoc}
-${CategoryPartsFragmentDoc}`;
-
-/**
- * __useBlogPaginationQuery__
- *
- * To run a query within a React component, call `useBlogPaginationQuery` and pass it any options that fit your needs.
- * When your component renders, `useBlogPaginationQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useBlogPaginationQuery({
- *   variables: {
- *      offset: // value for 'offset'
- *      limit: // value for 'limit'
- *      query: // value for 'query'
- *   },
- * });
- */
-export function useBlogPaginationQuery(baseOptions: Apollo.QueryHookOptions<BlogPaginationQuery, BlogPaginationQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<BlogPaginationQuery, BlogPaginationQueryVariables>(BlogPaginationDocument, options);
-      }
-export function useBlogPaginationLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlogPaginationQuery, BlogPaginationQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<BlogPaginationQuery, BlogPaginationQueryVariables>(BlogPaginationDocument, options);
-        }
-export type BlogPaginationQueryHookResult = ReturnType<typeof useBlogPaginationQuery>;
-export type BlogPaginationLazyQueryHookResult = ReturnType<typeof useBlogPaginationLazyQuery>;
-export type BlogPaginationQueryResult = Apollo.QueryResult<BlogPaginationQuery, BlogPaginationQueryVariables>;
 export const BlogPostsDocument = gql`
     query BlogPosts {
   articles {

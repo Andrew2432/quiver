@@ -4,13 +4,13 @@ import Container from "react-bootstrap/Container";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Row from "react-bootstrap/Row";
 import ThemeContext from "../../utils/ThemeContext";
-import BlogPosts from "../blogPosts/BlogPosts";
 import BlogSidebar from "../blogSidebar/BlogSidebar";
+import GenericBlogPosts from "../genericBlogPosts/GenericBlogPosts";
 import { BlogProps } from "./BlogProps";
 
 const { useContext } = React;
 
-function Blog({ posts }: BlogProps) {
+function Blog({ posts, children }: BlogProps) {
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -26,12 +26,13 @@ function Blog({ posts }: BlogProps) {
       <Container className={`my-3`}>
         <Row>
           <Col lg={8} sm={12}>
-            <BlogPosts posts={posts} />
+            <GenericBlogPosts posts={posts} />
           </Col>
           <Col lg={4} sm={12}>
             <BlogSidebar />
           </Col>
         </Row>
+        {children}
       </Container>
     </>
   );
