@@ -1,7 +1,7 @@
-import { Article } from "../generated/graphql";
-import { AuthorType } from "./AuthorType";
-import { CategoryType } from "./CategoryType";
-import { ImageType } from "./ImageType";
+import { Article } from '../generated/graphql';
+import { AuthorType } from './AuthorType';
+import { CategoryType } from './CategoryType';
+import { ImageType } from './ImageType';
 
 interface GenericBlogPost<T> {
   id: string;

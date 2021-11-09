@@ -1,25 +1,30 @@
-import Blog from "../../components/blog/Blog";
-import { BlogProps } from "../../components/blog/BlogProps";
-import CustomPagination from "../../components/customPagination/CustomPagination";
-import { CustomPaginationProps } from "../../components/customPagination/CustomPaginationProps";
-import useCustomPagination from "../../components/customPagination/useCustomPagination.hook";
+import Blog from '../../components/blog/Blog';
+import { BlogProps } from '../../components/blog/BlogProps';
+import CustomPagination from '../../components/customPagination/CustomPagination';
+import { CustomPaginationProps } from '../../components/customPagination/CustomPaginationProps';
+import useCustomPagination from '../../components/customPagination/useCustomPagination.hook';
 import {
   Article,
   BlogPaginatedPostsQuery,
   useBlogPaginatedPostsQuery,
-} from "../../generated/graphql";
-import Layout from "../../layouts/Layout";
-import SEO from "../../layouts/SEO";
-import { BlogPostType } from "../../newTypes/BlogPostType";
-import { GenericConnectionType } from "../../newTypes/GenericConnectionType";
-import { SEOProps } from "../../types/SEOProps";
-import PageLoading from "../../utils/PageLoading";
+} from '../../generated/graphql';
+import Layout from '../../layouts/Layout';
+import SEO from '../../layouts/SEO';
+import { BlogPostType } from '../../newTypes/BlogPostType';
+import { GenericConnectionType } from '../../newTypes/GenericConnectionType';
+import { SEOProps } from '../../types/SEOProps';
+import PageLoading from '../../utils/PageLoading';
 
 function BlogPage() {
-  const { data, loading, error, cursorRef, handlePaginationClick } =
-    useCustomPagination<BlogPaginatedPostsQuery>({
-      useHook: useBlogPaginatedPostsQuery,
-    });
+  const {
+    data,
+    loading,
+    error,
+    cursorRef,
+    handlePaginationClick,
+  } = useCustomPagination<BlogPaginatedPostsQuery>({
+    useHook: useBlogPaginatedPostsQuery,
+  });
 
   if (loading) return <PageLoading />;
 
@@ -29,8 +34,8 @@ function BlogPage() {
   } = data?.articlesConnection as GenericConnectionType<Article>;
 
   const seoProps: SEOProps = {
-    title: "Blog",
-    description: "Blog posts",
+    title: 'Blog',
+    description: 'Blog posts',
   };
 
   const blogProps: BlogProps = {

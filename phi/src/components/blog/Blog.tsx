@@ -1,12 +1,12 @@
-import * as React from "react";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Jumbotron from "react-bootstrap/Jumbotron";
-import Row from "react-bootstrap/Row";
-import ThemeContext from "../../utils/ThemeContext";
-import BlogSidebar from "../blogSidebar/BlogSidebar";
-import GenericBlogPosts from "../genericBlogPosts/GenericBlogPosts";
-import { BlogProps } from "./BlogProps";
+import * as React from 'react';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Row from 'react-bootstrap/Row';
+import ThemeContext from '../../utils/ThemeContext';
+import BlogSidebar from '../blogSidebar/BlogSidebar';
+import GenericBlogPosts from '../genericBlogPosts/GenericBlogPosts';
+import { BlogProps } from './BlogProps';
 
 const { useContext } = React;
 

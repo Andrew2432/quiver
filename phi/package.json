@@ -1,7 +1,8 @@
 {
-  "name": "new-portfolio",
+  "name": "@quiver/phi",
   "version": "0.1.0",
   "private": true,
+  "types": "src/@types/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

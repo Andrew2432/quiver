@@ -1,6 +1,6 @@
-import { BlogPostType } from "../../newTypes/BlogPostType";
+import { BlogPostType } from '../../newTypes/BlogPostType';
 
-export interface BlogProps {
+interface BlogProps {
   posts: BlogPostType[];
   children?: React.ReactNode;
 }
