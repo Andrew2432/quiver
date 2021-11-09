@@ -1,5 +1,5 @@
 {
-  "name": "epsilon",
+  "name": "@quiver/epsilon",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
