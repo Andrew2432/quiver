@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/domain-skills",
+      "handler": "domain-skills.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/domain-skills/count",
+      "handler": "domain-skills.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/domain-skills/:id",
+      "handler": "domain-skills.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/domain-skills",
+      "handler": "domain-skills.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/domain-skills/:id",
+      "handler": "domain-skills.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/domain-skills/:id",
+      "handler": "domain-skills.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

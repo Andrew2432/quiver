@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "techinal_skills",
+  "info": {
+    "name": "TechinalSkills",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "richtext"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "skills": {
+      "collection": "skill"
+    },
+    "shortName": {
+      "type": "string"
+    }
+  }
+}

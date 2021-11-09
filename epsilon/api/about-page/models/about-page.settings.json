@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "about_pages",
+  "info": {
+    "name": "About Page",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "domainSkills": {
+      "collection": "domain-skills"
+    },
+    "techinalSkills": {
+      "collection": "techinal-skills"
+    }
+  }
+}

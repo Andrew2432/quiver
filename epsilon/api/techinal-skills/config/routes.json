@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/techinal-skills",
+      "handler": "techinal-skills.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/techinal-skills/count",
+      "handler": "techinal-skills.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/techinal-skills/:id",
+      "handler": "techinal-skills.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/techinal-skills",
+      "handler": "techinal-skills.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/techinal-skills/:id",
+      "handler": "techinal-skills.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/techinal-skills/:id",
+      "handler": "techinal-skills.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

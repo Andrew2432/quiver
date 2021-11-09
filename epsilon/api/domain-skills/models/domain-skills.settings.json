@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "domain_skills",
+  "info": {
+    "name": "DomainSkills",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "description": {
+      "type": "richtext"
+    },
+    "title": {
+      "type": "richtext"
+    },
+    "shortName": {
+      "type": "string"
+    }
+  }
+}
