@@ -1,84 +1,25 @@
-import dynamic from 'next/dynamic';
-import getConfig from 'next/config';
-import useSWR from 'swr';
-
+import Portfolio from '../../components/portfolio/Portfolio';
+import { useProjectsCategoryQuery } from '../../generated/graphql';
 import Layout from '../../layouts/Layout';
 import SEO from '../../layouts/SEO';
-import { Project } from '../../types/ProjectProps';
-import fetcher from '../../utils/fetcher';
+import { ProjectCategory, ProjectType } from '../../newTypes/ProjectType';
 import PageLoading from '../../utils/PageLoading';
 
-const Portfolio = dynamic(
-  () => import('../../components/portfolio/Portfolio'),
-  { loading: () => <PageLoading /> },
-);
-
-const {
-  publicRuntimeConfig: { wp_project_url },
-} = getConfig();
-
-interface Props {
-  clientProjects: Project[] | null;
-  personalProjects: Project[] | null;
-}
-
-export async function getServerSideProps() {
-  const responsePersonalProjects = await fetcher(
-    `${wp_project_url}/projects`,
-    JSON.stringify({ page: 1, per_page: 6, project_type: 'Personal Project' }),
-  );
-
-  const responseClientProjects = await fetcher(
-    `${wp_project_url}/projects`,
-    JSON.stringify({ page: 1, per_page: 6, project_type: 'Client Project' }),
-  );
-
-  return {
-    props: {
-      clientProjects: responseClientProjects.data
-        ? (responseClientProjects.data as Project[])
-        : null,
-      personalProjects: responsePersonalProjects.data
-        ? (responsePersonalProjects.data as Project[])
-        : null,
+function PortfolioPage() {
+  const {
+    data: personalProjectsData,
+    loading,
+    error,
+  } = useProjectsCategoryQuery({
+    variables: {
+      category: ProjectCategory.PERSONAL,
     },
-  };
-}
+  });
 
-function PortfolioPage({ clientProjects, personalProjects }: Props) {
-  const { data: personalProjectsData } = useSWR(
-    `${wp_project_url}/projects/1`,
-    () =>
-      fetcher(
-        `${wp_project_url}/projects`,
-        JSON.stringify({
-          page: 1,
-          per_page: 6,
-          project_type: 'Personal Project',
-        }),
-      ),
-    {
-      initialData: personalProjects,
-    },
-  );
+  if (loading) return <PageLoading />;
 
-  const { data: clientProjectsData } = useSWR(
-    `${wp_project_url}/projects/2`,
-    () =>
-      fetcher(
-        `${wp_project_url}/projects`,
-        JSON.stringify({
-          page: 1,
-          per_page: 6,
-          project_type: 'Client Project',
-        }),
-      ),
-    {
-      initialData: clientProjects,
-    },
-  );
-
-  if (!personalProjectsData && !clientProjectsData) return <PageLoading />;
+  const personalProjects = personalProjectsData?.projects as ProjectType[];
+  const clientProjects = [] as ProjectType[];
 
   return (
     <Layout>

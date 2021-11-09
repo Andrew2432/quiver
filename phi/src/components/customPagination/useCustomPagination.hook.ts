@@ -1,9 +1,9 @@
-import { useRef } from "react";
-import { PaginationCursor } from "../../newTypes/PaginationCursor";
+import { useRef } from 'react';
+import { PaginationCursor } from '../../newTypes/PaginationCursor';
 import {
   UseCustomPaginationHookProps,
   UseCustomPaginationReturnProps,
-} from "./CustomPaginationProps";
+} from './CustomPaginationProps';
 
 function useCustomPagination<T>({
   useHook,
@@ -37,7 +37,7 @@ function useCustomPagination<T>({
 
   function handlePaginationClick(e: React.MouseEvent<HTMLElement>) {
     e.preventDefault();
-    const pageClicked = parseInt((e.target as any).dataset["page"]);
+    const pageClicked = parseInt((e.target as any).dataset['page']);
 
     setCurrentPage(pageClicked);
   }

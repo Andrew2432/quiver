@@ -312,6 +312,11 @@ export type ComponentSharedSeoInput = {
   shareImage?: Maybe<Scalars['ID']>;
 };
 
+export enum Enum_Project_Category {
+  Client = 'Client',
+  Personal = 'Personal'
+}
+
 export type FileInfoInput = {
   alternativeText?: Maybe<Scalars['String']>;
   caption?: Maybe<Scalars['String']>;
@@ -392,12 +397,13 @@ export type LocaleInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
-export type Morph = Article | ArticleAggregator | ArticleConnection | ArticleConnectionAuthor | ArticleConnectionCategory | ArticleConnectionContent | ArticleConnectionCreated_At | ArticleConnectionDescription | ArticleConnectionExcerpt | ArticleConnectionHits | ArticleConnectionId | ArticleConnectionImage | ArticleConnectionNext | ArticleConnectionPrevious | ArticleConnectionPublished_At | ArticleConnectionSlug | ArticleConnectionTitle | ArticleConnectionUpdated_At | ArticleConnectionViews | ArticleGroupBy | Category | CategoryAggregator | CategoryConnection | CategoryConnectionCreated_At | CategoryConnectionDescription | CategoryConnectionId | CategoryConnectionName | CategoryConnectionSlug | CategoryConnectionUpdated_At | CategoryGroupBy | ComponentSectionsHero | ComponentSharedSeo | Global | Homepage | I18NLocale | UploadFile | UploadFileAggregator | UploadFileAggregatorAvg | UploadFileAggregatorMax | UploadFileAggregatorMin | UploadFileAggregatorSum | UploadFileConnection | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionCreated_At | UploadFileConnectionExt | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionHeight | UploadFileConnectionId | UploadFileConnectionMime | UploadFileConnectionName | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_Metadata | UploadFileConnectionSize | UploadFileConnectionUpdated_At | UploadFileConnectionUrl | UploadFileConnectionWidth | UploadFileGroupBy | UserPermissionsPasswordPayload | UsersPermissionsLoginPayload | UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleAggregator | UsersPermissionsRoleConnection | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionType | UsersPermissionsRoleGroupBy | UsersPermissionsUser | UsersPermissionsUserAggregator | UsersPermissionsUserConnection | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionCreated_At | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionUpdated_At | UsersPermissionsUserConnectionUsername | UsersPermissionsUserGroupBy | Writer | WriterAggregator | WriterConnection | WriterConnectionCreated_At | WriterConnectionEmail | WriterConnectionId | WriterConnectionName | WriterConnectionPicture | WriterConnectionUpdated_At | WriterGroupBy | CreateArticlePayload | CreateCategoryPayload | CreateRolePayload | CreateUserPayload | CreateWriterPayload | DeleteArticlePayload | DeleteCategoryPayload | DeleteFilePayload | DeleteGlobalPayload | DeleteHomepagePayload | DeleteRolePayload | DeleteUserPayload | DeleteWriterPayload | UpdateArticlePayload | UpdateCategoryPayload | UpdateGlobalPayload | UpdateHomepagePayload | UpdateRolePayload | UpdateUserPayload | UpdateWriterPayload;
+export type Morph = Article | ArticleAggregator | ArticleConnection | ArticleConnectionAuthor | ArticleConnectionCategory | ArticleConnectionContent | ArticleConnectionCreated_At | ArticleConnectionDescription | ArticleConnectionExcerpt | ArticleConnectionHits | ArticleConnectionId | ArticleConnectionImage | ArticleConnectionNext | ArticleConnectionPrevious | ArticleConnectionPublished_At | ArticleConnectionSlug | ArticleConnectionTitle | ArticleConnectionUpdated_At | ArticleConnectionViews | ArticleGroupBy | Category | CategoryAggregator | CategoryConnection | CategoryConnectionCreated_At | CategoryConnectionDescription | CategoryConnectionId | CategoryConnectionName | CategoryConnectionSlug | CategoryConnectionUpdated_At | CategoryGroupBy | ComponentSectionsHero | ComponentSharedSeo | Global | Homepage | I18NLocale | Project | ProjectAggregator | ProjectConnection | ProjectConnectionCategory | ProjectConnectionClient_Name | ProjectConnectionContent | ProjectConnectionCreated_At | ProjectConnectionDeployed_Link | ProjectConnectionDescription | ProjectConnectionEnd_Date | ProjectConnectionGithub_Link | ProjectConnectionId | ProjectConnectionIs_Top | ProjectConnectionPublished_At | ProjectConnectionSlug | ProjectConnectionStart_Date | ProjectConnectionTitle | ProjectConnectionUpdated_At | ProjectGroupBy | UploadFile | UploadFileAggregator | UploadFileAggregatorAvg | UploadFileAggregatorMax | UploadFileAggregatorMin | UploadFileAggregatorSum | UploadFileConnection | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionCreated_At | UploadFileConnectionExt | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionHeight | UploadFileConnectionId | UploadFileConnectionMime | UploadFileConnectionName | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_Metadata | UploadFileConnectionSize | UploadFileConnectionUpdated_At | UploadFileConnectionUrl | UploadFileConnectionWidth | UploadFileGroupBy | UserPermissionsPasswordPayload | UsersPermissionsLoginPayload | UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleAggregator | UsersPermissionsRoleConnection | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionType | UsersPermissionsRoleGroupBy | UsersPermissionsUser | UsersPermissionsUserAggregator | UsersPermissionsUserConnection | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionCreated_At | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionUpdated_At | UsersPermissionsUserConnectionUsername | UsersPermissionsUserGroupBy | Writer | WriterAggregator | WriterConnection | WriterConnectionCreated_At | WriterConnectionEmail | WriterConnectionId | WriterConnectionName | WriterConnectionPicture | WriterConnectionUpdated_At | WriterGroupBy | CreateArticlePayload | CreateCategoryPayload | CreateProjectPayload | CreateRolePayload | CreateUserPayload | CreateWriterPayload | DeleteArticlePayload | DeleteCategoryPayload | DeleteFilePayload | DeleteGlobalPayload | DeleteHomepagePayload | DeleteProjectPayload | DeleteRolePayload | DeleteUserPayload | DeleteWriterPayload | UpdateArticlePayload | UpdateCategoryPayload | UpdateGlobalPayload | UpdateHomepagePayload | UpdateProjectPayload | UpdateRolePayload | UpdateUserPayload | UpdateWriterPayload;
 
 export type Mutation = {
   __typename?: 'Mutation';
   createArticle?: Maybe<CreateArticlePayload>;
   createCategory?: Maybe<CreateCategoryPayload>;
+  createProject?: Maybe<CreateProjectPayload>;
   /** Create a new role */
   createRole?: Maybe<CreateRolePayload>;
   /** Create a new user */
@@ -409,6 +415,7 @@ export type Mutation = {
   deleteFile?: Maybe<DeleteFilePayload>;
   deleteGlobal?: Maybe<DeleteGlobalPayload>;
   deleteHomepage?: Maybe<DeleteHomepagePayload>;
+  deleteProject?: Maybe<DeleteProjectPayload>;
   /** Delete an existing role */
   deleteRole?: Maybe<DeleteRolePayload>;
   /** Delete an existing user */
@@ -425,6 +432,7 @@ export type Mutation = {
   updateFileInfo: UploadFile;
   updateGlobal?: Maybe<UpdateGlobalPayload>;
   updateHomepage?: Maybe<UpdateHomepagePayload>;
+  updateProject?: Maybe<UpdateProjectPayload>;
   /** Update an existing role */
   updateRole?: Maybe<UpdateRolePayload>;
   /** Update an existing user */
@@ -441,6 +449,11 @@ export type MutationCreateArticleArgs = {
 
 export type MutationCreateCategoryArgs = {
   input?: Maybe<CreateCategoryInput>;
+};
+
+
+export type MutationCreateProjectArgs = {
+  input?: Maybe<CreateProjectInput>;
 };
 
 
@@ -471,6 +484,11 @@ export type MutationDeleteCategoryArgs = {
 
 export type MutationDeleteFileArgs = {
   input?: Maybe<DeleteFileInput>;
+};
+
+
+export type MutationDeleteProjectArgs = {
+  input?: Maybe<DeleteProjectInput>;
 };
 
 
@@ -551,6 +569,11 @@ export type MutationUpdateHomepageArgs = {
 };
 
 
+export type MutationUpdateProjectArgs = {
+  input?: Maybe<UpdateProjectInput>;
+};
+
+
 export type MutationUpdateRoleArgs = {
   input?: Maybe<UpdateRoleInput>;
 };
@@ -575,6 +598,184 @@ export type MutationUploadArgs = {
   source?: Maybe<Scalars['String']>;
 };
 
+export type Project = {
+  __typename?: 'Project';
+  authors?: Maybe<Array<Maybe<Writer>>>;
+  category?: Maybe<Enum_Project_Category>;
+  client_name?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']>;
+  created_at: Scalars['DateTime'];
+  deployed_link?: Maybe<Scalars['String']>;
+  description: Scalars['String'];
+  end_date?: Maybe<Scalars['Date']>;
+  github_link?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  is_top?: Maybe<Scalars['Boolean']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  slug?: Maybe<Scalars['String']>;
+  snapshots?: Maybe<Array<Maybe<UploadFile>>>;
+  start_date?: Maybe<Scalars['Date']>;
+  title: Scalars['String'];
+  updated_at: Scalars['DateTime'];
+};
+
+
+export type ProjectAuthorsArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  sort?: Maybe<Scalars['String']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+
+export type ProjectSnapshotsArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  sort?: Maybe<Scalars['String']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type ProjectAggregator = {
+  __typename?: 'ProjectAggregator';
+  count?: Maybe<Scalars['Int']>;
+  totalCount?: Maybe<Scalars['Int']>;
+};
+
+export type ProjectConnection = {
+  __typename?: 'ProjectConnection';
+  aggregate?: Maybe<ProjectAggregator>;
+  groupBy?: Maybe<ProjectGroupBy>;
+  values?: Maybe<Array<Maybe<Project>>>;
+};
+
+export type ProjectConnectionCategory = {
+  __typename?: 'ProjectConnectionCategory';
+  connection?: Maybe<ProjectConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type ProjectConnectionClient_Name = {
+  __typename?: 'ProjectConnectionClient_name';
+  connection?: Maybe<ProjectConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type ProjectConnectionContent = {
+  __typename?: 'ProjectConnectionContent';
+  connection?: Maybe<ProjectConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type ProjectConnectionCreated_At = {
+  __typename?: 'ProjectConnectionCreated_at';
+  connection?: Maybe<ProjectConnection>;
+  key?: Maybe<Scalars['DateTime']>;
+};
+
+export type ProjectConnectionDeployed_Link = {
+  __typename?: 'ProjectConnectionDeployed_link';
+  connection?: Maybe<ProjectConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type ProjectConnectionDescription = {
+  __typename?: 'ProjectConnectionDescription';
+  connection?: Maybe<ProjectConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type ProjectConnectionEnd_Date = {
+  __typename?: 'ProjectConnectionEnd_date';
+  connection?: Maybe<ProjectConnection>;
+  key?: Maybe<Scalars['ID']>;
+};
+
+export type ProjectConnectionGithub_Link = {
+  __typename?: 'ProjectConnectionGithub_link';
+  connection?: Maybe<ProjectConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type ProjectConnectionId = {
+  __typename?: 'ProjectConnectionId';
+  connection?: Maybe<ProjectConnection>;
+  key?: Maybe<Scalars['ID']>;
+};
+
+export type ProjectConnectionIs_Top = {
+  __typename?: 'ProjectConnectionIs_top';
+  connection?: Maybe<ProjectConnection>;
+  key?: Maybe<Scalars['Boolean']>;
+};
+
+export type ProjectConnectionPublished_At = {
+  __typename?: 'ProjectConnectionPublished_at';
+  connection?: Maybe<ProjectConnection>;
+  key?: Maybe<Scalars['DateTime']>;
+};
+
+export type ProjectConnectionSlug = {
+  __typename?: 'ProjectConnectionSlug';
+  connection?: Maybe<ProjectConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type ProjectConnectionStart_Date = {
+  __typename?: 'ProjectConnectionStart_date';
+  connection?: Maybe<ProjectConnection>;
+  key?: Maybe<Scalars['ID']>;
+};
+
+export type ProjectConnectionTitle = {
+  __typename?: 'ProjectConnectionTitle';
+  connection?: Maybe<ProjectConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type ProjectConnectionUpdated_At = {
+  __typename?: 'ProjectConnectionUpdated_at';
+  connection?: Maybe<ProjectConnection>;
+  key?: Maybe<Scalars['DateTime']>;
+};
+
+export type ProjectGroupBy = {
+  __typename?: 'ProjectGroupBy';
+  category?: Maybe<Array<Maybe<ProjectConnectionCategory>>>;
+  client_name?: Maybe<Array<Maybe<ProjectConnectionClient_Name>>>;
+  content?: Maybe<Array<Maybe<ProjectConnectionContent>>>;
+  created_at?: Maybe<Array<Maybe<ProjectConnectionCreated_At>>>;
+  deployed_link?: Maybe<Array<Maybe<ProjectConnectionDeployed_Link>>>;
+  description?: Maybe<Array<Maybe<ProjectConnectionDescription>>>;
+  end_date?: Maybe<Array<Maybe<ProjectConnectionEnd_Date>>>;
+  github_link?: Maybe<Array<Maybe<ProjectConnectionGithub_Link>>>;
+  id?: Maybe<Array<Maybe<ProjectConnectionId>>>;
+  is_top?: Maybe<Array<Maybe<ProjectConnectionIs_Top>>>;
+  published_at?: Maybe<Array<Maybe<ProjectConnectionPublished_At>>>;
+  slug?: Maybe<Array<Maybe<ProjectConnectionSlug>>>;
+  start_date?: Maybe<Array<Maybe<ProjectConnectionStart_Date>>>;
+  title?: Maybe<Array<Maybe<ProjectConnectionTitle>>>;
+  updated_at?: Maybe<Array<Maybe<ProjectConnectionUpdated_At>>>;
+};
+
+export type ProjectInput = {
+  authors?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  category?: Maybe<Enum_Project_Category>;
+  client_name?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']>;
+  created_by?: Maybe<Scalars['ID']>;
+  deployed_link?: Maybe<Scalars['String']>;
+  description: Scalars['String'];
+  end_date?: Maybe<Scalars['Date']>;
+  github_link?: Maybe<Scalars['String']>;
+  is_top?: Maybe<Scalars['Boolean']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  slug?: Maybe<Scalars['String']>;
+  snapshots?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  start_date?: Maybe<Scalars['Date']>;
+  title: Scalars['String'];
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
 export enum PublicationState {
   Live = 'LIVE',
   Preview = 'PREVIEW'
@@ -594,6 +795,9 @@ export type Query = {
   global?: Maybe<Global>;
   homepage?: Maybe<Homepage>;
   me?: Maybe<UsersPermissionsMe>;
+  project?: Maybe<Project>;
+  projects?: Maybe<Array<Maybe<Project>>>;
+  projectsConnection?: Maybe<ProjectConnection>;
   role?: Maybe<UsersPermissionsRole>;
   /** Retrieve all the existing roles. You can't apply filters on this query. */
   roles?: Maybe<Array<Maybe<UsersPermissionsRole>>>;
@@ -682,6 +886,29 @@ export type QueryGlobalArgs = {
 
 export type QueryHomepageArgs = {
   publicationState?: Maybe<PublicationState>;
+};
+
+
+export type QueryProjectArgs = {
+  id: Scalars['ID'];
+  publicationState?: Maybe<PublicationState>;
+};
+
+
+export type QueryProjectsArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  publicationState?: Maybe<PublicationState>;
+  sort?: Maybe<Scalars['String']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+
+export type QueryProjectsConnectionArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  sort?: Maybe<Scalars['String']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
 };
 
 
@@ -1296,6 +1523,15 @@ export type CreateCategoryPayload = {
   category?: Maybe<Category>;
 };
 
+export type CreateProjectInput = {
+  data?: Maybe<ProjectInput>;
+};
+
+export type CreateProjectPayload = {
+  __typename?: 'createProjectPayload';
+  project?: Maybe<Project>;
+};
+
 export type CreateRoleInput = {
   data?: Maybe<RoleInput>;
 };
@@ -1358,6 +1594,15 @@ export type DeleteGlobalPayload = {
 export type DeleteHomepagePayload = {
   __typename?: 'deleteHomepagePayload';
   homepage?: Maybe<Homepage>;
+};
+
+export type DeleteProjectInput = {
+  where?: Maybe<InputId>;
+};
+
+export type DeleteProjectPayload = {
+  __typename?: 'deleteProjectPayload';
+  project?: Maybe<Project>;
 };
 
 export type DeleteRoleInput = {
@@ -1468,6 +1713,25 @@ export type EditLocaleInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
+export type EditProjectInput = {
+  authors?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  category?: Maybe<Enum_Project_Category>;
+  client_name?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']>;
+  created_by?: Maybe<Scalars['ID']>;
+  deployed_link?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  end_date?: Maybe<Scalars['Date']>;
+  github_link?: Maybe<Scalars['String']>;
+  is_top?: Maybe<Scalars['Boolean']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  slug?: Maybe<Scalars['String']>;
+  snapshots?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  start_date?: Maybe<Scalars['Date']>;
+  title?: Maybe<Scalars['String']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
 export type EditRoleInput = {
   created_by?: Maybe<Scalars['ID']>;
   description?: Maybe<Scalars['String']>;
@@ -1539,6 +1803,16 @@ export type UpdateHomepagePayload = {
   homepage?: Maybe<Homepage>;
 };
 
+export type UpdateProjectInput = {
+  data?: Maybe<EditProjectInput>;
+  where?: Maybe<InputId>;
+};
+
+export type UpdateProjectPayload = {
+  __typename?: 'updateProjectPayload';
+  project?: Maybe<Project>;
+};
+
 export type UpdateRoleInput = {
   data?: Maybe<EditRoleInput>;
   where?: Maybe<InputId>;
@@ -1582,6 +1856,10 @@ export type BlogCategoriesPartsFragment = { __typename?: 'Category', name: strin
 export type CategoryPartsFragment = { __typename?: 'Category', name: string, slug: string };
 
 export type ImagePartsFragment = { __typename?: 'Article', image?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null | undefined, caption?: string | null | undefined } | null | undefined };
+
+export type ProjectMetaPartsFragment = { __typename?: 'Project', id: string, slug?: string | null | undefined, title: string, description: string, snapshots?: Array<{ __typename?: 'UploadFile', url: string, alternativeText?: string | null | undefined } | null | undefined> | null | undefined };
+
+export type ProjectPartsFragment = { __typename?: 'Project', slug?: string | null | undefined, title: string, description: string, content?: string | null | undefined, deployed_link?: string | null | undefined, github_link?: string | null | undefined, is_top?: boolean | null | undefined, start_date?: any | null | undefined, end_date?: any | null | undefined, client_name?: string | null | undefined, category?: Enum_Project_Category | null | undefined, snapshots?: Array<{ __typename?: 'UploadFile', url: string } | null | undefined> | null | undefined };
 
 export type BlogCategoriesPostsQueryVariables = Exact<{
   slug: Scalars['String'];
@@ -1648,6 +1926,20 @@ export type CategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type CategoriesQuery = { __typename?: 'Query', categories?: Array<{ __typename?: 'Category', id: string, name: string, slug: string } | null | undefined> | null | undefined };
 
+export type ProjectsCategoryQueryVariables = Exact<{
+  category: Scalars['String'];
+}>;
+
+
+export type ProjectsCategoryQuery = { __typename?: 'Query', projects?: Array<{ __typename?: 'Project', id: string, slug?: string | null | undefined, title: string, description: string, snapshots?: Array<{ __typename?: 'UploadFile', url: string, alternativeText?: string | null | undefined } | null | undefined> | null | undefined } | null | undefined> | null | undefined };
+
+export type SingleProjectQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+
+export type SingleProjectQuery = { __typename?: 'Query', projects?: Array<{ __typename?: 'Project', slug?: string | null | undefined, title: string, description: string, content?: string | null | undefined, deployed_link?: string | null | undefined, github_link?: string | null | undefined, is_top?: boolean | null | undefined, start_date?: any | null | undefined, end_date?: any | null | undefined, client_name?: string | null | undefined, category?: Enum_Project_Category | null | undefined, snapshots?: Array<{ __typename?: 'UploadFile', url: string } | null | undefined> | null | undefined } | null | undefined> | null | undefined };
+
 export const ArticleMetaPartsFragmentDoc = gql`
     fragment articleMetaParts on Article {
   id
@@ -1705,6 +1997,36 @@ export const ImagePartsFragmentDoc = gql`
     url
     alternativeText
     caption
+  }
+}
+    `;
+export const ProjectMetaPartsFragmentDoc = gql`
+    fragment projectMetaParts on Project {
+  id
+  slug
+  title
+  description
+  snapshots {
+    url
+    alternativeText
+  }
+}
+    `;
+export const ProjectPartsFragmentDoc = gql`
+    fragment projectParts on Project {
+  slug
+  title
+  description
+  content
+  deployed_link
+  github_link
+  is_top
+  start_date
+  end_date
+  client_name
+  category
+  snapshots {
+    url
   }
 }
     `;
@@ -2137,3 +2459,73 @@ export function useCategoriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type CategoriesQueryHookResult = ReturnType<typeof useCategoriesQuery>;
 export type CategoriesLazyQueryHookResult = ReturnType<typeof useCategoriesLazyQuery>;
 export type CategoriesQueryResult = Apollo.QueryResult<CategoriesQuery, CategoriesQueryVariables>;
+export const ProjectsCategoryDocument = gql`
+    query ProjectsCategory($category: String!) {
+  projects(where: {category: $category}) {
+    ...projectMetaParts
+  }
+}
+    ${ProjectMetaPartsFragmentDoc}`;
+
+/**
+ * __useProjectsCategoryQuery__
+ *
+ * To run a query within a React component, call `useProjectsCategoryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useProjectsCategoryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useProjectsCategoryQuery({
+ *   variables: {
+ *      category: // value for 'category'
+ *   },
+ * });
+ */
+export function useProjectsCategoryQuery(baseOptions: Apollo.QueryHookOptions<ProjectsCategoryQuery, ProjectsCategoryQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ProjectsCategoryQuery, ProjectsCategoryQueryVariables>(ProjectsCategoryDocument, options);
+      }
+export function useProjectsCategoryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProjectsCategoryQuery, ProjectsCategoryQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ProjectsCategoryQuery, ProjectsCategoryQueryVariables>(ProjectsCategoryDocument, options);
+        }
+export type ProjectsCategoryQueryHookResult = ReturnType<typeof useProjectsCategoryQuery>;
+export type ProjectsCategoryLazyQueryHookResult = ReturnType<typeof useProjectsCategoryLazyQuery>;
+export type ProjectsCategoryQueryResult = Apollo.QueryResult<ProjectsCategoryQuery, ProjectsCategoryQueryVariables>;
+export const SingleProjectDocument = gql`
+    query SingleProject($slug: String!) {
+  projects(where: {slug: $slug}) {
+    ...projectParts
+  }
+}
+    ${ProjectPartsFragmentDoc}`;
+
+/**
+ * __useSingleProjectQuery__
+ *
+ * To run a query within a React component, call `useSingleProjectQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSingleProjectQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSingleProjectQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useSingleProjectQuery(baseOptions: Apollo.QueryHookOptions<SingleProjectQuery, SingleProjectQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<SingleProjectQuery, SingleProjectQueryVariables>(SingleProjectDocument, options);
+      }
+export function useSingleProjectLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SingleProjectQuery, SingleProjectQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<SingleProjectQuery, SingleProjectQueryVariables>(SingleProjectDocument, options);
+        }
+export type SingleProjectQueryHookResult = ReturnType<typeof useSingleProjectQuery>;
+export type SingleProjectLazyQueryHookResult = ReturnType<typeof useSingleProjectLazyQuery>;
+export type SingleProjectQueryResult = Apollo.QueryResult<SingleProjectQuery, SingleProjectQueryVariables>;

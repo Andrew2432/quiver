@@ -1,26 +1,26 @@
-import Link from "next/link";
-import * as React from "react";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import ThemeContext from "../../utils/ThemeContext";
-import AuthorBadge from "../authorBadge/AuthorBadge";
-import CategoryBadge from "../categoryBadge/CategoryBadge";
-import DateBadge from "../dateBadge/DateBadge";
-import MDXRenderer from "../mdxRenderer/MDXRenderer";
-import { BlogPostCardProps } from "./BlogPostsProps";
+import Link from 'next/link';
+import * as React from 'react';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import ThemeContext from '../../utils/ThemeContext';
+import AuthorBadge from '../authorBadge/AuthorBadge';
+import CategoryBadge from '../categoryBadge/CategoryBadge';
+import DateBadge from '../dateBadge/DateBadge';
+import MDXRenderer from '../mdxRenderer/MDXRenderer';
+import { BlogPostCardProps } from './BlogPostsProps';
 
 const { useContext } = React;
 
 function BlogPostCard({ post }: BlogPostCardProps) {
   const { theme } = useContext(ThemeContext);
-  const strapiUrl = process.env["NEXT_PUBLIC_STRAPI_URL"];
+  const strapiUrl = process.env['NEXT_PUBLIC_STRAPI_URL'];
   const { title, author, category, created_at, excerpt, slug } = post;
 
   return (
     <Card
       className={`my-5`}
       bg={theme}
-      text={theme === "light" ? "dark" : "light"}
+      text={theme === 'light' ? 'dark' : 'light'}
     >
       {post.image && (
         <Card.Img variant="top" src={`${strapiUrl}${post.image.url}`} />
@@ -38,11 +38,11 @@ function BlogPostCard({ post }: BlogPostCardProps) {
           <CategoryBadge category={category} />
           <DateBadge date={created_at} />
         </div>
-        <hr className={`border-${theme === "light" ? "dark" : "light"}`} />
+        <hr className={`border-${theme === 'light' ? 'dark' : 'light'}`} />
         <Card.Text as="div">
           <MDXRenderer content={excerpt} />
         </Card.Text>
-        <Link href={`/blog/posts/${slug}`}>
+        <Link href={`/blog/posts/${slug}`} passHref>
           <Button variant="primary">Read more</Button>
         </Link>
       </Card.Body>

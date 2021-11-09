@@ -1,9 +1,9 @@
-import { Children } from "react";
-import Pagination from "react-bootstrap/Pagination";
+import { Children } from 'react';
+import Pagination from 'react-bootstrap/Pagination';
 import {
   CustomPaginationProps,
   PaginateItemsProps,
-} from "./CustomPaginationProps";
+} from './CustomPaginationProps';
 
 function PaginateItems({
   cursorRef,
@@ -20,6 +20,7 @@ function PaginateItems({
                 active={index + 1 === cursorRef.current.currentPage}
                 onClick={(e) => handleClick(e)}
                 data-page={index + 1}
+                key={index}
               >
                 {index + 1}
               </Pagination.Item>

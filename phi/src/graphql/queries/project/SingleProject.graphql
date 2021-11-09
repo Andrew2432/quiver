@@ -1,0 +1,5 @@
+query SingleProject($slug: String!) {
+  projects(where: { slug: $slug }) {
+    ...projectParts
+  }
+}
