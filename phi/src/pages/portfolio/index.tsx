@@ -12,7 +12,7 @@ function PortfolioPage() {
     error,
   } = useProjectsCategoryQuery({
     variables: {
-      category: ProjectCategory.PERSONAL,
+      category: ProjectCategory.Personal,
     },
   });
 

@@ -3,5 +3,7 @@ fragment imageParts on Article {
     url
     alternativeText
     caption
+    width
+    height
   }
 }

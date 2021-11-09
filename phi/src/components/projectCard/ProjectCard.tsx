@@ -12,9 +12,11 @@ import CustomTooltip from '../shared/tooltips/CustomTooltip';
 import { ProjectCardProps } from './ProjectCardProps';
 
 function ProjectCard({ project, theme }: ProjectCardProps) {
-  const { is_top, snapshots, title, description, slug, deployed_url } = project;
+  const { isTop, snapshots, title, description, slug, deployedLink } = project;
 
-  const borderForTopProject = is_top
+  console.log(isTop);
+
+  const borderForTopProject = isTop
     ? `border border-5 border-${theme === 'light' ? 'dark' : 'light'}`
     : null;
 
@@ -29,7 +31,7 @@ function ProjectCard({ project, theme }: ProjectCardProps) {
             <h2>
               <strong>{title}</strong>
             </h2>
-            {is_top && (
+            {isTop && (
               <CustomTooltip tip="Top Project">
                 <FontAwesomeIcon icon={faStar} className={`my-auto`} />
               </CustomTooltip>
@@ -45,7 +47,7 @@ function ProjectCard({ project, theme }: ProjectCardProps) {
               <Button>More Details</Button>
             </Link>
             <a
-              href={deployed_url}
+              href={deployedLink}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Project Demo URL"

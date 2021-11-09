@@ -7,4 +7,7 @@ module.exports = {
     ga_id: process.env.NEXT_PUBLIC_GA_ID,
     author_email: process.env.NEXT_PUBLIC_AUTHOR_EMAIL,
   },
+  images: {
+    domains: ['localhost'],
+  },
 };

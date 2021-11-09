@@ -1,16 +1,14 @@
 fragment projectParts on Project {
+  id
   slug
   title
   description
   content
-  deployed_link
-  github_link
-  is_top
-  start_date
-  end_date
-  client_name
+  deployedLink
+  githubLink
+  isTop
+  startDate
+  endDate
+  clientName
   category
-  snapshots {
-    url
-  }
 }

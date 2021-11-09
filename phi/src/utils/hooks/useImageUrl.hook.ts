@@ -1,6 +1,6 @@
-function useImageUrl(url: string | null): string | null {
+function useImageUrl(url: string | null): string {
   if (!url) {
-    return null;
+    return '';
   }
 
   const strapiUrl = process.env['NEXT_PUBLIC_STRAPI_URL'];

@@ -2,26 +2,29 @@
  * Enum does not get exported on .d.ts files
  * So this file is .ts
  */
-
-import { ImageType } from './ImageType';
+import { Enum_Project_Category, Project } from '../generated/graphql';
+import { SnapshotType } from './SnapshotType';
 
 export enum ProjectCategory {
-  PERSONAL = 'Personal',
-  CLIENT = 'Client',
+  Personal = 'Personal',
+  Client = 'Client',
 }
 
-export interface ProjectType {
+interface GenericProjectType<T, V> {
   id: string;
   title: string;
   description: string;
   slug: string;
-  is_top: string;
-  github_link: string;
-  category: ProjectCategory;
+  isTop: boolean;
+  githubLink: string;
+  category: V;
   content: string;
-  client_name: string;
-  start_date: string;
-  end_date: string;
-  deployed_url: string;
-  snapshots: ImageType[];
+  clientName: string;
+  startDate: string;
+  endDate: string;
+  deployedLink: string;
+  snapshots: SnapshotType[];
 }
+
+export interface ProjectType
+  extends GenericProjectType<Project, Enum_Project_Category> {}
