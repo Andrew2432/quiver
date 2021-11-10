@@ -26,6 +26,152 @@ export type Scalars = {
   Upload: any;
 };
 
+export type About = {
+  __typename?: 'About';
+  author?: Maybe<Writer>;
+  created_at: Scalars['DateTime'];
+  description?: Maybe<Scalars['String']>;
+  domainSkills?: Maybe<Array<Maybe<DomainSkills>>>;
+  id: Scalars['ID'];
+  published_at?: Maybe<Scalars['DateTime']>;
+  techinalSkills?: Maybe<Array<Maybe<TechinalSkills>>>;
+  title?: Maybe<Scalars['String']>;
+  updated_at: Scalars['DateTime'];
+};
+
+
+export type AboutDomainSkillsArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  sort?: Maybe<Scalars['String']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+
+export type AboutTechinalSkillsArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  sort?: Maybe<Scalars['String']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type AboutAggregator = {
+  __typename?: 'AboutAggregator';
+  count?: Maybe<Scalars['Int']>;
+  totalCount?: Maybe<Scalars['Int']>;
+};
+
+export type AboutConnection = {
+  __typename?: 'AboutConnection';
+  aggregate?: Maybe<AboutAggregator>;
+  groupBy?: Maybe<AboutGroupBy>;
+  values?: Maybe<Array<Maybe<About>>>;
+};
+
+export type AboutConnectionAuthor = {
+  __typename?: 'AboutConnectionAuthor';
+  connection?: Maybe<AboutConnection>;
+  key?: Maybe<Scalars['ID']>;
+};
+
+export type AboutConnectionCreated_At = {
+  __typename?: 'AboutConnectionCreated_at';
+  connection?: Maybe<AboutConnection>;
+  key?: Maybe<Scalars['DateTime']>;
+};
+
+export type AboutConnectionDescription = {
+  __typename?: 'AboutConnectionDescription';
+  connection?: Maybe<AboutConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type AboutConnectionId = {
+  __typename?: 'AboutConnectionId';
+  connection?: Maybe<AboutConnection>;
+  key?: Maybe<Scalars['ID']>;
+};
+
+export type AboutConnectionPublished_At = {
+  __typename?: 'AboutConnectionPublished_at';
+  connection?: Maybe<AboutConnection>;
+  key?: Maybe<Scalars['DateTime']>;
+};
+
+export type AboutConnectionTitle = {
+  __typename?: 'AboutConnectionTitle';
+  connection?: Maybe<AboutConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type AboutConnectionUpdated_At = {
+  __typename?: 'AboutConnectionUpdated_at';
+  connection?: Maybe<AboutConnection>;
+  key?: Maybe<Scalars['DateTime']>;
+};
+
+export type AboutGroupBy = {
+  __typename?: 'AboutGroupBy';
+  author?: Maybe<Array<Maybe<AboutConnectionAuthor>>>;
+  created_at?: Maybe<Array<Maybe<AboutConnectionCreated_At>>>;
+  description?: Maybe<Array<Maybe<AboutConnectionDescription>>>;
+  id?: Maybe<Array<Maybe<AboutConnectionId>>>;
+  published_at?: Maybe<Array<Maybe<AboutConnectionPublished_At>>>;
+  title?: Maybe<Array<Maybe<AboutConnectionTitle>>>;
+  updated_at?: Maybe<Array<Maybe<AboutConnectionUpdated_At>>>;
+};
+
+export type AboutInput = {
+  author?: Maybe<Scalars['ID']>;
+  created_by?: Maybe<Scalars['ID']>;
+  description?: Maybe<Scalars['String']>;
+  domainSkills?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  techinalSkills?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  title?: Maybe<Scalars['String']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type AboutPage = {
+  __typename?: 'AboutPage';
+  author?: Maybe<Writer>;
+  created_at: Scalars['DateTime'];
+  description?: Maybe<Scalars['String']>;
+  domainSkills?: Maybe<Array<Maybe<DomainSkills>>>;
+  id: Scalars['ID'];
+  published_at?: Maybe<Scalars['DateTime']>;
+  techinalSkills?: Maybe<Array<Maybe<TechinalSkills>>>;
+  title?: Maybe<Scalars['String']>;
+  updated_at: Scalars['DateTime'];
+};
+
+
+export type AboutPageDomainSkillsArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  sort?: Maybe<Scalars['String']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+
+export type AboutPageTechinalSkillsArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  sort?: Maybe<Scalars['String']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type AboutPageInput = {
+  author?: Maybe<Scalars['ID']>;
+  created_by?: Maybe<Scalars['ID']>;
+  description?: Maybe<Scalars['String']>;
+  domainSkills?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  techinalSkills?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  title?: Maybe<Scalars['String']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
 export type AdminUser = {
   __typename?: 'AdminUser';
   firstname: Scalars['String'];
@@ -312,6 +458,134 @@ export type ComponentSharedSeoInput = {
   shareImage?: Maybe<Scalars['ID']>;
 };
 
+export type DomainSkillInput = {
+  author?: Maybe<Scalars['ID']>;
+  created_by?: Maybe<Scalars['ID']>;
+  description?: Maybe<Scalars['String']>;
+  order?: Maybe<Scalars['Int']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  shortName?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type DomainSkills = {
+  __typename?: 'DomainSkills';
+  author?: Maybe<Writer>;
+  created_at: Scalars['DateTime'];
+  description?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  order?: Maybe<Scalars['Int']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  shortName?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  updated_at: Scalars['DateTime'];
+};
+
+export type DomainSkillsAggregator = {
+  __typename?: 'DomainSkillsAggregator';
+  avg?: Maybe<DomainSkillsAggregatorAvg>;
+  count?: Maybe<Scalars['Int']>;
+  max?: Maybe<DomainSkillsAggregatorMax>;
+  min?: Maybe<DomainSkillsAggregatorMin>;
+  sum?: Maybe<DomainSkillsAggregatorSum>;
+  totalCount?: Maybe<Scalars['Int']>;
+};
+
+export type DomainSkillsAggregatorAvg = {
+  __typename?: 'DomainSkillsAggregatorAvg';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type DomainSkillsAggregatorMax = {
+  __typename?: 'DomainSkillsAggregatorMax';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type DomainSkillsAggregatorMin = {
+  __typename?: 'DomainSkillsAggregatorMin';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type DomainSkillsAggregatorSum = {
+  __typename?: 'DomainSkillsAggregatorSum';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type DomainSkillsConnection = {
+  __typename?: 'DomainSkillsConnection';
+  aggregate?: Maybe<DomainSkillsAggregator>;
+  groupBy?: Maybe<DomainSkillsGroupBy>;
+  values?: Maybe<Array<Maybe<DomainSkills>>>;
+};
+
+export type DomainSkillsConnectionAuthor = {
+  __typename?: 'DomainSkillsConnectionAuthor';
+  connection?: Maybe<DomainSkillsConnection>;
+  key?: Maybe<Scalars['ID']>;
+};
+
+export type DomainSkillsConnectionCreated_At = {
+  __typename?: 'DomainSkillsConnectionCreated_at';
+  connection?: Maybe<DomainSkillsConnection>;
+  key?: Maybe<Scalars['DateTime']>;
+};
+
+export type DomainSkillsConnectionDescription = {
+  __typename?: 'DomainSkillsConnectionDescription';
+  connection?: Maybe<DomainSkillsConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type DomainSkillsConnectionId = {
+  __typename?: 'DomainSkillsConnectionId';
+  connection?: Maybe<DomainSkillsConnection>;
+  key?: Maybe<Scalars['ID']>;
+};
+
+export type DomainSkillsConnectionOrder = {
+  __typename?: 'DomainSkillsConnectionOrder';
+  connection?: Maybe<DomainSkillsConnection>;
+  key?: Maybe<Scalars['Int']>;
+};
+
+export type DomainSkillsConnectionPublished_At = {
+  __typename?: 'DomainSkillsConnectionPublished_at';
+  connection?: Maybe<DomainSkillsConnection>;
+  key?: Maybe<Scalars['DateTime']>;
+};
+
+export type DomainSkillsConnectionShortName = {
+  __typename?: 'DomainSkillsConnectionShortName';
+  connection?: Maybe<DomainSkillsConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type DomainSkillsConnectionTitle = {
+  __typename?: 'DomainSkillsConnectionTitle';
+  connection?: Maybe<DomainSkillsConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type DomainSkillsConnectionUpdated_At = {
+  __typename?: 'DomainSkillsConnectionUpdated_at';
+  connection?: Maybe<DomainSkillsConnection>;
+  key?: Maybe<Scalars['DateTime']>;
+};
+
+export type DomainSkillsGroupBy = {
+  __typename?: 'DomainSkillsGroupBy';
+  author?: Maybe<Array<Maybe<DomainSkillsConnectionAuthor>>>;
+  created_at?: Maybe<Array<Maybe<DomainSkillsConnectionCreated_At>>>;
+  description?: Maybe<Array<Maybe<DomainSkillsConnectionDescription>>>;
+  id?: Maybe<Array<Maybe<DomainSkillsConnectionId>>>;
+  order?: Maybe<Array<Maybe<DomainSkillsConnectionOrder>>>;
+  published_at?: Maybe<Array<Maybe<DomainSkillsConnectionPublished_At>>>;
+  shortName?: Maybe<Array<Maybe<DomainSkillsConnectionShortName>>>;
+  title?: Maybe<Array<Maybe<DomainSkillsConnectionTitle>>>;
+  updated_at?: Maybe<Array<Maybe<DomainSkillsConnectionUpdated_At>>>;
+};
+
 export enum Enum_Project_Category {
   Client = 'Client',
   Personal = 'Personal'
@@ -397,20 +671,27 @@ export type LocaleInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
-export type Morph = Article | ArticleAggregator | ArticleConnection | ArticleConnectionAuthor | ArticleConnectionCategory | ArticleConnectionContent | ArticleConnectionCreated_At | ArticleConnectionDescription | ArticleConnectionExcerpt | ArticleConnectionHits | ArticleConnectionId | ArticleConnectionImage | ArticleConnectionNext | ArticleConnectionPrevious | ArticleConnectionPublished_At | ArticleConnectionSlug | ArticleConnectionTitle | ArticleConnectionUpdated_At | ArticleConnectionViews | ArticleGroupBy | Category | CategoryAggregator | CategoryConnection | CategoryConnectionCreated_At | CategoryConnectionDescription | CategoryConnectionId | CategoryConnectionName | CategoryConnectionSlug | CategoryConnectionUpdated_At | CategoryGroupBy | ComponentSectionsHero | ComponentSharedSeo | Global | Homepage | I18NLocale | Project | ProjectAggregator | ProjectConnection | ProjectConnectionCategory | ProjectConnectionClientName | ProjectConnectionContent | ProjectConnectionCreated_At | ProjectConnectionDeployedLink | ProjectConnectionDescription | ProjectConnectionEndDate | ProjectConnectionGithubLink | ProjectConnectionId | ProjectConnectionIsTop | ProjectConnectionPublished_At | ProjectConnectionSlug | ProjectConnectionStartDate | ProjectConnectionTitle | ProjectConnectionUpdated_At | ProjectGroupBy | UploadFile | UploadFileAggregator | UploadFileAggregatorAvg | UploadFileAggregatorMax | UploadFileAggregatorMin | UploadFileAggregatorSum | UploadFileConnection | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionCreated_At | UploadFileConnectionExt | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionHeight | UploadFileConnectionId | UploadFileConnectionMime | UploadFileConnectionName | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_Metadata | UploadFileConnectionSize | UploadFileConnectionUpdated_At | UploadFileConnectionUrl | UploadFileConnectionWidth | UploadFileGroupBy | UserPermissionsPasswordPayload | UsersPermissionsLoginPayload | UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleAggregator | UsersPermissionsRoleConnection | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionType | UsersPermissionsRoleGroupBy | UsersPermissionsUser | UsersPermissionsUserAggregator | UsersPermissionsUserConnection | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionCreated_At | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionUpdated_At | UsersPermissionsUserConnectionUsername | UsersPermissionsUserGroupBy | Writer | WriterAggregator | WriterConnection | WriterConnectionCreated_At | WriterConnectionEmail | WriterConnectionId | WriterConnectionName | WriterConnectionPicture | WriterConnectionUpdated_At | WriterGroupBy | CreateArticlePayload | CreateCategoryPayload | CreateProjectPayload | CreateRolePayload | CreateUserPayload | CreateWriterPayload | DeleteArticlePayload | DeleteCategoryPayload | DeleteFilePayload | DeleteGlobalPayload | DeleteHomepagePayload | DeleteProjectPayload | DeleteRolePayload | DeleteUserPayload | DeleteWriterPayload | UpdateArticlePayload | UpdateCategoryPayload | UpdateGlobalPayload | UpdateHomepagePayload | UpdateProjectPayload | UpdateRolePayload | UpdateUserPayload | UpdateWriterPayload;
+export type Morph = About | AboutAggregator | AboutConnection | AboutConnectionAuthor | AboutConnectionCreated_At | AboutConnectionDescription | AboutConnectionId | AboutConnectionPublished_At | AboutConnectionTitle | AboutConnectionUpdated_At | AboutGroupBy | AboutPage | Article | ArticleAggregator | ArticleConnection | ArticleConnectionAuthor | ArticleConnectionCategory | ArticleConnectionContent | ArticleConnectionCreated_At | ArticleConnectionDescription | ArticleConnectionExcerpt | ArticleConnectionHits | ArticleConnectionId | ArticleConnectionImage | ArticleConnectionNext | ArticleConnectionPrevious | ArticleConnectionPublished_At | ArticleConnectionSlug | ArticleConnectionTitle | ArticleConnectionUpdated_At | ArticleConnectionViews | ArticleGroupBy | Category | CategoryAggregator | CategoryConnection | CategoryConnectionCreated_At | CategoryConnectionDescription | CategoryConnectionId | CategoryConnectionName | CategoryConnectionSlug | CategoryConnectionUpdated_At | CategoryGroupBy | ComponentSectionsHero | ComponentSharedSeo | DomainSkills | DomainSkillsAggregator | DomainSkillsAggregatorAvg | DomainSkillsAggregatorMax | DomainSkillsAggregatorMin | DomainSkillsAggregatorSum | DomainSkillsConnection | DomainSkillsConnectionAuthor | DomainSkillsConnectionCreated_At | DomainSkillsConnectionDescription | DomainSkillsConnectionId | DomainSkillsConnectionOrder | DomainSkillsConnectionPublished_At | DomainSkillsConnectionShortName | DomainSkillsConnectionTitle | DomainSkillsConnectionUpdated_At | DomainSkillsGroupBy | Global | Homepage | I18NLocale | Project | ProjectAggregator | ProjectConnection | ProjectConnectionCategory | ProjectConnectionClientName | ProjectConnectionContent | ProjectConnectionCreated_At | ProjectConnectionDeployedLink | ProjectConnectionDescription | ProjectConnectionEndDate | ProjectConnectionGithubLink | ProjectConnectionId | ProjectConnectionIsTop | ProjectConnectionPublished_At | ProjectConnectionSlug | ProjectConnectionStartDate | ProjectConnectionTitle | ProjectConnectionUpdated_At | ProjectGroupBy | Skill | SkillAggregator | SkillConnection | SkillConnectionCreated_At | SkillConnectionId | SkillConnectionName | SkillConnectionPublished_At | SkillConnectionUpdated_At | SkillConnectionUrl | SkillGroupBy | TechinalSkills | TechinalSkillsAggregator | TechinalSkillsAggregatorAvg | TechinalSkillsAggregatorMax | TechinalSkillsAggregatorMin | TechinalSkillsAggregatorSum | TechinalSkillsConnection | TechinalSkillsConnectionCreated_At | TechinalSkillsConnectionDescription | TechinalSkillsConnectionId | TechinalSkillsConnectionOrder | TechinalSkillsConnectionPublished_At | TechinalSkillsConnectionShortName | TechinalSkillsConnectionTitle | TechinalSkillsConnectionUpdated_At | TechinalSkillsGroupBy | UploadFile | UploadFileAggregator | UploadFileAggregatorAvg | UploadFileAggregatorMax | UploadFileAggregatorMin | UploadFileAggregatorSum | UploadFileConnection | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionCreated_At | UploadFileConnectionExt | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionHeight | UploadFileConnectionId | UploadFileConnectionMime | UploadFileConnectionName | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_Metadata | UploadFileConnectionSize | UploadFileConnectionUpdated_At | UploadFileConnectionUrl | UploadFileConnectionWidth | UploadFileGroupBy | UserPermissionsPasswordPayload | UsersPermissionsLoginPayload | UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleAggregator | UsersPermissionsRoleConnection | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionType | UsersPermissionsRoleGroupBy | UsersPermissionsUser | UsersPermissionsUserAggregator | UsersPermissionsUserConnection | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionCreated_At | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionUpdated_At | UsersPermissionsUserConnectionUsername | UsersPermissionsUserGroupBy | Writer | WriterAggregator | WriterConnection | WriterConnectionCreated_At | WriterConnectionEmail | WriterConnectionId | WriterConnectionName | WriterConnectionPicture | WriterConnectionSlug | WriterConnectionUpdated_At | WriterGroupBy | CreateAboutPayload | CreateArticlePayload | CreateCategoryPayload | CreateDomainSkillPayload | CreateProjectPayload | CreateRolePayload | CreateSkillPayload | CreateTechinalSkillPayload | CreateUserPayload | CreateWriterPayload | DeleteAboutPagePayload | DeleteAboutPayload | DeleteArticlePayload | DeleteCategoryPayload | DeleteDomainSkillPayload | DeleteFilePayload | DeleteGlobalPayload | DeleteHomepagePayload | DeleteProjectPayload | DeleteRolePayload | DeleteSkillPayload | DeleteTechinalSkillPayload | DeleteUserPayload | DeleteWriterPayload | UpdateAboutPagePayload | UpdateAboutPayload | UpdateArticlePayload | UpdateCategoryPayload | UpdateDomainSkillPayload | UpdateGlobalPayload | UpdateHomepagePayload | UpdateProjectPayload | UpdateRolePayload | UpdateSkillPayload | UpdateTechinalSkillPayload | UpdateUserPayload | UpdateWriterPayload;
 
 export type Mutation = {
   __typename?: 'Mutation';
+  createAbout?: Maybe<CreateAboutPayload>;
   createArticle?: Maybe<CreateArticlePayload>;
   createCategory?: Maybe<CreateCategoryPayload>;
+  createDomainSkill?: Maybe<CreateDomainSkillPayload>;
   createProject?: Maybe<CreateProjectPayload>;
   /** Create a new role */
   createRole?: Maybe<CreateRolePayload>;
+  createSkill?: Maybe<CreateSkillPayload>;
+  createTechinalSkill?: Maybe<CreateTechinalSkillPayload>;
   /** Create a new user */
   createUser?: Maybe<CreateUserPayload>;
   createWriter?: Maybe<CreateWriterPayload>;
+  deleteAbout?: Maybe<DeleteAboutPayload>;
+  deleteAboutPage?: Maybe<DeleteAboutPagePayload>;
   deleteArticle?: Maybe<DeleteArticlePayload>;
   deleteCategory?: Maybe<DeleteCategoryPayload>;
+  deleteDomainSkill?: Maybe<DeleteDomainSkillPayload>;
   /** Delete one file */
   deleteFile?: Maybe<DeleteFilePayload>;
   deleteGlobal?: Maybe<DeleteGlobalPayload>;
@@ -418,6 +699,8 @@ export type Mutation = {
   deleteProject?: Maybe<DeleteProjectPayload>;
   /** Delete an existing role */
   deleteRole?: Maybe<DeleteRolePayload>;
+  deleteSkill?: Maybe<DeleteSkillPayload>;
+  deleteTechinalSkill?: Maybe<DeleteTechinalSkillPayload>;
   /** Delete an existing user */
   deleteUser?: Maybe<DeleteUserPayload>;
   deleteWriter?: Maybe<DeleteWriterPayload>;
@@ -427,18 +710,28 @@ export type Mutation = {
   multipleUpload: Array<Maybe<UploadFile>>;
   register: UsersPermissionsLoginPayload;
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
+  updateAbout?: Maybe<UpdateAboutPayload>;
+  updateAboutPage?: Maybe<UpdateAboutPagePayload>;
   updateArticle?: Maybe<UpdateArticlePayload>;
   updateCategory?: Maybe<UpdateCategoryPayload>;
+  updateDomainSkill?: Maybe<UpdateDomainSkillPayload>;
   updateFileInfo: UploadFile;
   updateGlobal?: Maybe<UpdateGlobalPayload>;
   updateHomepage?: Maybe<UpdateHomepagePayload>;
   updateProject?: Maybe<UpdateProjectPayload>;
   /** Update an existing role */
   updateRole?: Maybe<UpdateRolePayload>;
+  updateSkill?: Maybe<UpdateSkillPayload>;
+  updateTechinalSkill?: Maybe<UpdateTechinalSkillPayload>;
   /** Update an existing user */
   updateUser?: Maybe<UpdateUserPayload>;
   updateWriter?: Maybe<UpdateWriterPayload>;
   upload: UploadFile;
+};
+
+
+export type MutationCreateAboutArgs = {
+  input?: Maybe<CreateAboutInput>;
 };
 
 
@@ -452,6 +745,11 @@ export type MutationCreateCategoryArgs = {
 };
 
 
+export type MutationCreateDomainSkillArgs = {
+  input?: Maybe<CreateDomainSkillInput>;
+};
+
+
 export type MutationCreateProjectArgs = {
   input?: Maybe<CreateProjectInput>;
 };
@@ -459,6 +757,16 @@ export type MutationCreateProjectArgs = {
 
 export type MutationCreateRoleArgs = {
   input?: Maybe<CreateRoleInput>;
+};
+
+
+export type MutationCreateSkillArgs = {
+  input?: Maybe<CreateSkillInput>;
+};
+
+
+export type MutationCreateTechinalSkillArgs = {
+  input?: Maybe<CreateTechinalSkillInput>;
 };
 
 
@@ -472,6 +780,11 @@ export type MutationCreateWriterArgs = {
 };
 
 
+export type MutationDeleteAboutArgs = {
+  input?: Maybe<DeleteAboutInput>;
+};
+
+
 export type MutationDeleteArticleArgs = {
   input?: Maybe<DeleteArticleInput>;
 };
@@ -479,6 +792,11 @@ export type MutationDeleteArticleArgs = {
 
 export type MutationDeleteCategoryArgs = {
   input?: Maybe<DeleteCategoryInput>;
+};
+
+
+export type MutationDeleteDomainSkillArgs = {
+  input?: Maybe<DeleteDomainSkillInput>;
 };
 
 
@@ -494,6 +812,16 @@ export type MutationDeleteProjectArgs = {
 
 export type MutationDeleteRoleArgs = {
   input?: Maybe<DeleteRoleInput>;
+};
+
+
+export type MutationDeleteSkillArgs = {
+  input?: Maybe<DeleteSkillInput>;
+};
+
+
+export type MutationDeleteTechinalSkillArgs = {
+  input?: Maybe<DeleteTechinalSkillInput>;
 };
 
 
@@ -543,6 +871,16 @@ export type MutationResetPasswordArgs = {
 };
 
 
+export type MutationUpdateAboutArgs = {
+  input?: Maybe<UpdateAboutInput>;
+};
+
+
+export type MutationUpdateAboutPageArgs = {
+  input?: Maybe<UpdateAboutPageInput>;
+};
+
+
 export type MutationUpdateArticleArgs = {
   input?: Maybe<UpdateArticleInput>;
 };
@@ -550,6 +888,11 @@ export type MutationUpdateArticleArgs = {
 
 export type MutationUpdateCategoryArgs = {
   input?: Maybe<UpdateCategoryInput>;
+};
+
+
+export type MutationUpdateDomainSkillArgs = {
+  input?: Maybe<UpdateDomainSkillInput>;
 };
 
 
@@ -576,6 +919,16 @@ export type MutationUpdateProjectArgs = {
 
 export type MutationUpdateRoleArgs = {
   input?: Maybe<UpdateRoleInput>;
+};
+
+
+export type MutationUpdateSkillArgs = {
+  input?: Maybe<UpdateSkillInput>;
+};
+
+
+export type MutationUpdateTechinalSkillArgs = {
+  input?: Maybe<UpdateTechinalSkillInput>;
 };
 
 
@@ -783,6 +1136,10 @@ export enum PublicationState {
 
 export type Query = {
   __typename?: 'Query';
+  about?: Maybe<About>;
+  aboutPage?: Maybe<AboutPage>;
+  abouts?: Maybe<Array<Maybe<About>>>;
+  aboutsConnection?: Maybe<AboutConnection>;
   article?: Maybe<Article>;
   articles?: Maybe<Array<Maybe<Article>>>;
   articlesConnection?: Maybe<ArticleConnection>;
@@ -790,6 +1147,9 @@ export type Query = {
   categories?: Maybe<Array<Maybe<Category>>>;
   categoriesConnection?: Maybe<CategoryConnection>;
   category?: Maybe<Category>;
+  domainSkill?: Maybe<DomainSkills>;
+  domainSkills?: Maybe<Array<Maybe<DomainSkills>>>;
+  domainSkillsConnection?: Maybe<DomainSkillsConnection>;
   files?: Maybe<Array<Maybe<UploadFile>>>;
   filesConnection?: Maybe<UploadFileConnection>;
   global?: Maybe<Global>;
@@ -802,12 +1162,46 @@ export type Query = {
   /** Retrieve all the existing roles. You can't apply filters on this query. */
   roles?: Maybe<Array<Maybe<UsersPermissionsRole>>>;
   rolesConnection?: Maybe<UsersPermissionsRoleConnection>;
+  skill?: Maybe<Skill>;
+  skills?: Maybe<Array<Maybe<Skill>>>;
+  skillsConnection?: Maybe<SkillConnection>;
+  techinalSkill?: Maybe<TechinalSkills>;
+  techinalSkills?: Maybe<Array<Maybe<TechinalSkills>>>;
+  techinalSkillsConnection?: Maybe<TechinalSkillsConnection>;
   user?: Maybe<UsersPermissionsUser>;
   users?: Maybe<Array<Maybe<UsersPermissionsUser>>>;
   usersConnection?: Maybe<UsersPermissionsUserConnection>;
   writer?: Maybe<Writer>;
   writers?: Maybe<Array<Maybe<Writer>>>;
   writersConnection?: Maybe<WriterConnection>;
+};
+
+
+export type QueryAboutArgs = {
+  id: Scalars['ID'];
+  publicationState?: Maybe<PublicationState>;
+};
+
+
+export type QueryAboutPageArgs = {
+  publicationState?: Maybe<PublicationState>;
+};
+
+
+export type QueryAboutsArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  publicationState?: Maybe<PublicationState>;
+  sort?: Maybe<Scalars['String']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+
+export type QueryAboutsConnectionArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  sort?: Maybe<Scalars['String']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
 };
 
 
@@ -859,6 +1253,29 @@ export type QueryCategoriesConnectionArgs = {
 export type QueryCategoryArgs = {
   id: Scalars['ID'];
   publicationState?: Maybe<PublicationState>;
+};
+
+
+export type QueryDomainSkillArgs = {
+  id: Scalars['ID'];
+  publicationState?: Maybe<PublicationState>;
+};
+
+
+export type QueryDomainSkillsArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  publicationState?: Maybe<PublicationState>;
+  sort?: Maybe<Scalars['String']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+
+export type QueryDomainSkillsConnectionArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  sort?: Maybe<Scalars['String']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
 };
 
 
@@ -935,6 +1352,52 @@ export type QueryRolesConnectionArgs = {
 };
 
 
+export type QuerySkillArgs = {
+  id: Scalars['ID'];
+  publicationState?: Maybe<PublicationState>;
+};
+
+
+export type QuerySkillsArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  publicationState?: Maybe<PublicationState>;
+  sort?: Maybe<Scalars['String']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+
+export type QuerySkillsConnectionArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  sort?: Maybe<Scalars['String']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+
+export type QueryTechinalSkillArgs = {
+  id: Scalars['ID'];
+  publicationState?: Maybe<PublicationState>;
+};
+
+
+export type QueryTechinalSkillsArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  publicationState?: Maybe<PublicationState>;
+  sort?: Maybe<Scalars['String']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+
+export type QueryTechinalSkillsConnectionArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  sort?: Maybe<Scalars['String']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+
 export type QueryUserArgs = {
   id: Scalars['ID'];
   publicationState?: Maybe<PublicationState>;
@@ -988,6 +1451,232 @@ export type RoleInput = {
   type?: Maybe<Scalars['String']>;
   updated_by?: Maybe<Scalars['ID']>;
   users?: Maybe<Array<Maybe<Scalars['ID']>>>;
+};
+
+export type Skill = {
+  __typename?: 'Skill';
+  created_at: Scalars['DateTime'];
+  id: Scalars['ID'];
+  name?: Maybe<Scalars['String']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  updated_at: Scalars['DateTime'];
+  url?: Maybe<Scalars['String']>;
+};
+
+export type SkillAggregator = {
+  __typename?: 'SkillAggregator';
+  count?: Maybe<Scalars['Int']>;
+  totalCount?: Maybe<Scalars['Int']>;
+};
+
+export type SkillConnection = {
+  __typename?: 'SkillConnection';
+  aggregate?: Maybe<SkillAggregator>;
+  groupBy?: Maybe<SkillGroupBy>;
+  values?: Maybe<Array<Maybe<Skill>>>;
+};
+
+export type SkillConnectionCreated_At = {
+  __typename?: 'SkillConnectionCreated_at';
+  connection?: Maybe<SkillConnection>;
+  key?: Maybe<Scalars['DateTime']>;
+};
+
+export type SkillConnectionId = {
+  __typename?: 'SkillConnectionId';
+  connection?: Maybe<SkillConnection>;
+  key?: Maybe<Scalars['ID']>;
+};
+
+export type SkillConnectionName = {
+  __typename?: 'SkillConnectionName';
+  connection?: Maybe<SkillConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type SkillConnectionPublished_At = {
+  __typename?: 'SkillConnectionPublished_at';
+  connection?: Maybe<SkillConnection>;
+  key?: Maybe<Scalars['DateTime']>;
+};
+
+export type SkillConnectionUpdated_At = {
+  __typename?: 'SkillConnectionUpdated_at';
+  connection?: Maybe<SkillConnection>;
+  key?: Maybe<Scalars['DateTime']>;
+};
+
+export type SkillConnectionUrl = {
+  __typename?: 'SkillConnectionUrl';
+  connection?: Maybe<SkillConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type SkillGroupBy = {
+  __typename?: 'SkillGroupBy';
+  created_at?: Maybe<Array<Maybe<SkillConnectionCreated_At>>>;
+  id?: Maybe<Array<Maybe<SkillConnectionId>>>;
+  name?: Maybe<Array<Maybe<SkillConnectionName>>>;
+  published_at?: Maybe<Array<Maybe<SkillConnectionPublished_At>>>;
+  updated_at?: Maybe<Array<Maybe<SkillConnectionUpdated_At>>>;
+  url?: Maybe<Array<Maybe<SkillConnectionUrl>>>;
+};
+
+export type SkillInput = {
+  created_by?: Maybe<Scalars['ID']>;
+  name?: Maybe<Scalars['String']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  updated_by?: Maybe<Scalars['ID']>;
+  url?: Maybe<Scalars['String']>;
+};
+
+export type TechinalSkillInput = {
+  author?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  created_by?: Maybe<Scalars['ID']>;
+  currentLearningSkills?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  description?: Maybe<Scalars['String']>;
+  order?: Maybe<Scalars['Int']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  shortName?: Maybe<Scalars['String']>;
+  skills?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  title?: Maybe<Scalars['String']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type TechinalSkills = {
+  __typename?: 'TechinalSkills';
+  author?: Maybe<Array<Maybe<Writer>>>;
+  created_at: Scalars['DateTime'];
+  currentLearningSkills?: Maybe<Array<Maybe<Skill>>>;
+  description?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  order?: Maybe<Scalars['Int']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  shortName?: Maybe<Scalars['String']>;
+  skills?: Maybe<Array<Maybe<Skill>>>;
+  title?: Maybe<Scalars['String']>;
+  updated_at: Scalars['DateTime'];
+};
+
+
+export type TechinalSkillsAuthorArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  sort?: Maybe<Scalars['String']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+
+export type TechinalSkillsCurrentLearningSkillsArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  sort?: Maybe<Scalars['String']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+
+export type TechinalSkillsSkillsArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  sort?: Maybe<Scalars['String']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type TechinalSkillsAggregator = {
+  __typename?: 'TechinalSkillsAggregator';
+  avg?: Maybe<TechinalSkillsAggregatorAvg>;
+  count?: Maybe<Scalars['Int']>;
+  max?: Maybe<TechinalSkillsAggregatorMax>;
+  min?: Maybe<TechinalSkillsAggregatorMin>;
+  sum?: Maybe<TechinalSkillsAggregatorSum>;
+  totalCount?: Maybe<Scalars['Int']>;
+};
+
+export type TechinalSkillsAggregatorAvg = {
+  __typename?: 'TechinalSkillsAggregatorAvg';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type TechinalSkillsAggregatorMax = {
+  __typename?: 'TechinalSkillsAggregatorMax';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type TechinalSkillsAggregatorMin = {
+  __typename?: 'TechinalSkillsAggregatorMin';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type TechinalSkillsAggregatorSum = {
+  __typename?: 'TechinalSkillsAggregatorSum';
+  order?: Maybe<Scalars['Float']>;
+};
+
+export type TechinalSkillsConnection = {
+  __typename?: 'TechinalSkillsConnection';
+  aggregate?: Maybe<TechinalSkillsAggregator>;
+  groupBy?: Maybe<TechinalSkillsGroupBy>;
+  values?: Maybe<Array<Maybe<TechinalSkills>>>;
+};
+
+export type TechinalSkillsConnectionCreated_At = {
+  __typename?: 'TechinalSkillsConnectionCreated_at';
+  connection?: Maybe<TechinalSkillsConnection>;
+  key?: Maybe<Scalars['DateTime']>;
+};
+
+export type TechinalSkillsConnectionDescription = {
+  __typename?: 'TechinalSkillsConnectionDescription';
+  connection?: Maybe<TechinalSkillsConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type TechinalSkillsConnectionId = {
+  __typename?: 'TechinalSkillsConnectionId';
+  connection?: Maybe<TechinalSkillsConnection>;
+  key?: Maybe<Scalars['ID']>;
+};
+
+export type TechinalSkillsConnectionOrder = {
+  __typename?: 'TechinalSkillsConnectionOrder';
+  connection?: Maybe<TechinalSkillsConnection>;
+  key?: Maybe<Scalars['Int']>;
+};
+
+export type TechinalSkillsConnectionPublished_At = {
+  __typename?: 'TechinalSkillsConnectionPublished_at';
+  connection?: Maybe<TechinalSkillsConnection>;
+  key?: Maybe<Scalars['DateTime']>;
+};
+
+export type TechinalSkillsConnectionShortName = {
+  __typename?: 'TechinalSkillsConnectionShortName';
+  connection?: Maybe<TechinalSkillsConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type TechinalSkillsConnectionTitle = {
+  __typename?: 'TechinalSkillsConnectionTitle';
+  connection?: Maybe<TechinalSkillsConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type TechinalSkillsConnectionUpdated_At = {
+  __typename?: 'TechinalSkillsConnectionUpdated_at';
+  connection?: Maybe<TechinalSkillsConnection>;
+  key?: Maybe<Scalars['DateTime']>;
+};
+
+export type TechinalSkillsGroupBy = {
+  __typename?: 'TechinalSkillsGroupBy';
+  created_at?: Maybe<Array<Maybe<TechinalSkillsConnectionCreated_At>>>;
+  description?: Maybe<Array<Maybe<TechinalSkillsConnectionDescription>>>;
+  id?: Maybe<Array<Maybe<TechinalSkillsConnectionId>>>;
+  order?: Maybe<Array<Maybe<TechinalSkillsConnectionOrder>>>;
+  published_at?: Maybe<Array<Maybe<TechinalSkillsConnectionPublished_At>>>;
+  shortName?: Maybe<Array<Maybe<TechinalSkillsConnectionShortName>>>;
+  title?: Maybe<Array<Maybe<TechinalSkillsConnectionTitle>>>;
+  updated_at?: Maybe<Array<Maybe<TechinalSkillsConnectionUpdated_At>>>;
 };
 
 export type UploadFile = {
@@ -1426,6 +2115,7 @@ export type Writer = {
   id: Scalars['ID'];
   name?: Maybe<Scalars['String']>;
   picture?: Maybe<UploadFile>;
+  slug?: Maybe<Scalars['String']>;
   updated_at: Scalars['DateTime'];
 };
 
@@ -1480,6 +2170,12 @@ export type WriterConnectionPicture = {
   key?: Maybe<Scalars['ID']>;
 };
 
+export type WriterConnectionSlug = {
+  __typename?: 'WriterConnectionSlug';
+  connection?: Maybe<WriterConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
 export type WriterConnectionUpdated_At = {
   __typename?: 'WriterConnectionUpdated_at';
   connection?: Maybe<WriterConnection>;
@@ -1493,6 +2189,7 @@ export type WriterGroupBy = {
   id?: Maybe<Array<Maybe<WriterConnectionId>>>;
   name?: Maybe<Array<Maybe<WriterConnectionName>>>;
   picture?: Maybe<Array<Maybe<WriterConnectionPicture>>>;
+  slug?: Maybe<Array<Maybe<WriterConnectionSlug>>>;
   updated_at?: Maybe<Array<Maybe<WriterConnectionUpdated_At>>>;
 };
 
@@ -1502,7 +2199,17 @@ export type WriterInput = {
   email?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   picture?: Maybe<Scalars['ID']>;
+  slug?: Maybe<Scalars['String']>;
   updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type CreateAboutInput = {
+  data?: Maybe<AboutInput>;
+};
+
+export type CreateAboutPayload = {
+  __typename?: 'createAboutPayload';
+  about?: Maybe<About>;
 };
 
 export type CreateArticleInput = {
@@ -1523,6 +2230,15 @@ export type CreateCategoryPayload = {
   category?: Maybe<Category>;
 };
 
+export type CreateDomainSkillInput = {
+  data?: Maybe<DomainSkillInput>;
+};
+
+export type CreateDomainSkillPayload = {
+  __typename?: 'createDomainSkillPayload';
+  domainSkill?: Maybe<DomainSkills>;
+};
+
 export type CreateProjectInput = {
   data?: Maybe<ProjectInput>;
 };
@@ -1539,6 +2255,24 @@ export type CreateRoleInput = {
 export type CreateRolePayload = {
   __typename?: 'createRolePayload';
   role?: Maybe<UsersPermissionsRole>;
+};
+
+export type CreateSkillInput = {
+  data?: Maybe<SkillInput>;
+};
+
+export type CreateSkillPayload = {
+  __typename?: 'createSkillPayload';
+  skill?: Maybe<Skill>;
+};
+
+export type CreateTechinalSkillInput = {
+  data?: Maybe<TechinalSkillInput>;
+};
+
+export type CreateTechinalSkillPayload = {
+  __typename?: 'createTechinalSkillPayload';
+  techinalSkill?: Maybe<TechinalSkills>;
 };
 
 export type CreateUserInput = {
@@ -1559,6 +2293,20 @@ export type CreateWriterPayload = {
   writer?: Maybe<Writer>;
 };
 
+export type DeleteAboutInput = {
+  where?: Maybe<InputId>;
+};
+
+export type DeleteAboutPagePayload = {
+  __typename?: 'deleteAboutPagePayload';
+  aboutPage?: Maybe<AboutPage>;
+};
+
+export type DeleteAboutPayload = {
+  __typename?: 'deleteAboutPayload';
+  about?: Maybe<About>;
+};
+
 export type DeleteArticleInput = {
   where?: Maybe<InputId>;
 };
@@ -1575,6 +2323,15 @@ export type DeleteCategoryInput = {
 export type DeleteCategoryPayload = {
   __typename?: 'deleteCategoryPayload';
   category?: Maybe<Category>;
+};
+
+export type DeleteDomainSkillInput = {
+  where?: Maybe<InputId>;
+};
+
+export type DeleteDomainSkillPayload = {
+  __typename?: 'deleteDomainSkillPayload';
+  domainSkill?: Maybe<DomainSkills>;
 };
 
 export type DeleteFileInput = {
@@ -1614,6 +2371,24 @@ export type DeleteRolePayload = {
   role?: Maybe<UsersPermissionsRole>;
 };
 
+export type DeleteSkillInput = {
+  where?: Maybe<InputId>;
+};
+
+export type DeleteSkillPayload = {
+  __typename?: 'deleteSkillPayload';
+  skill?: Maybe<Skill>;
+};
+
+export type DeleteTechinalSkillInput = {
+  where?: Maybe<InputId>;
+};
+
+export type DeleteTechinalSkillPayload = {
+  __typename?: 'deleteTechinalSkillPayload';
+  techinalSkill?: Maybe<TechinalSkills>;
+};
+
 export type DeleteUserInput = {
   where?: Maybe<InputId>;
 };
@@ -1630,6 +2405,28 @@ export type DeleteWriterInput = {
 export type DeleteWriterPayload = {
   __typename?: 'deleteWriterPayload';
   writer?: Maybe<Writer>;
+};
+
+export type EditAboutInput = {
+  author?: Maybe<Scalars['ID']>;
+  created_by?: Maybe<Scalars['ID']>;
+  description?: Maybe<Scalars['String']>;
+  domainSkills?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  techinalSkills?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  title?: Maybe<Scalars['String']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type EditAboutPageInput = {
+  author?: Maybe<Scalars['ID']>;
+  created_by?: Maybe<Scalars['ID']>;
+  description?: Maybe<Scalars['String']>;
+  domainSkills?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  techinalSkills?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  title?: Maybe<Scalars['String']>;
+  updated_by?: Maybe<Scalars['ID']>;
 };
 
 export type EditArticleInput = {
@@ -1669,6 +2466,17 @@ export type EditComponentSharedSeoInput = {
   metaDescription?: Maybe<Scalars['String']>;
   metaTitle?: Maybe<Scalars['String']>;
   shareImage?: Maybe<Scalars['ID']>;
+};
+
+export type EditDomainSkillInput = {
+  author?: Maybe<Scalars['ID']>;
+  created_by?: Maybe<Scalars['ID']>;
+  description?: Maybe<Scalars['String']>;
+  order?: Maybe<Scalars['Int']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  shortName?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  updated_by?: Maybe<Scalars['ID']>;
 };
 
 export type EditFileInput = {
@@ -1742,6 +2550,27 @@ export type EditRoleInput = {
   users?: Maybe<Array<Maybe<Scalars['ID']>>>;
 };
 
+export type EditSkillInput = {
+  created_by?: Maybe<Scalars['ID']>;
+  name?: Maybe<Scalars['String']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  updated_by?: Maybe<Scalars['ID']>;
+  url?: Maybe<Scalars['String']>;
+};
+
+export type EditTechinalSkillInput = {
+  author?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  created_by?: Maybe<Scalars['ID']>;
+  currentLearningSkills?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  description?: Maybe<Scalars['String']>;
+  order?: Maybe<Scalars['Int']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  shortName?: Maybe<Scalars['String']>;
+  skills?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  title?: Maybe<Scalars['String']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
 export type EditUserInput = {
   blocked?: Maybe<Scalars['Boolean']>;
   confirmationToken?: Maybe<Scalars['String']>;
@@ -1762,7 +2591,27 @@ export type EditWriterInput = {
   email?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   picture?: Maybe<Scalars['ID']>;
+  slug?: Maybe<Scalars['String']>;
   updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type UpdateAboutInput = {
+  data?: Maybe<EditAboutInput>;
+  where?: Maybe<InputId>;
+};
+
+export type UpdateAboutPageInput = {
+  data?: Maybe<EditAboutPageInput>;
+};
+
+export type UpdateAboutPagePayload = {
+  __typename?: 'updateAboutPagePayload';
+  aboutPage?: Maybe<AboutPage>;
+};
+
+export type UpdateAboutPayload = {
+  __typename?: 'updateAboutPayload';
+  about?: Maybe<About>;
 };
 
 export type UpdateArticleInput = {
@@ -1783,6 +2632,16 @@ export type UpdateCategoryInput = {
 export type UpdateCategoryPayload = {
   __typename?: 'updateCategoryPayload';
   category?: Maybe<Category>;
+};
+
+export type UpdateDomainSkillInput = {
+  data?: Maybe<EditDomainSkillInput>;
+  where?: Maybe<InputId>;
+};
+
+export type UpdateDomainSkillPayload = {
+  __typename?: 'updateDomainSkillPayload';
+  domainSkill?: Maybe<DomainSkills>;
 };
 
 export type UpdateGlobalInput = {
@@ -1821,6 +2680,26 @@ export type UpdateRoleInput = {
 export type UpdateRolePayload = {
   __typename?: 'updateRolePayload';
   role?: Maybe<UsersPermissionsRole>;
+};
+
+export type UpdateSkillInput = {
+  data?: Maybe<EditSkillInput>;
+  where?: Maybe<InputId>;
+};
+
+export type UpdateSkillPayload = {
+  __typename?: 'updateSkillPayload';
+  skill?: Maybe<Skill>;
+};
+
+export type UpdateTechinalSkillInput = {
+  data?: Maybe<EditTechinalSkillInput>;
+  where?: Maybe<InputId>;
+};
+
+export type UpdateTechinalSkillPayload = {
+  __typename?: 'updateTechinalSkillPayload';
+  techinalSkill?: Maybe<TechinalSkills>;
 };
 
 export type UpdateUserInput = {
@@ -1864,7 +2743,8 @@ export type ProjectPartsFragment = { __typename?: 'Project', id: string, slug?: 
 export type ProjectSnapshotPartsFragment = { __typename?: 'UploadFile', url: string, alternativeText?: string | null | undefined, caption?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined };
 
 export type BlogCategoriesPostsQueryVariables = Exact<{
-  slug: Scalars['String'];
+  categorySlug: Scalars['String'];
+  authorSlug: Scalars['String'];
 }>;
 
 
@@ -1873,6 +2753,7 @@ export type BlogCategoriesPostsQuery = { __typename?: 'Query', categories?: Arra
 export type BlogCustomSortedPostsQueryVariables = Exact<{
   sortString: Scalars['String'];
   limit: Scalars['Int'];
+  authorSlug: Scalars['String'];
 }>;
 
 
@@ -1881,7 +2762,8 @@ export type BlogCustomSortedPostsQuery = { __typename?: 'Query', articles?: Arra
 export type BlogPaginatedCategoriesPostsQueryVariables = Exact<{
   offset: Scalars['Int'];
   limit: Scalars['Int'];
-  slug: Scalars['String'];
+  categorySlug: Scalars['String'];
+  authorSlug: Scalars['String'];
 }>;
 
 
@@ -1890,6 +2772,7 @@ export type BlogPaginatedCategoriesPostsQuery = { __typename?: 'Query', categori
 export type BlogPaginatedPostsQueryVariables = Exact<{
   offset: Scalars['Int'];
   limit: Scalars['Int'];
+  authorSlug: Scalars['String'];
 }>;
 
 
@@ -1899,6 +2782,7 @@ export type BlogPaginatedSearchQueryVariables = Exact<{
   limit: Scalars['Int'];
   offset: Scalars['Int'];
   query: Scalars['String'];
+  authorSlug: Scalars['String'];
 }>;
 
 
@@ -1911,13 +2795,15 @@ export type BlogPostsQuery = { __typename?: 'Query', articles?: Array<{ __typena
 
 export type BlogSearchPostsQueryVariables = Exact<{
   query: Scalars['String'];
+  authorSlug: Scalars['String'];
 }>;
 
 
 export type BlogSearchPostsQuery = { __typename?: 'Query', articles?: Array<{ __typename?: 'Article', id: string, slug: string, title: string, description: string, excerpt: string, created_at: any, updated_at: any, views?: any | null | undefined, hits?: any | null | undefined, author?: { __typename?: 'Writer', name?: string | null | undefined } | null | undefined, category?: { __typename?: 'Category', name: string, slug: string } | null | undefined, image?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null | undefined, caption?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined } | null | undefined } | null | undefined> | null | undefined };
 
 export type SinglePostQueryVariables = Exact<{
-  slug: Scalars['String'];
+  postSlug: Scalars['String'];
+  authorSlug: Scalars['String'];
 }>;
 
 
@@ -2040,8 +2926,8 @@ export const ProjectSnapshotPartsFragmentDoc = gql`
 }
     `;
 export const BlogCategoriesPostsDocument = gql`
-    query BlogCategoriesPosts($slug: String!) {
-  categories(where: {slug: $slug}) {
+    query BlogCategoriesPosts($categorySlug: String!, $authorSlug: String!) {
+  categories(where: {slug: $categorySlug, author: {slug: $authorSlug}}) {
     ...blogCategoriesParts
     articles {
       ...articleMetaParts
@@ -2073,7 +2959,8 @@ ${CategoryPartsFragmentDoc}`;
  * @example
  * const { data, loading, error } = useBlogCategoriesPostsQuery({
  *   variables: {
- *      slug: // value for 'slug'
+ *      categorySlug: // value for 'categorySlug'
+ *      authorSlug: // value for 'authorSlug'
  *   },
  * });
  */
@@ -2089,8 +2976,8 @@ export type BlogCategoriesPostsQueryHookResult = ReturnType<typeof useBlogCatego
 export type BlogCategoriesPostsLazyQueryHookResult = ReturnType<typeof useBlogCategoriesPostsLazyQuery>;
 export type BlogCategoriesPostsQueryResult = Apollo.QueryResult<BlogCategoriesPostsQuery, BlogCategoriesPostsQueryVariables>;
 export const BlogCustomSortedPostsDocument = gql`
-    query BlogCustomSortedPosts($sortString: String!, $limit: Int!) {
-  articles(sort: $sortString, limit: $limit) {
+    query BlogCustomSortedPosts($sortString: String!, $limit: Int!, $authorSlug: String!) {
+  articles(sort: $sortString, limit: $limit, where: {author: {slug: $authorSlug}}) {
     ...articleParts
     author {
       ...authorParts
@@ -2118,6 +3005,7 @@ ${CategoryPartsFragmentDoc}`;
  *   variables: {
  *      sortString: // value for 'sortString'
  *      limit: // value for 'limit'
+ *      authorSlug: // value for 'authorSlug'
  *   },
  * });
  */
@@ -2133,10 +3021,10 @@ export type BlogCustomSortedPostsQueryHookResult = ReturnType<typeof useBlogCust
 export type BlogCustomSortedPostsLazyQueryHookResult = ReturnType<typeof useBlogCustomSortedPostsLazyQuery>;
 export type BlogCustomSortedPostsQueryResult = Apollo.QueryResult<BlogCustomSortedPostsQuery, BlogCustomSortedPostsQueryVariables>;
 export const BlogPaginatedCategoriesPostsDocument = gql`
-    query BlogPaginatedCategoriesPosts($offset: Int!, $limit: Int!, $slug: String!) {
-  categories(start: $offset, limit: $limit, where: {slug: $slug}) {
+    query BlogPaginatedCategoriesPosts($offset: Int!, $limit: Int!, $categorySlug: String!, $authorSlug: String!) {
+  categories(start: $offset, limit: $limit, where: {slug: $categorySlug}) {
     ...blogCategoriesParts
-    articles {
+    articles(where: {author: {slug: $authorSlug}}) {
       ...articleMetaParts
       ...imageParts
       author {
@@ -2147,7 +3035,9 @@ export const BlogPaginatedCategoriesPostsDocument = gql`
       }
     }
   }
-  articlesConnection(where: {category: {slug: $slug}}) {
+  articlesConnection(
+    where: {category: {slug: $categorySlug}, author: {slug: $authorSlug}}
+  ) {
     aggregate {
       count
     }
@@ -2173,7 +3063,8 @@ ${CategoryPartsFragmentDoc}`;
  *   variables: {
  *      offset: // value for 'offset'
  *      limit: // value for 'limit'
- *      slug: // value for 'slug'
+ *      categorySlug: // value for 'categorySlug'
+ *      authorSlug: // value for 'authorSlug'
  *   },
  * });
  */
@@ -2189,8 +3080,8 @@ export type BlogPaginatedCategoriesPostsQueryHookResult = ReturnType<typeof useB
 export type BlogPaginatedCategoriesPostsLazyQueryHookResult = ReturnType<typeof useBlogPaginatedCategoriesPostsLazyQuery>;
 export type BlogPaginatedCategoriesPostsQueryResult = Apollo.QueryResult<BlogPaginatedCategoriesPostsQuery, BlogPaginatedCategoriesPostsQueryVariables>;
 export const BlogPaginatedPostsDocument = gql`
-    query BlogPaginatedPosts($offset: Int!, $limit: Int!) {
-  articles(start: $offset, limit: $limit) {
+    query BlogPaginatedPosts($offset: Int!, $limit: Int!, $authorSlug: String!) {
+  articles(start: $offset, limit: $limit, where: {author: {slug: $authorSlug}}) {
     ...articleMetaParts
     ...imageParts
     author {
@@ -2200,7 +3091,7 @@ export const BlogPaginatedPostsDocument = gql`
       ...categoryParts
     }
   }
-  articlesConnection {
+  articlesConnection(where: {author: {slug: $authorSlug}}) {
     aggregate {
       count
     }
@@ -2225,6 +3116,7 @@ ${CategoryPartsFragmentDoc}`;
  *   variables: {
  *      offset: // value for 'offset'
  *      limit: // value for 'limit'
+ *      authorSlug: // value for 'authorSlug'
  *   },
  * });
  */
@@ -2240,8 +3132,12 @@ export type BlogPaginatedPostsQueryHookResult = ReturnType<typeof useBlogPaginat
 export type BlogPaginatedPostsLazyQueryHookResult = ReturnType<typeof useBlogPaginatedPostsLazyQuery>;
 export type BlogPaginatedPostsQueryResult = Apollo.QueryResult<BlogPaginatedPostsQuery, BlogPaginatedPostsQueryVariables>;
 export const BlogPaginatedSearchDocument = gql`
-    query BlogPaginatedSearch($limit: Int!, $offset: Int!, $query: String!) {
-  articles(start: $offset, limit: $limit, where: {_q: $query}) {
+    query BlogPaginatedSearch($limit: Int!, $offset: Int!, $query: String!, $authorSlug: String!) {
+  articles(
+    start: $offset
+    limit: $limit
+    where: {_q: $query, author: {slug: $authorSlug}}
+  ) {
     ...articleMetaParts
     ...imageParts
     author {
@@ -2251,7 +3147,7 @@ export const BlogPaginatedSearchDocument = gql`
       ...categoryParts
     }
   }
-  articlesConnection(where: {_q: $query}) {
+  articlesConnection(where: {_q: $query, author: {slug: $authorSlug}}) {
     aggregate {
       count
     }
@@ -2277,6 +3173,7 @@ ${CategoryPartsFragmentDoc}`;
  *      limit: // value for 'limit'
  *      offset: // value for 'offset'
  *      query: // value for 'query'
+ *      authorSlug: // value for 'authorSlug'
  *   },
  * });
  */
@@ -2336,8 +3233,8 @@ export type BlogPostsQueryHookResult = ReturnType<typeof useBlogPostsQuery>;
 export type BlogPostsLazyQueryHookResult = ReturnType<typeof useBlogPostsLazyQuery>;
 export type BlogPostsQueryResult = Apollo.QueryResult<BlogPostsQuery, BlogPostsQueryVariables>;
 export const BlogSearchPostsDocument = gql`
-    query BlogSearchPosts($query: String!) {
-  articles(where: {_q: $query}) {
+    query BlogSearchPosts($query: String!, $authorSlug: String!) {
+  articles(where: {_q: $query, author: {slug: $authorSlug}}) {
     ...articleMetaParts
     ...imageParts
     author {
@@ -2366,6 +3263,7 @@ ${CategoryPartsFragmentDoc}`;
  * const { data, loading, error } = useBlogSearchPostsQuery({
  *   variables: {
  *      query: // value for 'query'
+ *      authorSlug: // value for 'authorSlug'
  *   },
  * });
  */
@@ -2381,8 +3279,8 @@ export type BlogSearchPostsQueryHookResult = ReturnType<typeof useBlogSearchPost
 export type BlogSearchPostsLazyQueryHookResult = ReturnType<typeof useBlogSearchPostsLazyQuery>;
 export type BlogSearchPostsQueryResult = Apollo.QueryResult<BlogSearchPostsQuery, BlogSearchPostsQueryVariables>;
 export const SinglePostDocument = gql`
-    query SinglePost($slug: String!) {
-  articles(where: {slug: $slug}) {
+    query SinglePost($postSlug: String!, $authorSlug: String!) {
+  articles(where: {slug: $postSlug, author: {slug: $authorSlug}}) {
     ...articleParts
     ...imageParts
     author {
@@ -2417,7 +3315,8 @@ ${ArticlePreviousOrNextPartsFragmentDoc}`;
  * @example
  * const { data, loading, error } = useSinglePostQuery({
  *   variables: {
- *      slug: // value for 'slug'
+ *      postSlug: // value for 'postSlug'
+ *      authorSlug: // value for 'authorSlug'
  *   },
  * });
  */

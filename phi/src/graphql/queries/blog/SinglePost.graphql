@@ -1,5 +1,5 @@
-query SinglePost($slug: String!) {
-  articles(where: { slug: $slug }) {
+query SinglePost($postSlug: String!, $authorSlug: String!) {
+  articles(where: { slug: $postSlug, author: { slug: $authorSlug } }) {
     ...articleParts
     ...imageParts
     author {

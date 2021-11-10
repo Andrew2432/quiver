@@ -1,5 +1,5 @@
-query BlogCategoriesPosts($slug: String!) {
-  categories(where: { slug: $slug }) {
+query BlogCategoriesPosts($categorySlug: String!, $authorSlug: String!) {
+  categories(where: { slug: $categorySlug, author: { slug: $authorSlug } }) {
     ...blogCategoriesParts
     articles {
       ...articleMetaParts

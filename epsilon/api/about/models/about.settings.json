@@ -1,9 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "domain_skills",
+  "collectionName": "abouts",
   "info": {
-    "name": "DomainSkills",
-    "description": ""
+    "name": "About"
   },
   "options": {
     "increments": true,
@@ -12,20 +11,20 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "title": {
+      "type": "string"
+    },
     "description": {
       "type": "richtext"
     },
-    "title": {
-      "type": "richtext"
+    "domainSkills": {
+      "collection": "domain-skills"
     },
-    "shortName": {
-      "type": "string"
+    "techinalSkills": {
+      "collection": "techinal-skills"
     },
     "author": {
       "model": "writer"
-    },
-    "order": {
-      "type": "integer"
     }
   }
 }

@@ -1,16 +1,17 @@
-import Link from "next/link";
-import { Children } from "react";
-import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import { useBlogCustomSortedPostsQuery } from "../../generated/graphql";
-import { BlogPostType } from "../../newTypes/BlogPostType";
-import { BlogMostViewedPostsProps } from "./BlogMostViewedPostsProps";
+import Link from 'next/link';
+import { Children } from 'react';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import { useBlogCustomSortedPostsQuery } from '../../generated/graphql';
+import { BlogPostType } from '../../newTypes/BlogPostType';
+import useAuthorSlug from '../../utils/hooks/useAuthorSlug.hook';
+import { BlogMostViewedPostsProps } from './BlogMostViewedPostsProps';
 
 function createMostViewedPosts(post: BlogPostType) {
   return (
     <Link href={`/blog/posts/${post.slug}`} passHref>
-      <li className={`my-2`} style={{ cursor: "pointer" }}>
+      <li className={`my-2`} style={{ cursor: 'pointer' }}>
         <h5>
           <u>{post.title}</u>
         </h5>
@@ -20,10 +21,13 @@ function createMostViewedPosts(post: BlogPostType) {
 }
 
 function BlogMostViewedPosts({ theme }: BlogMostViewedPostsProps): JSX.Element {
+  const authorSlug = useAuthorSlug();
+
   const { data, loading, error } = useBlogCustomSortedPostsQuery({
     variables: {
       sortString: `views:desc`,
       limit: 3,
+      authorSlug,
     },
   });
 

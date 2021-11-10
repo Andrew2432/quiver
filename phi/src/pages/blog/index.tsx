@@ -13,9 +13,12 @@ import SEO from '../../layouts/SEO';
 import { BlogPostType } from '../../newTypes/BlogPostType';
 import { GenericConnectionType } from '../../newTypes/GenericConnectionType';
 import { SEOProps } from '../../types/SEOProps';
+import useAuthorSlug from '../../utils/hooks/useAuthorSlug.hook';
 import PageLoading from '../../utils/PageLoading';
 
 function BlogPage() {
+  const authorSlug = useAuthorSlug();
+
   const {
     data,
     loading,
@@ -24,6 +27,9 @@ function BlogPage() {
     handlePaginationClick,
   } = useCustomPagination<BlogPaginatedPostsQuery>({
     useHook: useBlogPaginatedPostsQuery,
+    variables: {
+      authorSlug,
+    },
   });
 
   if (loading) return <PageLoading />;

@@ -23,6 +23,16 @@
     },
     "shortName": {
       "type": "string"
+    },
+    "author": {
+      "collection": "writer",
+      "model": "writer"
+    },
+    "currentLearningSkills": {
+      "collection": "skill"
+    },
+    "order": {
+      "type": "integer"
     }
   }
 }

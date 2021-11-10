@@ -1,25 +1,26 @@
-import { GetServerSidePropsContext } from "next";
-import * as React from "react";
-import BlogCategoriesPosts from "../../../components/blogCategoriesPosts/BlogCategoriesPosts";
-import { BlogCategoriesPostsProps } from "../../../components/blogCategoriesPosts/BlogCategoriesPostsProps";
-import CustomPagination from "../../../components/customPagination/CustomPagination";
-import { CustomPaginationProps } from "../../../components/customPagination/CustomPaginationProps";
-import useCustomPagination from "../../../components/customPagination/useCustomPagination.hook";
+import { GetServerSidePropsContext } from 'next';
+import * as React from 'react';
+import BlogCategoriesPosts from '../../../components/blogCategoriesPosts/BlogCategoriesPosts';
+import { BlogCategoriesPostsProps } from '../../../components/blogCategoriesPosts/BlogCategoriesPostsProps';
+import CustomPagination from '../../../components/customPagination/CustomPagination';
+import { CustomPaginationProps } from '../../../components/customPagination/CustomPaginationProps';
+import useCustomPagination from '../../../components/customPagination/useCustomPagination.hook';
 import {
   Article,
   BlogPaginatedCategoriesPostsQuery,
   useBlogPaginatedCategoriesPostsQuery,
-} from "../../../generated/graphql";
-import Layout from "../../../layouts/Layout";
-import SEO from "../../../layouts/SEO";
-import { BlogPostType } from "../../../newTypes/BlogPostType";
-import { CategoryType } from "../../../newTypes/CategoryType";
-import { GenericConnectionType } from "../../../newTypes/GenericConnectionType";
-import { SEOProps } from "../../../types/SEOProps";
-import PageLoading from "../../../utils/PageLoading";
+} from '../../../generated/graphql';
+import Layout from '../../../layouts/Layout';
+import SEO from '../../../layouts/SEO';
+import { BlogPostType } from '../../../newTypes/BlogPostType';
+import { CategoryType } from '../../../newTypes/CategoryType';
+import { GenericConnectionType } from '../../../newTypes/GenericConnectionType';
+import { SEOProps } from '../../../types/SEOProps';
+import useAuthorSlug from '../../../utils/hooks/useAuthorSlug.hook';
+import PageLoading from '../../../utils/PageLoading';
 
 interface Props {
-  slug: string;
+  categorySlug: string;
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
@@ -27,23 +28,31 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     query: { all },
   } = context;
 
-  const slug = all?.[0] as string;
+  const categorySlug = all?.[0] as string;
 
   return {
     props: {
-      slug,
-    },
+      categorySlug,
+    } as Props,
   };
 }
 
-function BlogCategoriesPostsPage({ slug }: Props) {
-  const { data, loading, cursorRef, handlePaginationClick, error } =
-    useCustomPagination<BlogPaginatedCategoriesPostsQuery>({
-      useHook: useBlogPaginatedCategoriesPostsQuery,
-      variables: {
-        slug,
-      },
-    });
+function BlogCategoriesPostsPage({ categorySlug }: Props) {
+  const authorSlug = useAuthorSlug();
+
+  const {
+    data,
+    loading,
+    cursorRef,
+    handlePaginationClick,
+    error,
+  } = useCustomPagination<BlogPaginatedCategoriesPostsQuery>({
+    useHook: useBlogPaginatedCategoriesPostsQuery,
+    variables: {
+      categorySlug,
+      authorSlug,
+    },
+  });
 
   if (loading) return <PageLoading />;
 

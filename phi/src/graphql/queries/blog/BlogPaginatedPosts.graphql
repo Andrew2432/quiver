@@ -1,5 +1,9 @@
-query BlogPaginatedPosts($offset: Int!, $limit: Int!) {
-  articles(start: $offset, limit: $limit) {
+query BlogPaginatedPosts($offset: Int!, $limit: Int!, $authorSlug: String!) {
+  articles(
+    start: $offset
+    limit: $limit
+    where: { author: { slug: $authorSlug } }
+  ) {
     ...articleMetaParts
     ...imageParts
     author {
@@ -9,8 +13,7 @@ query BlogPaginatedPosts($offset: Int!, $limit: Int!) {
       ...categoryParts
     }
   }
-
-  articlesConnection {
+  articlesConnection(where: { author: { slug: $authorSlug } }) {
     aggregate {
       count
     }

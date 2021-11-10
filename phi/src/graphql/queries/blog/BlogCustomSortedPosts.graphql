@@ -1,5 +1,13 @@
-query BlogCustomSortedPosts($sortString: String!, $limit: Int!) {
-  articles(sort: $sortString, limit: $limit) {
+query BlogCustomSortedPosts(
+  $sortString: String!
+  $limit: Int!
+  $authorSlug: String!
+) {
+  articles(
+    sort: $sortString
+    limit: $limit
+    where: { author: { slug: $authorSlug } }
+  ) {
     ...articleParts
     author {
       ...authorParts

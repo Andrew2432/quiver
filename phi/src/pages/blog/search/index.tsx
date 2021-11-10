@@ -1,21 +1,22 @@
-import { GetServerSidePropsContext } from "next";
-import * as React from "react";
-import BlogSearchResults from "../../../components/blogSearchResults/BlogSearchResults";
-import { BlogSearchResultsProps } from "../../../components/blogSearchResults/BlogSearchResultsProps";
-import CustomPagination from "../../../components/customPagination/CustomPagination";
-import { CustomPaginationProps } from "../../../components/customPagination/CustomPaginationProps";
-import useCustomPagination from "../../../components/customPagination/useCustomPagination.hook";
+import { GetServerSidePropsContext } from 'next';
+import * as React from 'react';
+import BlogSearchResults from '../../../components/blogSearchResults/BlogSearchResults';
+import { BlogSearchResultsProps } from '../../../components/blogSearchResults/BlogSearchResultsProps';
+import CustomPagination from '../../../components/customPagination/CustomPagination';
+import { CustomPaginationProps } from '../../../components/customPagination/CustomPaginationProps';
+import useCustomPagination from '../../../components/customPagination/useCustomPagination.hook';
 import {
   Article,
   BlogPaginatedSearchQuery,
   useBlogPaginatedSearchQuery,
-} from "../../../generated/graphql";
-import Layout from "../../../layouts/Layout";
-import SEO from "../../../layouts/SEO";
-import { BlogPostType } from "../../../newTypes/BlogPostType";
-import { GenericConnectionType } from "../../../newTypes/GenericConnectionType";
-import { SEOProps } from "../../../types/SEOProps";
-import PageLoading from "../../../utils/PageLoading";
+} from '../../../generated/graphql';
+import Layout from '../../../layouts/Layout';
+import SEO from '../../../layouts/SEO';
+import { BlogPostType } from '../../../newTypes/BlogPostType';
+import { GenericConnectionType } from '../../../newTypes/GenericConnectionType';
+import { SEOProps } from '../../../types/SEOProps';
+import useAuthorSlug from '../../../utils/hooks/useAuthorSlug.hook';
+import PageLoading from '../../../utils/PageLoading';
 
 interface Props {
   query: string;
@@ -32,13 +33,20 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 }
 
 function PostsSearchPage({ query }: Props) {
-  const { data, loading, cursorRef, handlePaginationClick } =
-    useCustomPagination<BlogPaginatedSearchQuery>({
-      useHook: useBlogPaginatedSearchQuery,
-      variables: {
-        query,
-      },
-    });
+  const authorSlug = useAuthorSlug();
+
+  const {
+    data,
+    loading,
+    cursorRef,
+    handlePaginationClick,
+  } = useCustomPagination<BlogPaginatedSearchQuery>({
+    useHook: useBlogPaginatedSearchQuery,
+    variables: {
+      query,
+      authorSlug,
+    },
+  });
 
   if (loading) return <PageLoading />;
 
@@ -48,7 +56,7 @@ function PostsSearchPage({ query }: Props) {
   } = data?.articlesConnection as GenericConnectionType<Article>;
 
   const seoProps: SEOProps = {
-    title: "Search Results",
+    title: 'Search Results',
     description: `Search results for query ${query}`,
   };
 

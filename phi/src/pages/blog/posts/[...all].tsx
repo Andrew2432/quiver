@@ -1,13 +1,14 @@
-import { GetServerSidePropsContext } from "next";
-import BlogSinglePost from "../../../components/blogSinglePost/BlogSinglePost";
-import { useSinglePostQuery } from "../../../generated/graphql";
-import Layout from "../../../layouts/Layout";
-import SEO from "../../../layouts/SEO";
-import { BlogPostType } from "../../../newTypes/BlogPostType";
-import PageLoading from "../../../utils/PageLoading";
+import { GetServerSidePropsContext } from 'next';
+import BlogSinglePost from '../../../components/blogSinglePost/BlogSinglePost';
+import { useSinglePostQuery } from '../../../generated/graphql';
+import Layout from '../../../layouts/Layout';
+import SEO from '../../../layouts/SEO';
+import { BlogPostType } from '../../../newTypes/BlogPostType';
+import useAuthorSlug from '../../../utils/hooks/useAuthorSlug.hook';
+import PageLoading from '../../../utils/PageLoading';
 
 interface Props {
-  slug: string;
+  postSlug: string;
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
@@ -15,19 +16,22 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     query: { all },
   } = context;
 
-  const slug = all?.[0] as string;
+  const postSlug = all?.[0] as string;
 
   return {
     props: {
-      slug,
+      postSlug,
     } as Props,
   };
 }
 
-function SinglePostPage({ slug }: Props) {
+function SinglePostPage({ postSlug }: Props) {
+  const authorSlug = useAuthorSlug();
+
   const { data, loading, error } = useSinglePostQuery({
     variables: {
-      slug,
+      postSlug,
+      authorSlug,
     },
   });
 

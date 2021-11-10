@@ -1,5 +1,5 @@
-query BlogSearchPosts($query: String!) {
-  articles(where: { _q: $query }) {
+query BlogSearchPosts($query: String!, $authorSlug: String!) {
+  articles(where: { _q: $query, author: { slug: $authorSlug } }) {
     ...articleMetaParts
     ...imageParts
     author {

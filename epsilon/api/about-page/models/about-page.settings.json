@@ -23,6 +23,9 @@
     },
     "techinalSkills": {
       "collection": "techinal-skills"
+    },
+    "author": {
+      "model": "writer"
     }
   }
 }
