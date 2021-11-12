@@ -1,8 +1,7 @@
-import * as React from 'react';
 import getConfig from 'next/config';
 import Head from 'next/head';
-
-import { SEOProps as Props } from '../types/SEOProps';
+import * as React from 'react';
+import { SEOProps } from './SEOProps';
 
 const {
   publicRuntimeConfig: { base_url },
@@ -43,10 +42,10 @@ function Preload(): JSX.Element {
         as="font"
         crossOrigin=""
       />
-      <link rel="preconnect" href="https://wordpress.andrew-joel.com" />
+      <link rel="preconnect" href="https://strapi.andrew-joel.com" />
       <link rel="preconnect" href="https://googletagmanager.com" />
       <link rel="preconnect" href="https://googleanalytics.com" />
-      <link rel="dns-prefetch" href="https://wordpress.andrew-joel.com" />
+      <link rel="dns-prefetch" href="https://strapi.andrew-joel.com" />
       <link rel="dns-prefetch" href="https://googletagmanager.com" />
       <link rel="dns-prefetch" href="https://googleanalytics.com" />
     </>
@@ -78,7 +77,7 @@ function FavIcons() {
   );
 }
 
-function SEO(props: Props): JSX.Element {
+function SEO(props: SEOProps): JSX.Element {
   const { title, description } = props;
   const [currentUrl, setCurrentUrl] = useState('');
 

@@ -1,6 +1,6 @@
 import { useAboutQuery } from '@quiver/graphql-client';
 import { AboutType } from '@quiver/types';
-import About from '../../components/about/About';
+import About from '../../components/About';
 import Layout from '../../layouts/Layout';
 import SEO from '../../layouts/SEO';
 import useAuthorSlug from '../../utils/hooks/useAuthorSlug.hook';
@@ -18,8 +18,6 @@ function AboutPage() {
   if (loading) return <PageLoading />;
 
   const aboutData = data?.abouts?.[0] as AboutType;
-
-  console.log(aboutData);
 
   return (
     <Layout>

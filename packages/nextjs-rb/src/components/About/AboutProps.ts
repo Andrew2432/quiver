@@ -1,4 +1,4 @@
-import { AboutType } from '../../newTypes/AboutType';
+import { AboutType } from '@quiver/types';
 
 export interface AboutProps {
   data: AboutType;

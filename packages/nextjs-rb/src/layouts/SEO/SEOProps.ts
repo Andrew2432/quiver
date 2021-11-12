@@ -1,5 +1,5 @@
-export interface SEOProps {
+export type SEOProps = {
   title: string;
   description: string;
   keywords?: string[];
-}
+};

@@ -10,8 +10,7 @@ import CustomPagination from '../../components/customPagination/CustomPagination
 import { CustomPaginationProps } from '../../components/customPagination/CustomPaginationProps';
 import useCustomPagination from '../../components/customPagination/useCustomPagination.hook';
 import Layout from '../../layouts/Layout';
-import SEO from '../../layouts/SEO';
-import { SEOProps } from '../../types/SEOProps';
+import SEO, { SEOProps } from '../../layouts/SEO';
 import useAuthorSlug from '../../utils/hooks/useAuthorSlug.hook';
 import PageLoading from '../../utils/PageLoading';
 
