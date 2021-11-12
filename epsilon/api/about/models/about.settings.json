@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "abouts",
   "info": {
-    "name": "About"
+    "name": "About",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -11,20 +12,23 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
-      "type": "string"
-    },
     "description": {
       "type": "richtext"
     },
     "domainSkills": {
       "collection": "domain-skills"
     },
-    "techinalSkills": {
+    "technicalSkills": {
       "collection": "techinal-skills"
     },
     "author": {
       "model": "writer"
+    },
+    "timeline": {
+      "model": "author-timeline"
+    },
+    "title": {
+      "type": "richtext"
     }
   }
 }

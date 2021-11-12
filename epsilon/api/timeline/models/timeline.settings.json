@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "timelines",
+  "info": {
+    "name": "TimelineEvents",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "event": {
+      "type": "string"
+    },
+    "date": {
+      "type": "date"
+    },
+    "author": {
+      "model": "writer"
+    },
+    "timelineCategory": {
+      "model": "timeline-category"
+    }
+  }
+}

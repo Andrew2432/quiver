@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "author_timelines",
+  "info": {
+    "name": "AuthorTimeline",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "timelineEvents": {
+      "collection": "timeline"
+    },
+    "writer": {
+      "model": "writer"
+    },
+    "shortName": {
+      "type": "string"
+    }
+  }
+}

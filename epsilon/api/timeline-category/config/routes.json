@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/timeline-categories",
+      "handler": "timeline-category.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/timeline-categories/count",
+      "handler": "timeline-category.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/timeline-categories/:id",
+      "handler": "timeline-category.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/timeline-categories",
+      "handler": "timeline-category.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/timeline-categories/:id",
+      "handler": "timeline-category.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/timeline-categories/:id",
+      "handler": "timeline-category.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

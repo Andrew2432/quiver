@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "techinal_skills",
+  "collectionName": "technical_skills",
   "info": {
-    "name": "TechinalSkills",
+    "name": "TechnicalSkills",
     "description": ""
   },
   "options": {

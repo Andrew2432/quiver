@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "timeline_categories",
+  "info": {
+    "name": "TimelineCategory"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tag": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    }
+  }
+}
