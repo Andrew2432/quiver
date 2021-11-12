@@ -1,0 +1,12 @@
+query BlogPosts {
+  articles {
+    ...articleMetaParts
+    ...imageParts
+    author {
+      ...authorParts
+    }
+    category {
+      ...categoryParts
+    }
+  }
+}

@@ -1,0 +1,19 @@
+query BlogCustomSortedPosts(
+  $sortString: String!
+  $limit: Int!
+  $authorSlug: String!
+) {
+  articles(
+    sort: $sortString
+    limit: $limit
+    where: { author: { slug: $authorSlug } }
+  ) {
+    ...articleParts
+    author {
+      ...authorParts
+    }
+    category {
+      ...categoryParts
+    }
+  }
+}

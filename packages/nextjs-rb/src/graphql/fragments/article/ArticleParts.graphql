@@ -1,0 +1,12 @@
+fragment articleParts on Article {
+  id
+  slug
+  title
+  description
+  content
+  excerpt
+  created_at
+  updated_at
+  views
+  hits
+}

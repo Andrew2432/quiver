@@ -1,0 +1,11 @@
+fragment articleMetaParts on Article {
+  id
+  slug
+  title
+  description
+  excerpt
+  created_at
+  updated_at
+  views
+  hits
+}

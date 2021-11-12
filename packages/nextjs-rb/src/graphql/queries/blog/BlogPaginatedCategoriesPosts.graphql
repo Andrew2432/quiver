@@ -1,0 +1,27 @@
+query BlogPaginatedCategoriesPosts(
+  $offset: Int!
+  $limit: Int!
+  $categorySlug: String!
+  $authorSlug: String!
+) {
+  categories(start: $offset, limit: $limit, where: { slug: $categorySlug }) {
+    ...blogCategoriesParts
+    articles(where: { author: { slug: $authorSlug } }) {
+      ...articleMetaParts
+      ...imageParts
+      author {
+        ...authorParts
+      }
+      category {
+        ...categoryParts
+      }
+    }
+  }
+  articlesConnection(
+    where: { category: { slug: $categorySlug }, author: { slug: $authorSlug } }
+  ) {
+    aggregate {
+      count
+    }
+  }
+}

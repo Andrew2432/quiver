@@ -1,0 +1,9 @@
+fragment imageParts on Article {
+  image {
+    url
+    alternativeText
+    caption
+    width
+    height
+  }
+}

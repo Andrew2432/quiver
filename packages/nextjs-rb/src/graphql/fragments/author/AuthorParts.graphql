@@ -1,0 +1,3 @@
+fragment authorParts on Writer {
+  name
+}

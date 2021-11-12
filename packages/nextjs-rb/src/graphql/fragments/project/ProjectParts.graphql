@@ -1,0 +1,14 @@
+fragment projectParts on Project {
+  id
+  slug
+  title
+  description
+  content
+  deployedLink
+  githubLink
+  isTop
+  startDate
+  endDate
+  clientName
+  category
+}

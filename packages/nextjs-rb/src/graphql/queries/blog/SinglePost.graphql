@@ -1,0 +1,18 @@
+query SinglePost($postSlug: String!, $authorSlug: String!) {
+  articles(where: { slug: $postSlug, author: { slug: $authorSlug } }) {
+    ...articleParts
+    ...imageParts
+    author {
+      ...authorParts
+    }
+    category {
+      ...categoryParts
+    }
+    previous {
+      ...articlePreviousOrNextParts
+    }
+    next {
+      ...articlePreviousOrNextParts
+    }
+  }
+}

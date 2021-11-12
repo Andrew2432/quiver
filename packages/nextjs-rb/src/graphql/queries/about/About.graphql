@@ -1,0 +1,32 @@
+query About($authorSlug: String!) {
+  abouts(where: { author: { slug: $authorSlug } }) {
+    title
+    description
+    technicalSkills(sort: "order:asc") {
+      title
+      description
+      skills {
+        name
+        url
+      }
+      currentLearningSkills {
+        name
+        url
+      }
+    }
+    domainSkills(sort: "order:asc") {
+      title
+      description
+    }
+    timeline {
+      timelineEvents(sort: "date:desc") {
+        event
+        date
+        timelineCategory {
+          tag
+          color
+        }
+      }
+    }
+  }
+}
