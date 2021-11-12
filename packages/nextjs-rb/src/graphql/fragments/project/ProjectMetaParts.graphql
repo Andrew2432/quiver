@@ -1,8 +1,0 @@
-fragment projectMetaParts on Project {
-  id
-  slug
-  title
-  description
-  isTop
-  deployedLink
-}

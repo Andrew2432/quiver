@@ -1,17 +1,16 @@
+import {
+  Article,
+  BlogPaginatedPostsQuery,
+  useBlogPaginatedPostsQuery,
+} from '@quiver/graphql-client';
+import { BlogPostType, GenericConnectionType } from '@quiver/types';
 import Blog from '../../components/blog/Blog';
 import { BlogProps } from '../../components/blog/BlogProps';
 import CustomPagination from '../../components/customPagination/CustomPagination';
 import { CustomPaginationProps } from '../../components/customPagination/CustomPaginationProps';
 import useCustomPagination from '../../components/customPagination/useCustomPagination.hook';
-import {
-  Article,
-  BlogPaginatedPostsQuery,
-  useBlogPaginatedPostsQuery,
-} from '../../generated/graphql';
 import Layout from '../../layouts/Layout';
 import SEO from '../../layouts/SEO';
-import { BlogPostType } from '../../newTypes/BlogPostType';
-import { GenericConnectionType } from '../../newTypes/GenericConnectionType';
 import { SEOProps } from '../../types/SEOProps';
 import useAuthorSlug from '../../utils/hooks/useAuthorSlug.hook';
 import PageLoading from '../../utils/PageLoading';

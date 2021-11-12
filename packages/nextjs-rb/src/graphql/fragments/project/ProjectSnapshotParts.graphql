@@ -1,7 +1,0 @@
-fragment projectSnapshotParts on UploadFile {
-  url
-  alternativeText
-  caption
-  width
-  height
-}

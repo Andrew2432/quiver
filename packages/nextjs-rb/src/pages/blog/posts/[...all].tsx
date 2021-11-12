@@ -1,9 +1,9 @@
+import { useSinglePostQuery } from '@quiver/graphql-client';
+import { BlogPostType } from '@quiver/types';
 import { GetServerSidePropsContext } from 'next';
 import BlogSinglePost from '../../../components/blogSinglePost/BlogSinglePost';
-import { useSinglePostQuery } from '../../../generated/graphql';
 import Layout from '../../../layouts/Layout';
 import SEO from '../../../layouts/SEO';
-import { BlogPostType } from '../../../newTypes/BlogPostType';
 import useAuthorSlug from '../../../utils/hooks/useAuthorSlug.hook';
 import PageLoading from '../../../utils/PageLoading';
 

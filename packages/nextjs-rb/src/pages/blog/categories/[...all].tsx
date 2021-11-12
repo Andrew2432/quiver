@@ -1,3 +1,13 @@
+import {
+  Article,
+  BlogPaginatedCategoriesPostsQuery,
+  useBlogPaginatedCategoriesPostsQuery,
+} from '@quiver/graphql-client';
+import {
+  BlogPostType,
+  CategoryType,
+  GenericConnectionType,
+} from '@quiver/types';
 import { GetServerSidePropsContext } from 'next';
 import * as React from 'react';
 import BlogCategoriesPosts from '../../../components/blogCategoriesPosts/BlogCategoriesPosts';
@@ -5,16 +15,8 @@ import { BlogCategoriesPostsProps } from '../../../components/blogCategoriesPost
 import CustomPagination from '../../../components/customPagination/CustomPagination';
 import { CustomPaginationProps } from '../../../components/customPagination/CustomPaginationProps';
 import useCustomPagination from '../../../components/customPagination/useCustomPagination.hook';
-import {
-  Article,
-  BlogPaginatedCategoriesPostsQuery,
-  useBlogPaginatedCategoriesPostsQuery,
-} from '../../../generated/graphql';
 import Layout from '../../../layouts/Layout';
 import SEO from '../../../layouts/SEO';
-import { BlogPostType } from '../../../newTypes/BlogPostType';
-import { CategoryType } from '../../../newTypes/CategoryType';
-import { GenericConnectionType } from '../../../newTypes/GenericConnectionType';
 import { SEOProps } from '../../../types/SEOProps';
 import useAuthorSlug from '../../../utils/hooks/useAuthorSlug.hook';
 import PageLoading from '../../../utils/PageLoading';

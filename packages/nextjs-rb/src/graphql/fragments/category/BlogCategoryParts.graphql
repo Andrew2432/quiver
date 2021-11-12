@@ -1,4 +1,0 @@
-fragment blogCategoriesParts on Category {
-  name
-  description
-}

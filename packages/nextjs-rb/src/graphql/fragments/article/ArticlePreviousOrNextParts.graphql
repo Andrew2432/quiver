@@ -1,5 +1,0 @@
-fragment articlePreviousOrNextParts on Article {
-  id
-  title
-  slug
-}

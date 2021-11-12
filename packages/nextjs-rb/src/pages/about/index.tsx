@@ -1,8 +1,8 @@
 import { useAboutQuery } from '@quiver/graphql-client';
+import { AboutType } from '@quiver/types';
 import About from '../../components/about/About';
 import Layout from '../../layouts/Layout';
 import SEO from '../../layouts/SEO';
-import { AboutType } from '../../newTypes/AboutType';
 import useAuthorSlug from '../../utils/hooks/useAuthorSlug.hook';
 import PageLoading from '../../utils/PageLoading';
 

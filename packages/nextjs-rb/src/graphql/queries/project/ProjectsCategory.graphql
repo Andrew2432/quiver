@@ -1,8 +1,0 @@
-query ProjectsCategory($category: String!) {
-  projects(where: { category: $category }) {
-    ...projectMetaParts
-    snapshots {
-      ...projectSnapshotParts
-    }
-  }
-}
