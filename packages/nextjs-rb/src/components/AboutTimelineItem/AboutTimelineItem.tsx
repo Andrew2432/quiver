@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styles from '../../styles/about/AboutTimeline.module.css';
 import ThemeContext from '../../utils/ThemeContext';
-import { AboutTimelineItemProps } from './AboutTimelineProps';
+import { AboutTimelineItemProps } from './AboutTimelineItemProps';
 
 const { useContext } = React;
 

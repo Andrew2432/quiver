@@ -1,19 +1,19 @@
-import Head from "next/head";
-import Link from "next/link";
-import * as React from "react";
-import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import useBreakpoint from "../../utils/hooks/useBreakpoint";
-import usePrismHighlight from "../../utils/hooks/usePrismHighlight";
-import ThemeContext from "../../utils/ThemeContext";
-import AuthorBadge from "../authorBadge/AuthorBadge";
-import CategoryBadge from "../categoryBadge/CategoryBadge";
-import DateBadge from "../dateBadge/DateBadge";
-import MDXRenderer from "../mdxRenderer/MDXRenderer";
-import Divider from "../shared/divider/Divider";
-import { BlogSinglePostProps } from "./BlogSinglePostProps";
+import Head from 'next/head';
+import Link from 'next/link';
+import * as React from 'react';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import useBreakpoint from '../../utils/hooks/useBreakpoint';
+import usePrismHighlight from '../../utils/hooks/usePrismHighlight';
+import ThemeContext from '../../utils/ThemeContext';
+import AuthorBadge from '../AuthorBadge';
+import CategoryBadge from '../categoryBadge/CategoryBadge';
+import DateBadge from '../dateBadge/DateBadge';
+import MDXRenderer from '../mdxRenderer/MDXRenderer';
+import Divider from '../shared/divider/Divider';
+import { BlogSinglePostProps } from './BlogSinglePostProps';
 
 const { useContext } = React;
 
@@ -22,7 +22,7 @@ function Post({ post, theme }: BlogSinglePostProps): JSX.Element {
 
   return (
     <Container className={`my-5`}>
-      <Card bg={theme} text={theme === "light" ? "dark" : "light"}>
+      <Card bg={theme} text={theme === 'light' ? 'dark' : 'light'}>
         <Card.Header>
           <Card.Title>
             <h1>
@@ -95,7 +95,7 @@ function BlogSinglePost({ post }: BlogSinglePostProps): JSX.Element {
           />
         )} */}
       </Head>
-      <Container fluid={breakpoint === "xs" ? true : false}>
+      <Container fluid={breakpoint === 'xs' ? true : false}>
         <Post post={post} theme={theme} />
         {/* <Divider />
         <PostComment id={postId} />

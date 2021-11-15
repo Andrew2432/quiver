@@ -3,7 +3,7 @@ import * as React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import ThemeContext from '../../utils/ThemeContext';
-import AuthorBadge from '../authorBadge/AuthorBadge';
+import AuthorBadge from '../AuthorBadge';
 import CategoryBadge from '../categoryBadge/CategoryBadge';
 import DateBadge from '../dateBadge/DateBadge';
 import MDXRenderer from '../mdxRenderer/MDXRenderer';
