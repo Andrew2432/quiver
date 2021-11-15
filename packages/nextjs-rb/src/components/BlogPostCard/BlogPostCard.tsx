@@ -6,7 +6,7 @@ import ThemeContext from '../../utils/ThemeContext';
 import AuthorBadge from '../AuthorBadge';
 import CategoryBadge from '../CategoryBadge';
 import DateBadge from '../DateBadge';
-import MDXRenderer from '../mdxRenderer/MDXRenderer';
+import MDXRenderer from '../MDXRenderer';
 import { BlogPostCardProps } from './BlogPostCardProps';
 
 const { useContext } = React;

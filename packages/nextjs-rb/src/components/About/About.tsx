@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 import ThemeContext from '../../utils/ThemeContext';
 import AboutBrief from '../AboutBrief';
 import AboutTimeline from '../AboutTimeline';
-import MDXRenderer from '../mdxRenderer/MDXRenderer';
+import MDXRenderer from '../MDXRenderer';
 import { AboutProps } from './AboutProps';
 
 const { useContext } = React;

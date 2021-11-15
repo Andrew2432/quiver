@@ -11,7 +11,7 @@ import ThemeContext from '../../utils/ThemeContext';
 import AuthorBadge from '../AuthorBadge';
 import CategoryBadge from '../CategoryBadge';
 import DateBadge from '../DateBadge';
-import MDXRenderer from '../mdxRenderer/MDXRenderer';
+import MDXRenderer from '../MDXRenderer';
 import Divider from '../shared/divider/Divider';
 import { BlogSinglePostProps } from './BlogSinglePostProps';
 

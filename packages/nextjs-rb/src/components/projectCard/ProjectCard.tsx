@@ -7,7 +7,7 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import useImageUrl from '../../utils/hooks/useImageUrl.hook';
-import MDXRenderer from '../mdxRenderer/MDXRenderer';
+import MDXRenderer from '../MDXRenderer';
 import CustomTooltip from '../shared/tooltips/CustomTooltip';
 import { ProjectCardProps } from './ProjectCardProps';
 

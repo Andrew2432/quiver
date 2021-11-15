@@ -2,7 +2,7 @@ import * as React from 'react';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import ThemeContext from '../../utils/ThemeContext';
-import MDXRenderer from '../mdxRenderer/MDXRenderer';
+import MDXRenderer from '../MDXRenderer';
 import { AboutSkillSetProps, CreateSkillProps } from './AboutSkillSetProps';
 
 const { useContext } = React;

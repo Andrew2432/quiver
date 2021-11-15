@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import ThemeContext from '../../utils/ThemeContext';
-import MDXRenderer from '../mdxRenderer/MDXRenderer';
+import MDXRenderer from '../MDXRenderer';
 import { AboutBriefCardProps } from './AboutBriefCardProps';
 
 function AboutBriefCard({ domainSkill }: AboutBriefCardProps) {

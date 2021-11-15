@@ -1,13 +1,13 @@
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faPlayCircle, faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ProjectType } from '@quiver/types';
 import * as React from 'react';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import { ProjectType } from '../../newTypes/ProjectType';
 import ThemeContext from '../../utils/ThemeContext';
-import MDXRenderer from '../mdxRenderer/MDXRenderer';
+import MDXRenderer from '../MDXRenderer';
 import ProjectButton from '../projectButton/ProjectButton';
 import CustomTooltip from '../shared/tooltips/CustomTooltip';
 import ProjectCarousel from './ProjectCarousel';
