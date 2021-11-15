@@ -6,14 +6,14 @@ import {
 import { BlogPostType, GenericConnectionType } from '@quiver/types';
 import { GetServerSidePropsContext } from 'next';
 import * as React from 'react';
-import BlogSearchResults from '../../../components/blogSearchResults/BlogSearchResults';
-import { BlogSearchResultsProps } from '../../../components/blogSearchResults/BlogSearchResultsProps';
+import BlogSearchResults, {
+  BlogSearchResultsProps,
+} from '../../../components/BlogSearchResults';
 import CustomPagination from '../../../components/customPagination/CustomPagination';
 import { CustomPaginationProps } from '../../../components/customPagination/CustomPaginationProps';
 import useCustomPagination from '../../../components/customPagination/useCustomPagination.hook';
 import Layout from '../../../layouts/Layout';
-import SEO from '../../../layouts/SEO';
-import { SEOProps } from '../../../types/SEOProps';
+import SEO, { SEOProps } from '../../../layouts/SEO';
 import useAuthorSlug from '../../../utils/hooks/useAuthorSlug.hook';
 import PageLoading from '../../../utils/PageLoading';
 

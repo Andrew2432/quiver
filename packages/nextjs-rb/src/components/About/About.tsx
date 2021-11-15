@@ -5,7 +5,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import Row from 'react-bootstrap/Row';
 import ThemeContext from '../../utils/ThemeContext';
 import AboutBrief from '../AboutBrief';
-import AboutTimeline from '../aboutTimeline/AboutTimeline';
+import AboutTimeline from '../AboutTimeline';
 import MDXRenderer from '../mdxRenderer/MDXRenderer';
 import { AboutProps } from './AboutProps';
 

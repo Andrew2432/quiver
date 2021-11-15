@@ -10,14 +10,14 @@ import {
 } from '@quiver/types';
 import { GetServerSidePropsContext } from 'next';
 import * as React from 'react';
-import BlogCategoriesPosts from '../../../components/blogCategoriesPosts/BlogCategoriesPosts';
-import { BlogCategoriesPostsProps } from '../../../components/blogCategoriesPosts/BlogCategoriesPostsProps';
+import BlogCategoriesPosts, {
+  BlogCategoriesPostsProps,
+} from '../../../components/BlogCategoriesPosts';
 import CustomPagination from '../../../components/customPagination/CustomPagination';
 import { CustomPaginationProps } from '../../../components/customPagination/CustomPaginationProps';
 import useCustomPagination from '../../../components/customPagination/useCustomPagination.hook';
 import Layout from '../../../layouts/Layout';
-import SEO from '../../../layouts/SEO';
-import { SEOProps } from '../../../types/SEOProps';
+import SEO, { SEOProps } from '../../../layouts/SEO';
 import useAuthorSlug from '../../../utils/hooks/useAuthorSlug.hook';
 import PageLoading from '../../../utils/PageLoading';
 

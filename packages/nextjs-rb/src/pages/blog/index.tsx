@@ -4,8 +4,7 @@ import {
   useBlogPaginatedPostsQuery,
 } from '@quiver/graphql-client';
 import { BlogPostType, GenericConnectionType } from '@quiver/types';
-import Blog from '../../components/blog/Blog';
-import { BlogProps } from '../../components/blog/BlogProps';
+import Blog, { BlogProps } from '../../components/Blog';
 import CustomPagination from '../../components/customPagination/CustomPagination';
 import { CustomPaginationProps } from '../../components/customPagination/CustomPaginationProps';
 import useCustomPagination from '../../components/customPagination/useCustomPagination.hook';
