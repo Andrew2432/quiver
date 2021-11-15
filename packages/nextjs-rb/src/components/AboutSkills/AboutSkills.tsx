@@ -3,7 +3,7 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import ThemeContext from '../../utils/ThemeContext';
-import AboutSkillSet from './AboutSkillSet';
+import AboutSkillSet from '../AboutSkillSet';
 import { AboutSkillsProps } from './AboutSkillsProps';
 
 const { useContext } = React;

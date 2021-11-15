@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import ThemeContext from '../../utils/ThemeContext';
 import MDXRenderer from '../mdxRenderer/MDXRenderer';
-import { AboutBriefCardProps } from './AboutBriefProps';
+import { AboutBriefCardProps } from './AboutBriefCardProps';
 
 function AboutBriefCard({ domainSkill }: AboutBriefCardProps) {
   const { title, description } = domainSkill;

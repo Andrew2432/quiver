@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import ThemeContext from '../../utils/ThemeContext';
 import MDXRenderer from '../mdxRenderer/MDXRenderer';
-import { AboutSkillSetProps, CreateSkillProps } from './AboutSkillsProps';
+import { AboutSkillSetProps, CreateSkillProps } from './AboutSkillSetProps';
 
 const { useContext } = React;
 
@@ -14,6 +14,7 @@ function createSkill({ skill }: CreateSkillProps) {
 function AboutSkillSet({ technicalSkill }: AboutSkillSetProps) {
   const { title, description, skills, currentLearningSkills } = technicalSkill;
   const { theme } = useContext(ThemeContext);
+
   const currentLearningSkillsLength = currentLearningSkills.length;
 
   return (

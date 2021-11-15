@@ -1,13 +1,14 @@
 import { TechinalSkills } from "@quiver/graphql-client";
-interface AboutSkill {
+export interface AboutSkill {
     name: string;
     url: string;
 }
-interface AboutTechnicalSkill {
+interface AboutTechnicalSkill<T> {
     title: string;
     description: string;
     skills: Readonly<AboutSkill[]>;
     currentLearningSkills: Readonly<AboutSkill[]>;
 }
-export declare type AboutTechnicalSkillType = AboutTechnicalSkill | TechinalSkills;
+export interface AboutTechnicalSkillType extends Readonly<AboutTechnicalSkill<TechinalSkills>> {
+}
 export {};

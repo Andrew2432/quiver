@@ -2,7 +2,7 @@ import * as React from 'react';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import AboutBriefCard from './AboutBriefCard';
+import AboutBriefCard from '../AboutBriefCard';
 import { AboutBriefProps, CreateDomainSkillsProps } from './AboutBriefProps';
 
 function createDomainSkillsOld({ domainSkills }: CreateDomainSkillsProps) {

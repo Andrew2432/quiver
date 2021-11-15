@@ -1,11 +1,7 @@
-import { AboutDomainSkillType } from '../../newTypes/AboutDomainSkillType';
+import { AboutDomainSkillType } from '@quiver/types';
 
 export interface AboutBriefProps {
   domainSkills: AboutDomainSkillType[];
-}
-
-export interface AboutBriefCardProps {
-  domainSkill: AboutDomainSkillType;
 }
 
 export interface CreateDomainSkillsProps {
