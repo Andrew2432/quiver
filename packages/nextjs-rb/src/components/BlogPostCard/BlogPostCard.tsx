@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import ThemeContext from '../../utils/ThemeContext';
 import AuthorBadge from '../AuthorBadge';
-import CategoryBadge from '../categoryBadge/CategoryBadge';
+import CategoryBadge from '../CategoryBadge';
 import DateBadge from '../dateBadge/DateBadge';
 import MDXRenderer from '../mdxRenderer/MDXRenderer';
 import { BlogPostCardProps } from './BlogPostCardProps';
