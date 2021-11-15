@@ -1,5 +1,5 @@
 import { MarkdownToJSX } from 'markdown-to-jsx';
-import Code from '../code/Code';
+import Code from '../Code';
 import CustomImage from '../image/CustomImage';
 import Paragraph from '../paragraph/Paragraph';
 
