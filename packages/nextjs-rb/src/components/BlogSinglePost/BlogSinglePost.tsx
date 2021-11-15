@@ -10,7 +10,7 @@ import usePrismHighlight from '../../utils/hooks/usePrismHighlight';
 import ThemeContext from '../../utils/ThemeContext';
 import AuthorBadge from '../AuthorBadge';
 import CategoryBadge from '../CategoryBadge';
-import DateBadge from '../dateBadge/DateBadge';
+import DateBadge from '../DateBadge';
 import MDXRenderer from '../mdxRenderer/MDXRenderer';
 import Divider from '../shared/divider/Divider';
 import { BlogSinglePostProps } from './BlogSinglePostProps';
