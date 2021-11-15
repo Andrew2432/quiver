@@ -1,6 +1,6 @@
 import { MarkdownToJSX } from 'markdown-to-jsx';
 import Code from '../Code';
-import CustomImage from '../image/CustomImage';
+import CustomImage from '../CustomImage';
 import Paragraph from '../paragraph/Paragraph';
 
 const markdownOptions: MarkdownToJSX.Options = Object.freeze({
