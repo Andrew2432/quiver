@@ -1,15 +1,21 @@
-import { ApolloError } from "@apollo/client";
-import React from "react";
-import { PaginationCursor } from "../../newTypes/PaginationCursor";
+import {
+  ApolloError,
+  OperationVariables,
+  QueryHookOptions,
+  QueryResult,
+} from '@apollo/client';
+import { Exact } from '@quiver/graphql-client';
+import { PaginationCursor } from '@quiver/types';
+import React from 'react';
 
-export interface UseHookProps
-  extends Apollo.QueryHookOptions<T, `${T}Variables`> {
+export interface UseHookProps<T>
+  extends QueryHookOptions<T, OperationVariables> {
   variables: {
     limit: number;
     offset: number;
     query?: string;
-    [x: string]: any;
   };
+  [key: string]: unknown;
 }
 
 export interface PaginateItemsProps {
@@ -21,7 +27,7 @@ export interface PaginateItemsProps {
 export interface UseCustomPaginationHookProps<T> {
   useHook: ({
     variables,
-  }: UseHookProps<T>) => QueryResult<T, Exact<UseHookProps>>;
+  }: UseHookProps<T>) => QueryResult<T, Exact<UseHookProps<T>>>;
   initialOffset?: number;
   initialLimit?: number;
   variables?: Record<string, unknown>;

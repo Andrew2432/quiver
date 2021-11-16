@@ -1,11 +1,14 @@
 {
   "name": "@quiver/graphql-client",
   "version": "0.0.1",
+  "private": true,
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "dependencies": {
     "graphql": "^15.7.1",
-    "@apollo/client": "^3.4.17"
+    "@apollo/client": "^3.4.17",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   },
   "license": "MIT",
   "devDependencies": {
@@ -15,7 +18,8 @@
     "@graphql-codegen/typescript-graphql-files-modules": "2.1.0",
     "@graphql-codegen/typescript-operations": "2.1.8",
     "@graphql-codegen/typescript-react-apollo": "3.1.6",
-    "typescript": "^4.3.2"
+    "typescript": "^4.3.2",
+    "@types/react": "17.0.11"
   },
   "scripts": {
     "clean": "rm -rf dist/ && rm src/generated/graphql.ts",
