@@ -1,6 +1,7 @@
 import {
   Article,
   BlogPaginatedSearchQuery,
+  BlogPaginatedSearchQueryVariables,
   useBlogPaginatedSearchQuery,
 } from '@quiver/graphql-client';
 import { BlogPostType, GenericConnectionType } from '@quiver/types';
@@ -9,9 +10,10 @@ import * as React from 'react';
 import BlogSearchResults, {
   BlogSearchResultsProps,
 } from '../../../components/BlogSearchResults';
-import CustomPagination from '../../../components/customPagination/CustomPagination';
-import { CustomPaginationProps } from '../../../components/customPagination/CustomPaginationProps';
-import useCustomPagination from '../../../components/customPagination/useCustomPagination.hook';
+import CustomPagination, {
+  CustomPaginationProps,
+  useCustomPagination,
+} from '../../../components/CustomPagination';
 import Layout from '../../../layouts/Layout';
 import SEO, { SEOProps } from '../../../layouts/SEO';
 import useAuthorSlug from '../../../utils/hooks/useAuthorSlug.hook';
@@ -39,7 +41,10 @@ function PostsSearchPage({ query }: Props) {
     loading,
     cursorRef,
     handlePaginationClick,
-  } = useCustomPagination<BlogPaginatedSearchQuery>({
+  } = useCustomPagination<
+    BlogPaginatedSearchQuery,
+    BlogPaginatedSearchQueryVariables
+  >({
     useHook: useBlogPaginatedSearchQuery,
     variables: {
       query,

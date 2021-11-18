@@ -1,13 +1,15 @@
 import {
   Article,
   BlogPaginatedPostsQuery,
+  BlogPaginatedPostsQueryVariables,
   useBlogPaginatedPostsQuery,
 } from '@quiver/graphql-client';
 import { BlogPostType, GenericConnectionType } from '@quiver/types';
 import Blog, { BlogProps } from '../../components/Blog';
-import CustomPagination from '../../components/customPagination/CustomPagination';
-import { CustomPaginationProps } from '../../components/customPagination/CustomPaginationProps';
-import useCustomPagination from '../../components/customPagination/useCustomPagination.hook';
+import CustomPagination, {
+  CustomPaginationProps,
+  useCustomPagination,
+} from '../../components/CustomPagination';
 import Layout from '../../layouts/Layout';
 import SEO, { SEOProps } from '../../layouts/SEO';
 import useAuthorSlug from '../../utils/hooks/useAuthorSlug.hook';
@@ -22,7 +24,10 @@ function BlogPage() {
     error,
     cursorRef,
     handlePaginationClick,
-  } = useCustomPagination<BlogPaginatedPostsQuery>({
+  } = useCustomPagination<
+    BlogPaginatedPostsQuery,
+    BlogPaginatedPostsQueryVariables
+  >({
     useHook: useBlogPaginatedPostsQuery,
     variables: {
       authorSlug,

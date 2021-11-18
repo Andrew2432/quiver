@@ -1,14 +1,15 @@
 import {
   Article,
   BlogPaginatedPostsQuery,
+  BlogPaginatedPostsQueryVariables,
   useBlogPaginatedPostsQuery,
 } from '@quiver/graphql-client';
 import { BlogPostType, GenericConnectionType } from '@quiver/types';
 import * as React from 'react';
+import useAuthorSlug from '../../utils/hooks/useAuthorSlug.hook';
 import PageLoading from '../../utils/PageLoading';
 import BlogPostCard from '../BlogPostCard';
-import CustomPagination from '../customPagination/CustomPagination';
-import useCustomPagination from '../customPagination/useCustomPagination.hook';
+import CustomPagination, { useCustomPagination } from '../CustomPagination';
 import { BlogPostsProps } from './BlogPostsProps';
 
 function createBlogPostCard(post: BlogPostType) {
@@ -16,13 +17,21 @@ function createBlogPostCard(post: BlogPostType) {
 }
 
 function PaginatedBlogPosts() {
+  const authorSlug = useAuthorSlug();
+
   const {
     data,
     loading,
     cursorRef,
     handlePaginationClick,
-  } = useCustomPagination<BlogPaginatedPostsQuery>({
+  } = useCustomPagination<
+    BlogPaginatedPostsQuery,
+    BlogPaginatedPostsQueryVariables
+  >({
     useHook: useBlogPaginatedPostsQuery,
+    variables: {
+      authorSlug,
+    },
   });
 
   if (loading) return <PageLoading />;

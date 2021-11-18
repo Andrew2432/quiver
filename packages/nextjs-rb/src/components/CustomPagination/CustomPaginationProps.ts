@@ -1,22 +1,21 @@
-import {
-  ApolloError,
-  OperationVariables,
-  QueryHookOptions,
-  QueryResult,
-} from '@apollo/client';
-import { Exact } from '@quiver/graphql-client';
+import { ApolloError, QueryHookOptions, QueryResult } from '@apollo/client';
 import { PaginationCursor } from '@quiver/types';
 import React from 'react';
 
-export interface UseHookProps<T>
-  extends QueryHookOptions<T, OperationVariables> {
-  variables: {
-    limit: number;
-    offset: number;
-    query?: string;
-  };
+export interface PaginationProps {
+  offset: number;
+  limit: number;
   [key: string]: unknown;
 }
+
+// export interface UseHookProps<T, V> extends QueryHookOptions<T, V> {
+//   variables: {
+//     offset: number;
+//     limit: number;
+//     [key: string]: unknown;
+//   };
+//   [key: string]: unknown;
+// }
 
 export interface PaginateItemsProps {
   cursorRef: React.MutableRefObject<PaginationCursor>;
@@ -24,10 +23,8 @@ export interface PaginateItemsProps {
   paginationCount: number;
 }
 
-export interface UseCustomPaginationHookProps<T> {
-  useHook: ({
-    variables,
-  }: UseHookProps<T>) => QueryResult<T, Exact<UseHookProps<T>>>;
+export interface UseCustomPaginationHookProps<T, V extends PaginationProps> {
+  useHook: (baseOptions: QueryHookOptions<T, V>) => QueryResult;
   initialOffset?: number;
   initialLimit?: number;
   variables?: Record<string, unknown>;

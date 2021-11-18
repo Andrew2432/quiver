@@ -10,12 +10,6 @@ require('react-dom');
 function AboutPage() {
   const authorSlug = useAuthorSlug();
 
-  if (typeof window !== 'undefined') {
-    // Add this in your component file
-    window.React2 = require('react');
-    console.log(window.React1 === window.React2);
-  }
-
   const { data, loading, error } = useAboutQuery({
     variables: {
       authorSlug,

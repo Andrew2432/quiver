@@ -1,16 +1,17 @@
+import { PaginationCursor } from '@quiver/types';
 import { useRef } from 'react';
-import { PaginationCursor } from '../../newTypes/PaginationCursor';
 import {
+  PaginationProps,
   UseCustomPaginationHookProps,
   UseCustomPaginationReturnProps,
 } from './CustomPaginationProps';
 
-function useCustomPagination<T>({
+export function useCustomPagination<T, V extends PaginationProps>({
   useHook,
   initialOffset,
   initialLimit,
   variables,
-}: UseCustomPaginationHookProps<T>): UseCustomPaginationReturnProps<T> {
+}: UseCustomPaginationHookProps<T, V>): UseCustomPaginationReturnProps<T> {
   const cursorRef = useRef<PaginationCursor>({
     offset: initialOffset ?? 0,
     limit: initialLimit ?? 3,
@@ -43,12 +44,10 @@ function useCustomPagination<T>({
   }
 
   return {
-    data,
+    data: data as T,
     loading,
     error,
     handlePaginationClick,
     cursorRef,
   };
 }
-
-export default useCustomPagination;

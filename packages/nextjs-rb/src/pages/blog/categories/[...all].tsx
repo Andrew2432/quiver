@@ -1,6 +1,7 @@
 import {
   Article,
   BlogPaginatedCategoriesPostsQuery,
+  BlogPaginatedCategoriesPostsQueryVariables,
   useBlogPaginatedCategoriesPostsQuery,
 } from '@quiver/graphql-client';
 import {
@@ -13,9 +14,10 @@ import * as React from 'react';
 import BlogCategoriesPosts, {
   BlogCategoriesPostsProps,
 } from '../../../components/BlogCategoriesPosts';
-import CustomPagination from '../../../components/customPagination/CustomPagination';
-import { CustomPaginationProps } from '../../../components/customPagination/CustomPaginationProps';
-import useCustomPagination from '../../../components/customPagination/useCustomPagination.hook';
+import CustomPagination, {
+  CustomPaginationProps,
+  useCustomPagination,
+} from '../../../components/CustomPagination';
 import Layout from '../../../layouts/Layout';
 import SEO, { SEOProps } from '../../../layouts/SEO';
 import useAuthorSlug from '../../../utils/hooks/useAuthorSlug.hook';
@@ -48,7 +50,10 @@ function BlogCategoriesPostsPage({ categorySlug }: Props) {
     cursorRef,
     handlePaginationClick,
     error,
-  } = useCustomPagination<BlogPaginatedCategoriesPostsQuery>({
+  } = useCustomPagination<
+    BlogPaginatedCategoriesPostsQuery,
+    BlogPaginatedCategoriesPostsQueryVariables
+  >({
     useHook: useBlogPaginatedCategoriesPostsQuery,
     variables: {
       categorySlug,
