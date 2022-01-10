@@ -22,7 +22,9 @@ pipeline {
           def scannerHome = tool name: 'my-sonarqube', type: 'hudson.plugins.sonar.SonarRunnerInstallation';
 
           withSonarQubeEnv(credentialsId: 'sonarqube-token', installationName: 'my-sonarqube') {
-            sh "cd apps/next-frontend/ && ${scannerHome}/bin/sonar-scanner"
+            nodejs('my-nodejs') {
+              sh "cd apps/next-frontend/ && ${scannerHome}/bin/sonar-scanner"
+            }
           }
         }
       }
