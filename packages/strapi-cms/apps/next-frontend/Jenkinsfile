@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('SCM Checkout') {
+            steps {
+               git branch: 'develop-nx', credentialsId: 'github-ssh', url: 'git@github.com:ajoel24/quiver.git' 
+            }
+        }
+
+        stage('Install dependencies') {
+            steps {
+                nodejs('my-nodejs') {
+                    sh "cd apps/next-frontend && npm install"
+                }
+            }
+        }
+    }
+}
