@@ -4,7 +4,7 @@ pipeline {
   stages {
     stage('SCM Checkout') {
       steps {
-        git branch: 'feature/jenkins', credentialsId: 'github-ssh', url: 'git@github.com:ajoel24/quiver.git'
+        git branch: 'bugfix/node-forge', credentialsId: 'github-ssh', url: 'git@github.com:ajoel24/quiver.git'
       }
     }
 
