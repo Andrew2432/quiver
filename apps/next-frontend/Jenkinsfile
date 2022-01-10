@@ -29,5 +29,13 @@ pipeline {
         }
       }
     }
+
+    stage('Snyk scan') {
+      steps {
+        snykSecurity projectName: 'Next.js App', snykInstallation: 'my-snyk', snykTokenId: 'snyk-api-token', targetFile: 'logs.log'
+
+        sh "cd apps/next-frontend/ && ${snykSecurity} monitor"
+      }
+    }
   }
 }
