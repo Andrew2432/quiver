@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('SCM Checkout') {
             steps {
-               git branch: 'develop-nx', credentialsId: 'github-ssh', url: 'git@github.com:ajoel24/quiver.git' 
+               git branch: 'feature/jenkins', credentialsId: 'github-ssh', url: 'git@github.com:ajoel24/quiver.git' 
             }
         }
 
@@ -13,6 +13,14 @@ pipeline {
                 nodejs('my-nodejs') {
                     sh "cd apps/next-frontend && npm install"
                 }
+            }
+        }
+
+        stage('SonarQube scan') {
+            def scannerHome = tool name: 'my-sonarqube', type: 'hudson.plugins.sonar.SonarRunnerInstallation';
+
+            withSonarQubeEnv(credentialsId: 'sonarqube-token', installationName: 'my-sonarqube') {
+                sh "cd apps/next-frontend/ && ${scannerHome}/bin/sonar-scanner"
             }
         }
     }
