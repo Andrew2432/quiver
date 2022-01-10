@@ -11,7 +11,7 @@ pipeline {
     stage('Install dependencies') {
       steps {
         nodejs('my-nodejs') {
-          sh "cd apps/next-frontend && npm install"
+          sh "npm install"
         }
       }
     }
