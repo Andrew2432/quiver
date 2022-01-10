@@ -17,10 +17,10 @@ pipeline {
     }
 
     stage('SonarQube scan') {
-      script {
-        def scannerHome = tool name: 'my-sonarqube', type: 'hudson.plugins.sonar.SonarRunnerInstallation';
+      steps {
+        script {
+          def scannerHome = tool name: 'my-sonarqube', type: 'hudson.plugins.sonar.SonarRunnerInstallation';
 
-        steps {
           withSonarQubeEnv(credentialsId: 'sonarqube-token', installationName: 'my-sonarqube') {
             sh "cd apps/next-frontend/ && ${scannerHome}/bin/sonar-scanner"
           }
