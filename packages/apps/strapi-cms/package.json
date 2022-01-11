@@ -1,5 +1,5 @@
 {
-  "name": "strapi-cms",
+  "name": "@quiver/strapi-cms",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
@@ -15,10 +15,13 @@
     "@strapi/plugin-users-permissions": "4.0.4",
     "@strapi/strapi": "4.0.4",
     "lerna": "^4.0.0",
-    "pg": "8.6.0"
+    "pg": "8.6.0",
+    "@quiver/strapi-plugin-content-impex": "0.0.0"
   },
   "author": {
-    "name": "A Strapi developer"
+    "name": "Andrew Joel",
+    "email": "drew.devops@gmail.com",
+    "url": "https://andrew-joel.com"
   },
   "strapi": {
     "uuid": "564e9784-328b-422f-9e85-617f04eefdc4"

@@ -1,0 +1,7 @@
+**/node_modules/
+packages/
+.editorconfig
+.eslintignore
+.eslintrc
+.prettierignore
+.prettierrc

@@ -7,5 +7,11 @@
   ],
   "devDependencies": {
     "lerna": "^4.0.0"
+  },
+  "engines": {
+    "node": "14.18.2"
+  },
+  "scripts": {
+    "lerna:strapi-develop": "lerna run develop --scope=@quiver/strapi-cms"
   }
 }
