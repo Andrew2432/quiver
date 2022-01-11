@@ -1,7 +1,0 @@
-{
-  "version": 2,
-  "projects": {
-    "next-frontend": "apps/next-frontend",
-    "next-frontend-e2e": "apps/next-frontend-e2e"
-  }
-}
